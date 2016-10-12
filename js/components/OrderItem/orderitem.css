@@ -1,0 +1,96 @@
+.orderitem{
+	width: 100%;
+	background: #fff;
+	padding-left: 0.32rem;
+	margin-bottom: 0.266667rem;
+}
+.orderitem .header{
+	height: 36px;
+	font-size: 14px;
+	color: #333;
+}
+[data-dpr="2"] .orderitem .header{
+	height: 0.96rem;
+	font-size: 28px;
+}
+[data-dpr="3"] .orderitem .header{
+	height: 108px;
+	font-size: 42px;
+}
+.orderitem .content {
+	padding: 0.32rem 0;
+}
+.orderitem .content .wares_img{
+	width: 80px;
+	height: 80px;
+}
+[data-dpr="2"] .orderitem .content .wares_img{
+	width: 2.133333rem;
+	height: 2.133333rem;
+}
+[data-dpr="3"] .orderitem .content .wares_img{
+	height: 240px;
+	width: 240px;
+}
+.orderitem .content .wares_present{
+	margin-left: 0.32rem;
+}
+.orderitem .content .wares_present .name{
+	color: #333;
+	font-size: 17px;
+}
+[data-dpr="2"] .orderitem .content .wares_present .name{
+	font-size: 34px;
+}
+[data-dpr="3"] .orderitem .content .wares_present .name{
+	font-size: 51px;
+}
+.orderitem .content .wares_present .number{
+	color: #333;
+	font-size: 16px;
+}
+[data-dpr="2"] .orderitem .content .wares_present .number{
+	font-size: 32px;
+}
+[data-dpr="3"] .orderitem .content .wares_present .number{
+	font-size: 48px;
+}
+.orderitem .content .wares_present .price{
+	color: #333;
+	font-size: 14px;
+}
+[data-dpr="2"] .orderitem .content .wares_present .price{
+	font-size: 28px;
+}
+[data-dpr="3"] .orderitem .content .wares_present .price{
+	font-size: 42px;
+}
+.orderitem .footer{
+	height: 52px;
+	padding-right: 0.32rem;
+}
+[data-dpr="2"] .orderitem .footer{
+	height: 1.386667rem;
+}
+[data-dpr="3"] .orderitem .footer{
+	height: 156px;
+}
+.orderitem .footer .state{
+	color: #ff9900;
+	font-size: 15px;
+}
+[data-dpr="2"] .orderitem .footer .state{
+	font-size: 30px;
+}
+[data-dpr="3"] .orderitem .footer .state{
+	font-size: 45px;
+}
+.orderitem .footer .btn_cell{
+	width: 68px;
+}
+[data-dpr="2"] .orderitem .footer .btn_cell{
+	width: 1.813333rem;
+}
+[data-dpr="3"] .orderitem .footer .btn_cell{
+	width: 204px;
+}

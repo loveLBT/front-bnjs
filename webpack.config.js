@@ -21,6 +21,9 @@ var config={
 	       	  test:/\.css$/,
 	       	  exclude: /node_modules/,
         	  loader:ExtractTextPlugin.extract('style-loader', 'css-loader')
+	       },{
+	       	  test: /\.(png|jpg|jpeg|gif)$/,
+	       	  loader:'url?limit=8192&name=img/[name].[ext]'
 	       }
 		]
 	},

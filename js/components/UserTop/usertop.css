@@ -1,0 +1,206 @@
+.usertop{
+	position: relative;
+	background: #e34949;
+	padding: 0.48rem 0;
+	z-index: 999;
+}
+.usertop .data_cell{
+	padding: 0 0.32rem;
+	height: 64px;
+}
+[data-dpr="2"] .usertop .data_cell{
+	height: 1.706667rem;
+}
+[data-dpr="3"] .usertop .data_cell{
+	height: 192px;
+}
+.usertop .data_cell .name_cell{
+	height: 100%;
+	padding-left: 0.4rem;
+}
+.usertop .data_cell .name_cell .name{
+	font-size: 18px;
+	color: #fff;
+}
+[data-dpr="2"] .usertop .data_cell .name_cell .name{
+	font-size: 36px;
+}
+[data-dpr="3"] .usertop .data_cell .name_cell .name{
+	font-size: 54px;
+}
+.usertop .data_cell .name_cell .name .icon_name{
+	width: 20px;
+	height: 16px;
+	display: inline-block;
+	background-image: url(../../../assets/img/icon.png);
+	background-position-x:-44px; 
+	background-position-y:-48px;
+	margin-left: 0.266667rem;
+}
+[data-dpr="2"] .usertop .data_cell .name_cell .name .icon_name{
+	width: 40px;
+	height: 32px;
+	background-image: url(../../../assets/img/icon@2x.png); 
+	background-position-x:-88px;
+	background-position-y:-96px;
+}
+[data-dpr="3"] .usertop .data_cell .name_cell .name .icon_name{
+	width: 60px;
+	height: 48px;
+	background-image: url(../../../assets/img/icon@3x.png); 
+	background-position-x:-132px;
+	background-position-y:-144px;
+}
+.usertop .data_cell .name_cell .leave{
+	font-size: 14px;
+	color: #fff;
+}
+[data-dpr="2"] .usertop .data_cell .name_cell .leave{
+	font-size: 28px;
+}
+[data-dpr="3"] .usertop .data_cell .name_cell .leave{
+	font-size: 42px;
+}
+.usertop .data_cell .btn_cell{
+	text-align: right;
+}
+.usertop .data_cell .btn_cell button{
+	width: 68px;
+	height: 24px;
+	background: #fff;
+	color: #e34949;
+	font-size: 15px;
+	text-align: center;;
+	border-radius: 12px;
+}
+[data-dpr="2"] .usertop .data_cell .btn_cell button{
+	width: 136px;
+	height: 48px;
+	font-size: 30px;
+	border-radius: 24px;
+}
+[data-dpr="3"] .usertop .data_cell .btn_cell button{
+	width: 204px;
+	height: 72px;
+	font-size: 45px;
+	border-radius: 36px;
+}
+.usertop .data_cell .btn_cell button:active{
+	background: #e5e5e5;
+}
+
+.usertop .order_cell{
+	position: relative;
+	width: 100%;
+	padding-top: 22px;
+}
+[data-dpr="2"] .usertop .order_cell{
+	padding-top: 44px;
+}
+[data-dpr="3"] .usertop .order_cell{
+	padding-top: 66px;
+}
+.usertop .order_cell ul{
+	position: relative;
+	width: 100%;
+}
+.usertop .order_cell ul:after{
+	content: "";
+	position: absolute;
+	display: block;
+	width: 1px;
+	height: 100%;
+	background: #ee9292;
+	left: 50%;
+	top: 0;
+}
+.usertop .order_cell ul li{
+	position: relative;
+	width: 50%;
+	display: inline-block;
+	text-align: center;
+}
+.usertop .order_cell ul li a{
+	display: block;
+	padding-top: 0.24rem;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	font-size: 18px;
+}
+[data-dpr="2"] .usertop .order_cell ul li a{
+	font-size: 36px;
+}
+[data-dpr="3"] .usertop .order_cell ul li a{
+	font-size: 54px;
+}
+.usertop .order_cell ul li a .icon{
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	background: url('../../../assets/img/icon.png');
+	vertical-align: middle;
+	margin-right: 0.32rem;
+}
+[data-dpr="2"] .usertop .order_cell ul li a .icon{
+	width: 48px;
+	height: 48px;
+	background: url('../../../assets/img/icon@2x.png');
+}
+[data-dpr="3"] .usertop .order_cell ul li a .icon{
+	width: 72px;
+	height: 72px;
+	background: url('../../../assets/img/icon@3x.png');
+}
+.usertop .order_cell ul li a .icon_myorder{
+	background-position-x:-44px;
+}
+[data-dpr="2"] .usertop .order_cell ul li a .icon_myorder{
+	background-position-x:-88px;
+}
+[data-dpr="3"] .usertop .order_cell ul li a .icon_myorder{
+	background-position-x:-132px;
+}
+.usertop .order_cell ul li a .icon_userorder{
+	background-position-x:-44px;
+	background-position-y: -24px; 
+}
+[data-dpr="2"] .usertop .order_cell ul li a .icon_userorder{
+	background-position-x:-88px;
+	background-position-y: -48px; 
+}
+[data-dpr="3"] .usertop .order_cell ul li a .icon_userorder{
+	background-position-x:-132px;
+	background-position-y: -72px; 
+}
+
+.usertop .count_cell{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -36px;
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	font-size: 14px;
+	padding-left: 0.32rem;
+}                 
+[data-dpr="2"] .usertop .count_cell{
+	height: 0.96rem;
+	font-size: 28px;
+	bottom: -0.96rem;
+}
+[data-dpr="3"] .usertop .count_cell{
+	height: 108px;
+	font-size: 42px;
+	bottom: -108px;
+}
+.marginBottom{
+	margin-bottom: 36px;
+}
+[data-dpr="2"] .marginBottom{
+	margin-bottom: 0.96rem;
+}
+[data-dpr="3"] .marginBottom{
+	margin-bottom: 108px;
+}

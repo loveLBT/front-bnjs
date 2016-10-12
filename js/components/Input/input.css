@@ -1,0 +1,100 @@
+.input{
+	position: relative;
+	height: 48px;
+	background: #fff;
+}
+[data-dpr="2"] .input{
+	height: 96px;
+}
+[data-dpr="3"] .input{
+	height: 144px;
+}
+.input label{
+	width: 45px;
+	height: 100%;
+	background-image:url(../../../assets/img/icon.png);
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+[data-dpr="2"] .input label{
+	width: 90px;
+	background:url(../../../assets/img/icon@2x.png);
+	background-repeat: no-repeat;
+}
+[data-dpr="3"] .input label{
+	width: 135px;
+	background:url(../../../assets/img/icon@3x.png);
+	background-repeat: no-repeat;
+}
+.input .icon_phone{
+	background-position-x: -68px; 
+}
+[data-dpr="2"] .input .icon_phone{
+	background-position-x: -136px; 
+}
+[data-dpr="3"] .input .icon_phone{
+	background-position-x: -204px; 
+}
+
+.input .icon_pwd{
+	background-position-x: -68px; 
+	background-position-y: -48px;
+}
+[data-dpr="2"] .input .icon_pwd{
+	background-position-x: -136px; 
+	background-position-y: -96px;
+}
+[data-dpr="3"] .input .icon_pwd{
+	background-position-x: -204px; 
+	background-position-y: -144px;
+}
+
+.input .icon_user{
+	background-position-x: -68px; 
+	background-position-y: -96px;
+}
+[data-dpr="2"] .input .icon_user{
+	background-position-x: -136px; 
+	background-position-y: -192px;
+}
+[data-dpr="3"] .input .icon_user{
+	background-position-x: -204px; 
+	background-position-y: -288px;
+}
+
+.input .icon_weixin{
+	background-position-x: -68px; 
+	background-position-y: -144px;
+}
+[data-dpr="2"] .input .icon_weixin{
+	background-position-x: -136px; 
+	background-position-y: -288px;
+}
+[data-dpr="3"] .input .icon_weixin{
+	background-position-x: -204px; 
+	background-position-y: -432px;
+}
+
+.input .icon_person{
+	background-position-x: -68px; 
+	background-position-y: -192px;
+}
+[data-dpr="2"] .input .icon_person{
+	background-position-x: -136px; 
+	background-position-y: -384px;
+}
+[data-dpr="3"] .input .icon_person{
+	background-position-x: -204px; 
+	background-position-y: -576px;
+}
+
+.input input{
+	height: 100%;
+	font-size: 16px;
+}
+[data-dpr="2"] .input input{
+	font-size: 32px;
+}
+[data-dpr="3"] .input input{
+	font-size: 48px;
+}

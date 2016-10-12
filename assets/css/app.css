@@ -1,0 +1,137 @@
+.app{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #f2f2f2;
+	overflow: hidden;
+}
+
+
+/*            全局样式          */
+a{
+	font-size: 16px;
+}
+[data-dpr="2"] a{
+	font-size: 32px
+}
+[data-dpr="3"] a{
+	font-size: 48px
+}
+.red{
+  color: #e34949;
+}
+.borderBottom{
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ccc;
+}
+[data-dpr="2"] .borderBottom{
+  border-bottom-width: 2px;
+}
+[data-dpr="3"] .borderBottom{
+  border-bottom-width: 3px;
+}
+.logo{
+	width: 100%;
+	height: 170px;
+	background-repeat: no-repeat; 
+	background-position:center center;
+	background-image: url(../../assets/img/logo.png);
+}
+[data-dpr="2"] .logo{
+	height: 4.533333rem;
+	background-image: url(../../assets/img/logo@2x.png);
+}
+[data-dpr="3"] .logo{
+	height: 510px;
+	background-image: url(../../assets/img/logo@3x.png);
+}
+
+.btn_big_cell{
+	position: relative;
+	width: 100%;
+	padding: 0 12px;
+}
+[data-dpr="2"] .btn_big_cell{
+	padding: 0 24px;
+}
+[data-dpr="3"] .btn_big_cell{
+	padding: 0 36px;
+}
+.link_to{
+	text-align: center;
+	padding-top: 15px;
+}
+[data-dpr="2"] .link_to{
+	padding-top: 30px;
+}
+[data-dpr="3"] .link_to{
+	padding-top: 45px;
+}
+.link_to a{
+	color: #03a9f5;
+}
+
+/*            登陆页面样式          */
+.login .radio_cell{
+	height: 1.466667rem;
+	padding: 0 12px;
+}
+[data-dpr="2"] .login .radio_cell{
+	padding: 0 24px;
+}
+[data-dpr="3"] .login .radio_cell{
+	padding: 0 36px;
+}
+.login .radio_cell .remember{
+	text-align: right;
+	color: #03a9f5;
+	font-size: 16px;
+}
+[data-dpr="2"] .login .radio_cell .remember{
+	font-size: 32px;
+}
+[data-dpr="3"] .login .radio_cell .remember{
+	font-size: 48px;
+}
+
+/*            注册页样式          */
+.register .radio_cell{
+	height: 84px;
+	padding-left: 37px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+[data-dpr="2"] .register .radio_cell{
+	height: 168px;
+	padding-left: 74px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+[data-dpr="3"] .register .radio_cell{
+	height: 252px;
+	padding-left: 111px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+
+/*            我的订单页样式          */ 
+.myorder{
+	position: relative;
+	width: 100%;
+	height: 100%;
+} 
+.myorder .order_cell{
+	padding-bottom:188px;
+}  
+[data-dpr="2"] .myorder .order_cell{
+	padding-bottom: 5rem;
+}
+[data-dpr="3"] .myorder .order_cell{
+	padding-bottom: 564px;
+}
