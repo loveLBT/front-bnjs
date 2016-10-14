@@ -1,0 +1,23 @@
+.panel{
+	padding: 0.46rem 0;
+}
+.panel h3{
+	width: 2.866667rem;
+}
+
+.panel .img_cell div{
+	position: relative;
+	width: 120px;
+	height: 80px;
+}
+.panel .img_cell div:first-child{
+	margin-bottom: 0.32rem;
+}
+[data-dpr="2"] .panel .img_cell div{
+	width: 3.2rem;
+	height: 2.133333rem;
+}
+[data-dpr="3"] .panel .img_cell div{
+	width: 360px;
+	height: 240px;
+}

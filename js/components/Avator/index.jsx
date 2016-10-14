@@ -9,10 +9,14 @@ class Avator extends Component{
 		}
 	}
 	render(){
+		const {isUpload}=this.props
 		return (
 			<div className="avator">
-				<input type="file"/>
+				{isUpload && 
+					<input type="file"/>
+				}
 				<img width="100%" height="100%" src={this.state.imgUrl} alt="用户头像"/>
+				}
 			</div>
 		)
 	}

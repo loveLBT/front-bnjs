@@ -1,10 +1,38 @@
 import React,{Component} from 'react'
 import { Link } from 'react-router'
+import objectAssign from "object-assign"
 import classnames from 'classnames'
 import Avator from '../Avator'
 import Badge from '../Badge'
+import Button from '../Button'
 import './usertop.css'
-class UserTop extends Component{
+class UserTop extends Component{ 
+	renderStateCell(){
+		const {hasStateCell}=this.props
+		if(!hasStateCell){
+			return 
+		}else{
+			return (
+				<div className="state_cell flex-ai">
+					<div className="flex-1">
+						<p className="state">待审核</p>
+					</div>
+					<div className="btn_small_cell" style={{marginRight:"0.32rem"}}>
+						<Button 
+							btnCn="btn_small btn_radius btn_danger"
+					  		text="同意"
+						/>
+					</div>
+					<div className="btn_small_cell">
+						<Button 
+							btnCn="btn_small btn_radius btn_default"
+					  		text="拒绝"
+						/>
+					</div>
+				</div>
+			)
+		}
+	}
 	renderOrderCount(){
 		const {hasOrderCount}=this.props
 		if(!hasOrderCount){
@@ -46,22 +74,44 @@ class UserTop extends Component{
 			)
 		}
 	}
+	constructor(props){
+		super(props)
+
+		this.state={
+			hasBeAuth:true,
+		}
+	}
+	componentWillMount(){
+		this.setBeAuth()
+	}
+	setBeAuth(){
+		const {hasBeAuth}=this.props
+		if(hasBeAuth!=undefined){
+			this.setState({
+				hasBeAuth
+			})
+		}
+	}
 	render(){
-		const {hasOrderCount}=this.props
+		const {hasBeAuth}=this.state
+		const {className}=this.props
 		return (
-			<div className={classnames("usertop",{marginBottom:hasOrderCount})}>
+			<div className={classnames("usertop",className)}>
 				<div className="data_cell flex-ai">
 					<Avator />
 					<div className="name_cell flex-1 flex-column-around">
 						<h1 className="name">陈丽云<i className="icon_name"></i></h1>
 						<p className="leave">等级：<span>待定</span></p>
 					</div>
-					<div className="btn_cell flex-1">
-						<button>受权</button>
-					</div>
+					{hasBeAuth && 
+						<div className="be_auth">
+							<button>授权</button>
+						</div>
+					}
 				</div>
 				{this.renderOrderCell()}
 				{this.renderOrderCount()}
+				{this.renderStateCell()}
 			</div>
 		)
 	}

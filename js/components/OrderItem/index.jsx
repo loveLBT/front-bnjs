@@ -12,7 +12,7 @@ class OrderItem extends Component{
 				<div className="state flex-1">
 					<span>未发货</span>
 				</div>
-				<div className="btn_cell">
+				<div className="btn_small_cell">
 					<Button 
 						btnCn="btn_small btn_radius btn_danger"
 					  	text="详情"

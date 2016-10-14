@@ -13,12 +13,11 @@ class MyOrder extends Component{
 		return (
 			<div className="myorder">
 				<UserTop
-					hasOrderCount={true} 
-					badge1Num={10} 
-					badge2Num={8} 
+					className="marginBottom"
+					hasOrderCount={true}
 				/>
 				<Scroll>
-					<div className="order_cell">
+					<div className="scroll_cell">
 						<OrderItem />
 						<OrderItem />
 						<OrderItem />

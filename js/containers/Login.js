@@ -1,8 +1,39 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router'
-import {Input,Radio,Button} from '../components'
+import { withRouter } from 'react-router'
+import Auth from '../components/Auth.js'
+import {Input,Radio,Button,Toast} from '../components'
 
 class Login extends Component{
+	constructor(props){
+		super(props)
+
+		this.state={
+			username:"",
+			password:"",
+		}
+	}
+	handleChange(name,val){
+		let newState={}
+		newState[name]=val
+		this.setState(newState)
+	}
+	handleSubmit(){
+		
+		const {username,password}=this.state
+	    Auth.login(username, password, (loggedIn) => {
+	      if (!loggedIn)
+	        return this.setState({ error: true })
+
+	      const { location } = this.props
+
+	      if (location.state && location.state.nextPathname) {
+	        this.props.router.replace(location.state.nextPathname)
+	      } else {
+	        this.props.router.replace('/')
+	      }
+	    })
+	}
 	render(){
 		document.title="用户登录"
 		return (
@@ -10,16 +41,20 @@ class Login extends Component{
 				<div className="logo"></div>
 				<form action="">
 					<Input
+						handleChange={this.handleChange.bind(this,"username")}
 						hasChildBorder={true}
 						iconName="icon_phone"
 						id="phone"
-						placeholder="请输入用户名"
+						placeholder="请输入账号"
+						type="text"
 					 />
 					 <Input
+					 	handleChange={this.handleChange.bind(this,"password")}
 					 	hasInputBorder={true}
 						iconName="icon_pwd"
 					 	id="pwd"
 					 	placeholder="密码"
+					 	type="password"
 					  />
 					  <div className="radio_cell flex-ai">
 						<Radio 
@@ -36,7 +71,8 @@ class Login extends Component{
 						</Link>
 					  </div>
 					  <div className="btn_big_cell">
-					  	<Button 
+					  	<Button
+					  		handleTouchEnd={this.handleSubmit.bind(this)} 
 					  		btnCn="btn_big btn_radius btn_danger"
 					  		text="登录"
 					  	>
@@ -53,4 +89,5 @@ class Login extends Component{
 	}
 }
 
-export default Login
+export default withRouter(Login)
+

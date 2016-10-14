@@ -93,7 +93,57 @@ const rootRoute = {
 	                  cb(null, require('../containers/BuyProduct'))
 	                })
 	              }
+	            },
+	            { path: '/myorder/:id',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/OrderDetail'))
+	                })
+	              }
+	            },
+	            { path: '/personal/:id',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/Personal'))
+	                })
+	              }
+	            },
+	            { path: '/apply',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/Apply'))
+	                })
+	              }
+	            },
+	            { path: '/apply/:id',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/ApplyDetail'))
+	                })
+	              }
+	            },
+	            { path: '/realname',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/RealName'))
+	                })
+	              }
+	            },
+	            { path: '/myaddress',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/MyAddress'))
+	                })
+	              }
+	            },
+	            { path: '/myretail',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/MyRetail'))
+	                })
+	              }
 	            }
+
 	          ]
 	        }
 	      ]

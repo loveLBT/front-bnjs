@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import './config.js'
 
 class App extends Component{
   handleTouchStart(event){

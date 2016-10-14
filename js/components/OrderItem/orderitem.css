@@ -85,12 +85,3 @@
 [data-dpr="3"] .orderitem .footer .state{
 	font-size: 45px;
 }
-.orderitem .footer .btn_cell{
-	width: 68px;
-}
-[data-dpr="2"] .orderitem .footer .btn_cell{
-	width: 1.813333rem;
-}
-[data-dpr="3"] .orderitem .footer .btn_cell{
-	width: 204px;
-}

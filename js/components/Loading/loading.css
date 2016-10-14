@@ -1,0 +1,38 @@
+.loading{
+	
+}
+.mask{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	bottom: o;
+	right: 0;
+	background: rgba(0,0,0,.5);
+	z-index: 1002;
+}
+.loading .loading-cell{
+	position: fixed;
+	z-index: 1003;
+	width: 6.24rem;
+	height: 1.96rem;
+	border-radius: 0.16rem;
+	background: rgba(0,0,0,.65);
+	top: 50%;
+	left: 50%;
+	margin-top: -0.98rem;
+	margin-left: -3.12rem;
+	color: #fff;
+	padding-left: 0.38rem;
+}
+.loading .loading-cell .text{
+	font-size: 18px;
+	padding-left: 0.2rem;
+}
+[data-dpr="2"] .loading .loading-cell .text{
+	font-size: 36px;
+}
+[data-dpr="3"] .loading .loading-cell .text{
+	font-size: 54px;
+}

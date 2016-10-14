@@ -24,6 +24,26 @@ a{
 .red{
   color: #e34949;
 }
+.fontStyle_163{
+	color: #333;
+	font-size: 16px;
+}
+[data-dpr="2"] .fontStyle_163{
+  font-size: 32px;
+}
+[data-dpr="3"] .fontStyle_163{
+  font-size: 48px;
+}
+.fontStyle_143{
+	color: #333;
+	font-size: 14px;
+}
+[data-dpr="2"] .fontStyle_143{
+  font-size: 28px;
+}
+[data-dpr="3"] .fontStyle_143{
+  font-size: 42px;
+}
 .borderBottom{
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -62,6 +82,30 @@ a{
 [data-dpr="3"] .btn_big_cell{
 	padding: 0 36px;
 }
+.btn_center_cell{
+	position: relative;
+	width: 100%;
+	padding: 12px 87px;
+	background: #f2f2f2;
+	z-index: 999;
+}
+[data-dpr="2"] .btn_center_cell{
+	padding: 0.32rem 2.32rem;
+}
+[data-dpr="3"] .btn_center_cell{
+	padding: 36px 268px;
+}
+
+.btn_small_cell{
+	width: 68px;
+}
+[data-dpr="2"] .btn_small_cell{
+	width: 1.813333rem;
+}
+[data-dpr="3"] .btn_small_cell{
+	width: 204px;
+}
+
 .link_to{
 	text-align: center;
 	padding-top: 15px;
@@ -74,6 +118,15 @@ a{
 }
 .link_to a{
 	color: #03a9f5;
+}
+.scroll_cell{
+	padding-bottom:188px;
+}  
+[data-dpr="2"] .scroll_cell{
+	padding-bottom: 5rem;
+}
+[data-dpr="3"] .scroll_cell{
+	padding-bottom: 564px;
 }
 
 /*            登陆页面样式          */
@@ -121,17 +174,83 @@ a{
 
 
 /*            我的订单页样式          */ 
-.myorder{
+.myorder
+{
 	position: relative;
 	width: 100%;
 	height: 100%;
 } 
-.myorder .order_cell{
-	padding-bottom:188px;
-}  
-[data-dpr="2"] .myorder .order_cell{
-	padding-bottom: 5rem;
+
+/*            客户订单页          */ 
+.userorder{
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
-[data-dpr="3"] .myorder .order_cell{
-	padding-bottom: 564px;
+
+/*            订单详情页         */ 
+.panel .title{
+	width: 100%;
+	height: 36px;
+	color: #333;
+	font-size: 16px;
+	padding-left: 0.32rem;
 }
+[data-dpr="2"] .panel .title{
+	height: 0.96rem;
+	font-size: 32px;
+}
+[data-dpr="3"] .panel .title{
+	height: 108px;
+	font-size: 48px;
+}
+.panel .content{
+	width: 100%;
+	background: #fff;
+}
+.panel .content p{
+	font-size: 14px;
+	color: #333;
+	padding: 0.42rem 0.32rem;
+}
+[data-dpr="2"] .panel .content p{
+	font-size: 28px;
+}
+[data-dpr="3"] .panel .content p{
+	font-size: 42px;
+}
+
+/*            个人资料页         */ 
+
+.data_cell{
+	width: 100%;
+}
+.data_cell .contact,
+.data_cell .car {
+	background: #fff;
+	padding-left: 0.32rem;
+	margin-top: 0.32rem;
+}
+.data_cell .data{
+	padding: 0.46rem 0;
+}
+
+
+/*            申请详情页         */ 
+.applydetail .weinxin_cell{
+	margin-top: 0.32rem;
+	margin-bottom: 0.32rem;
+	background: #fff;
+	padding-left: 0.32rem;
+}
+.applydetail .car{
+	background: #fff;
+	padding-left: 0.32rem;
+}
+
+/*            我的零售页         */
+.myretail{
+	position: relative;
+	width: 100%;
+	height: 100%;
+} 

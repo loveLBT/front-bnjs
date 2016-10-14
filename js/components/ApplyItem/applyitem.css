@@ -1,0 +1,15 @@
+.applyitem{
+	width: 100%;
+	padding: 0.32rem;
+	background: #fff;
+}
+.applyitem .msg_cell{
+	height: 64px;
+	padding-left: 0.32rem;
+}
+[data-dpr="2"] .applyitem .msg_cell{
+	height: 1.706667rem;
+}
+[data-dpr="3"] .applyitem .msg_cell{
+	height: 192px;
+}
