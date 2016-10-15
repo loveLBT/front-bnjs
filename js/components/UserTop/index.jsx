@@ -54,7 +54,7 @@ class UserTop extends Component{
 				<div className="order_cell">
 					<ul>
 						<li>
-							<Link><i className="icon icon_myorder"></i><span>我的订单</span></Link>
+							<Link><i className="icon icon_myorder"></i><span ref="badgePosition1">我的订单</span></Link>
 							{badge1Num && 
 								<Badge 
 									count={badge1Num} 
@@ -79,7 +79,11 @@ class UserTop extends Component{
 
 		this.state={
 			hasBeAuth:true,
+			x:0,
 		}
+	}
+	componentDidMount(){
+		
 	}
 	componentWillMount(){
 		this.setBeAuth()

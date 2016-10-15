@@ -6,7 +6,8 @@ class MyOrder extends Component{
 		super(props)
 
 		this.state={
-			
+			page:1,
+			pageNum:2
 		}
 	}
 	render(){

@@ -1,8 +1,11 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router'
 import { withRouter } from 'react-router'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as actions from '../actions'
 import Auth from '../components/Auth.js'
-import {Input,Radio,Button,Toast} from '../components'
+import {Input,Radio,Button,Toast,Loading} from '../components'
 
 class Login extends Component{
 	constructor(props){
@@ -13,29 +16,28 @@ class Login extends Component{
 			password:"",
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+	    if(this.props.userData.isFetching!==nextProps.userData.isFetching){
+	    	this.setState({
+	    		isFetching:nextProps.userData.isFetching
+	    	})
+	    }
+	}
 	handleChange(name,val){
 		let newState={}
 		newState[name]=val
 		this.setState(newState)
 	}
 	handleSubmit(){
-		
 		const {username,password}=this.state
-	    Auth.login(username, password, (loggedIn) => {
-	      if (!loggedIn)
-	        return this.setState({ error: true })
-
-	      const { location } = this.props
-
-	      if (location.state && location.state.nextPathname) {
-	        this.props.router.replace(location.state.nextPathname)
-	      } else {
-	        this.props.router.replace('/')
-	      }
-	    })
+		const {actions,location}=this.props
+		const loginUrl=apiUrl+"/wslogin?username="+username+"&password="+password
+		actions.fetchPosts(loginUrl)
 	}
 	render(){
 		document.title="用户登录"
+		const {userData}=this.props
+		console.log(userData)
 		return (
 			<div className="login">
 				<div className="logo"></div>
@@ -84,10 +86,23 @@ class Login extends Component{
 						没有账号立即?立即注册
 					</Link>
 				</p>
+				{this.state.isFetching && 
+					<Loading text="正在登录，请等待" />
+				}
 			</div>
 		)
 	}
 }
 
-export default withRouter(Login)
+const mapStateToProps = state => {
+	return {
+		userData:state.userData
+	}
+}
+
+const mapDispatchToProps = dispatch =>({
+	actions:bindActionCreators(actions,dispatch)
+})
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
 

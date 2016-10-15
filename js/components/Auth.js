@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch'
 module.exports = {
   login(email, pass, cb) {
     cb = arguments[arguments.length - 1]
@@ -38,17 +37,13 @@ module.exports = {
 
 function pretendRequest(email, pass, cb) {
   setTimeout(() => {
-    const loginUrl=apiUrl+"/wslogin?username="+email+"&password="+pass
-    fetch(loginUrl).then(response=>response.json())
-      .then(data=>{
-        if(data.result.status=="success"){
-          cb({
-            authenticated: true,
-            token: Math.random().toString(36).substring(7)
-          })
-        }else{
-          cb({ authenticated: false })
-        }
+    if (email === '1303043735@qq.com' && pass === '930525') {
+      cb({
+        authenticated: true,
+        token: Math.random().toString(36).substring(7)
       })
+    } else {
+      cb({ authenticated: false })
+    }
   }, 0)
 }

@@ -44,6 +44,16 @@ a{
 [data-dpr="3"] .fontStyle_143{
   font-size: 42px;
 }
+.fontStyle_146{
+	color: #666;
+	font-size: 14px;
+}
+[data-dpr="2"] .fontStyle_146{
+  font-size: 28px;
+}
+[data-dpr="3"] .fontStyle_146{
+  font-size: 42px;
+}
 .borderBottom{
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -55,6 +65,18 @@ a{
 [data-dpr="3"] .borderBottom{
   border-bottom-width: 3px;
 }
+.borderRight{
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #ccc;
+}
+[data-dpr="2"] .borderRight{
+  border-right-width: 2px;
+}
+[data-dpr="3"] .borderRight{
+  border-right-width: 3px;
+}
+
 .logo{
 	width: 100%;
 	height: 170px;
@@ -129,6 +151,113 @@ a{
 	padding-bottom: 564px;
 }
 
+/*            首面样式          */
+.home .menu_cell{
+	position: relative;
+	height: 375px;
+}
+[data-dpr="2"] .home .menu_cell{
+	height: 10.0rem;
+}
+[data-dpr="3"] .home .menu_cell{
+	height: 1125px;
+}
+.home .menu_cell a .icon{
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	background-size: contain;
+	margin-bottom: 0.32rem;
+}
+[data-dpr="2"] .home .menu_cell a .icon{
+	width: 0.853333rem;
+	height: 0.853333rem;
+}
+[data-dpr="3"] .home .menu_cell a .icon{
+	height: 96px;
+	width: 96px;
+}
+.home .menu_cell a .icon_mytea{
+	background-image: url('../img/menu_icon/icon_mytea.png'); 
+}
+[data-dpr="2"] .home a .icon_mytea{
+	background-image: url('../img/menu_icon/icon_mytea@2x.png');
+}
+[data-dpr="3"] .home a .icon_mytea{
+	background-image: url('../img/menu_icon/icon_mytea@3x.png');
+}
+.home .menu_cell a .icon_address{
+	background-image: url('../img/menu_icon/icon_address.png'); 
+}
+[data-dpr="2"] .home a .icon_address{
+	background-image: url('../img/menu_icon/icon_address@2x.png');
+}
+[data-dpr="3"] .home a .icon_address{
+	background-image: url('../img/menu_icon/icon_address@3x.png');
+}
+.home .menu_cell a .icon_apply{
+	background-image: url('../img/menu_icon/icon_apply.png'); 
+}
+[data-dpr="2"] .home a .icon_apply{
+	background-image: url('../img/menu_icon/icon_apply@2x.png');
+}
+[data-dpr="3"] .home a .icon_apply{
+	background-image: url('../img/menu_icon/icon_apply@3x.png');
+}
+.home .menu_cell a .icon_back{
+	background-image: url('../img/menu_icon/icon_back.png'); 
+}
+[data-dpr="2"] .home a .icon_back{
+	background-image: url('../img/menu_icon/icon_back@2x.png');
+}
+[data-dpr="3"] .home a .icon_back{
+	background-image: url('../img/menu_icon/icon_back@3x.png');
+}
+.home .menu_cell a .icon_pwd{
+	background-image: url('../img/menu_icon/icon_pwd.png'); 
+}
+[data-dpr="2"] .home a .icon_pwd{
+	background-image: url('../img/menu_icon/icon_pwd@2x.png');
+}
+[data-dpr="3"] .home a .icon_pwd{
+	background-image: url('../img/menu_icon/icon_pwd@3x.png');
+}
+.home .menu_cell a .icon_realname{
+	background-image: url('../img/menu_icon/icon_realname.png'); 
+}
+[data-dpr="2"] .home a .icon_realname{
+	background-image: url('../img/menu_icon/icon_realname@2x.png');
+}
+[data-dpr="3"] .home a .icon_realname{
+	background-image: url('../img/menu_icon/icon_realname@3x.png');
+}
+.home .menu_cell a .icon_retial{
+	background-image: url('../img/menu_icon/icon_retial.png'); 
+}
+[data-dpr="2"] .home a .icon_retial{
+	background-image: url('../img/menu_icon/icon_retial@2x.png');
+}
+[data-dpr="3"] .home a .icon_retial{
+	background-image: url('../img/menu_icon/icon_retial@3x.png');
+}
+.home .menu_cell a .icon_stock{
+	background-image: url('../img/menu_icon/icon_stock.png'); 
+}
+[data-dpr="2"] .home a .icon_stock{
+	background-image: url('../img/menu_icon/icon_stock@2x.png');
+}
+[data-dpr="3"] .home a .icon_stock{
+	background-image: url('../img/menu_icon/icon_stock@3x.png');
+}
+.home .menu_cell a .icon_user{
+	background-image: url('../img/menu_icon/icon_user.png'); 
+}
+[data-dpr="2"] .home a .icon_user{
+	background-image: url('../img/menu_icon/icon_user@2x.png');
+}
+[data-dpr="3"] .home a .icon_user{
+	background-image: url('../img/menu_icon/icon_user@3x.png');
+}
 /*            登陆页面样式          */
 .login .radio_cell{
 	height: 1.466667rem;

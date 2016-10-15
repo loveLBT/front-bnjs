@@ -1,13 +1,14 @@
 .badge{
-	position: absolute;
 	width: 16px;
 	height: 16px;
+	display: inline-block;
 	border-radius: 50%;
 	font-size: 12px;
 	line-height: 16px;
 	text-align: center;
 	background: #fff;
 	color: red;
+	vertical-align: top;
 }
 [data-dpr="2"] .badge{
 	width: 32px;
@@ -20,4 +21,8 @@
 	height: 48px;
 	font-size: 33px;
 	line-height: 48px;
+}
+.redBage{
+	background: #f60000;
+	color: #fff;
 }

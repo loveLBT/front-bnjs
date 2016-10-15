@@ -1,22 +1,5 @@
 import React from 'react'
 import {Router,browserHistory} from 'react-router'
-import Auth from "../components/Auth"
-
-
-function redirectToLogin(nextState, replace) {
-  if (!Auth.loggedIn()) {
-    replace({ 
-      pathname: '/login',
-      state: { nextPathname: nextState.location.pathname }
-    })
-  }
-}
-
-function redirectToDashboard(nextState, replace) {
-  if (Auth.loggedIn()) {
-    replace('/')
-  }
-}
 
 const rootRoute = {
 	component: require('../components/App'),
@@ -54,24 +37,19 @@ const rootRoute = {
 	    { /*onEnter: redirectToLogin,*/
 	      path: '/',
 	      getComponent: (nextState, cb) => {
-	        if (Auth.loggedIn()) {
-	          return require.ensure([], (require) => {
-	            cb(null, require('../containers/Dashboard'))
-	          })
-	        }
+	        return require.ensure([], (require) => {
+              cb(null, require('../containers/Dashboard'))
+            })
 	      },
 	      indexRoute: {
 	        getComponent: (nextState, cb) => {
-	          if (Auth.loggedIn()) {
-	            return require.ensure([], (require) => {
-	              cb(null, require('../containers/Home'))
-	            })
-	          }
-	          return cb()
+	          return require.ensure([], (require) => {
+                cb(null, require('../containers/Home'))
+              })
 	        }
 	      },
 	      childRoutes: [
-	        { onEnter: redirectToLogin,
+	        {/* onEnter: redirectToLogin,*/
 	          childRoutes: [
 	            { path: '/myorder',
 	              getComponent: (nextState, cb) => {

@@ -1,11 +1,14 @@
 import React,{Component} from 'react'
+import classnames from "classnames"
+import objectAssign from 'object-assign'
 import './badge.css'
 class Badge extends Component{
 	render(){
-		const {count}=this.props
+		const {count,s,cn}=this.props
+		const style=objectAssign({},s)
 		return (
-			<span style={{top:0,right:0}} className="badge">{count}</span>
-		)
+			<span style={style} className={classnames("badge",cn)}>{count}</span>
+		) 
 	}
 }
 export default Badge
