@@ -14,7 +14,7 @@ class Dashboard extends Component{
 		return (
 			<div style={{position:"relative",width:"100%",height:"100%"}}>
 				{!this.props.params.id && 
-					<UserTop userData={userData} />
+					<UserTop isUpload={true} userData={userData} />
 				}
 				{this.props.children}
 				<TabBar />

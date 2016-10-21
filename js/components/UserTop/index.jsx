@@ -75,7 +75,7 @@ class UserTop extends Component{
 		return (
 			<div className={classnames("usertop",className)}>
 				<div className="data_cell flex-ai">
-					<Avator avatorUrl={userData.gravatar} />
+					<Avator isUpload={this.props.isUpload} avatorUrl={userData.gravatar} />
 					<div className="name_cell flex-1 flex-column-around">
 						<h1 className="name">{userData.trueName}<i className="icon_name"></i></h1>
 						<p className="leave">等级：<span>{userData.agentLevelName}</span></p>

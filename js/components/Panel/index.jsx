@@ -58,7 +58,7 @@ class Panel extends Component{
 			)
 		}
 	}
-	handleUploadFom1(file){
+	handleUploadFom1(){
 		const uploadUrl=hostUrl+"/AD/WSsfzPhotoUpdate"
 		const formdata=new FormData(this.refs.form1) 
 		Ajax.upload(formdata,uploadUrl,(res)=>{
@@ -70,7 +70,7 @@ class Panel extends Component{
 			}
 		})
 	}
-	handleUploadFom2(file){
+	handleUploadFom2(){
 		const uploadUrl=hostUrl+"/AD/WSsfzPhotoUpdate"
 		const formdata=new FormData(this.refs.form2) 
 		Ajax.upload(formdata,uploadUrl,(res)=>{

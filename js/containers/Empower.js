@@ -4,13 +4,20 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Loading} from "../components"
+import {Loading,Toast} from "../components"
 
 class Empower extends Component{
 	componentWillMount(){
 		const {actions}=this.props
 		const empowerUrl=apiUrl+"/WSGetAuthorization"
 		actions.fetchPosts("empower",empowerUrl)
+	}
+	componentWillUpdate(nextProps,nextState){
+		if(nextProps.empower){
+			if(nextProps.empower.result.error_code==="101"){
+				Toast.tip(nextProps.empower.result.message)
+			}
+		}
 	}
 	render(){
 		document.title="授权"
