@@ -1,16 +1,27 @@
 module.exports = {
 	upload(file,url,cb){
-		let xhr =new XMLHttpRequest()
+		var xhr=createXhr()
 
-		xhr.onreadystatechange=()=>{
-			if(xhr.readyState===4 && xhr.status===200){
-				cb("aaa")
-			}else{
-				cb("bbb")
+		xhr.open("post",url)
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 ){
+				if(xhr.status==200){
+					let resJson=JSON.parse(xhr.responseText)
+					cb(resJson)
+				}
 			}
 		}
-		xhr.open("post",url)
-		let formdata=new FormData(file)
-		xhr.send(formdata)
+		xhr.send(file)
 	}
+}
+
+
+function createXhr(){
+	var xhr=null
+	if(window.XMLHttpRequest){
+		xhr=new XMLHttpRequest()
+	}else{
+		xhr=new ActiveXObject("Microsoft.XMLHttpRequest")
+	}
+	return xhr
 }

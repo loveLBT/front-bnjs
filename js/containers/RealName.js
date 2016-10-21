@@ -1,4 +1,8 @@
 import React,{Component} from 'react'
+import { withRouter } from 'react-router'
+import * as actions from '../actions'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import { UserTop,Panel,Button,Toast,Loading } from '../components'
 
 class RealName extends Component{
@@ -15,6 +19,21 @@ class RealName extends Component{
 		let newState={}
 		newState[name]=val
 		this.setState(newState)
+	}
+	handleTouchEnd(){
+		const {weiXingH,trueName,sfzh}=this.props
+		const {actions}=this.props
+		const realnameUrl=apiUrl+"/WSRealNameAuthentication?weiXingH="+weiXingH+"&trueName="+trueName+"&sfzh="+sfzh
+		actions.fetchPosts("realname",realnameUrl)
+			.then(data=>{
+				console.log(data)
+				if(data.posts.status==="success"){
+					this.props.router.push("/")
+					Toast.tip(data.posts.result)
+				}else{
+					Toast.tip(data.posts.result)
+				}
+			})
 	}
 	render(){
 		document.title="实名认证"
@@ -34,6 +53,7 @@ class RealName extends Component{
 				</div>
 				<div className="btn_big_cell" style={{marginTop:"0.32rem"}}>
 				  	<Button 
+				  		handleTouchEnd={this.handleTouchEnd.bind(this)}
 				  		btnCn="btn_big btn_radius btn_danger"
 				  		text="保存并提交"
 				  	>
@@ -44,4 +64,14 @@ class RealName extends Component{
 	}
 }
 
-export default RealName
+const mapStateToProps=state=>{
+	return {
+		posts:state.posts
+	}
+}
+
+const mapDispatchToProps=(dispatch)=>({
+	actions:bindActionCreators(actions,dispatch)
+})
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(RealName)) 

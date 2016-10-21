@@ -31,7 +31,7 @@ var config={
 	  extensions:['','.js','.jsx','.css'],
 	},
 	plugins:[
-	    new webpack.optimize.UglifyJsPlugin({
+	     new webpack.optimize.UglifyJsPlugin({
 			output: {comments: false},
 			compress:{warnings: false}
 		}),

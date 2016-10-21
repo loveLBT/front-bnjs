@@ -19,9 +19,9 @@
 	position: relative;
 	width: 120px;
 	height: 80px;
-}
-.panel .img_cell div:first-child{
-	margin-bottom: 0.32rem;
+	overflow: hidden;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 [data-dpr="2"] .panel .img_cell div{
 	width: 3.2rem;
@@ -31,6 +31,26 @@
 	width: 360px;
 	height: 240px;
 }
+.panel .img_cell .sfz{
+	margin-bottom: 0.32rem;
+	background-image: url(../../../assets/img/icon_sfz.png);
+}
+[data-dpr="2"] .panel .img_cell .sfz{
+	background-image: url(../../../assets/img/icon_sfz@2x.png);
+}
+[data-dpr="3"] .panel .img_cell .sfz{
+	background-image: url(../../../assets/img/icon_sfz@3x.png);
+}
+.panel .img_cell .sfz_reverse{
+	background-image: url(../../../assets/img/icon_sfz_reverse.png);
+}
+[data-dpr="2"] .panel .img_cell .sfz_reverse{
+	background-image: url(../../../assets/img/icon_sfz_reverse@2x.png);
+}
+[data-dpr="3"] .panel .img_cell .sfz_reverse{
+	background-image: url(../../../assets/img/icon_sfz_reverse@3x.png);
+}
+
 .panel .img_cell .dashed{
 	border-width: 1px;
 	border-style: dashed;
@@ -50,4 +70,5 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
+	opacity: 0;
 }

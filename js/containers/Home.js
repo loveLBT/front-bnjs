@@ -53,7 +53,6 @@ class Home extends Component{
 		document.title="首页"
 		const {home}=this.props
 		const data=!home?null:home.result
-		console.log(data)
 		return (
 			<div className="home">
 				{!!data && 
