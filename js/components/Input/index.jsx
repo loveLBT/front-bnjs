@@ -3,7 +3,8 @@ import classnames from 'classnames'
 import './input.css'
 class Input extends Component{
 	onTextChange(event){
-		this.props.handleChange(event.target.value) 
+		if(!!this.props.handleChange)
+			this.props.handleChange(event.target.value) 
 	}
 	render(){
 		const {placeholder,id,iconName,hasInputBorder,hasChildBorder,type}=this.props

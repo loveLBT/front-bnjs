@@ -15,14 +15,14 @@
 .loading .loading-cell{
 	position: fixed;
 	z-index: 1003;
-	width: 6.24rem;
+	width: 8rem;
 	height: 1.96rem;
 	border-radius: 0.16rem;
 	background: rgba(0,0,0,.65);
 	top: 50%;
 	left: 50%;
 	margin-top: -0.98rem;
-	margin-left: -3.12rem;
+	margin-left: -4rem;
 	color: #fff;
 	padding-left: 0.38rem;
 }

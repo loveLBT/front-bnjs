@@ -1,18 +1,22 @@
 import * as types from "../constants/ActionTypes"
+import fetch from "isomorphic-fetch"
 
-export const requestPosts = url =>({
-	type:types.REQUEST_POSTS,
-	url
+
+export const requestPosts = (postsTitle) => ({
+  type: types.REQUEST_POSTS,
+  postsTitle
 })
 
-export const receivePosts = json =>({
-	type:types.RECEIVE_POSTS,
-	data:json.result
+export const receivePosts = (postsTitle, json) => ({
+  type: types.RECEIVE_POSTS,
+  postsTitle,
+  posts: json.result
 })
 
-export const fetchPosts = url => dispatch => {
-  dispatch(requestPosts(url))
+export const fetchPosts = (postsTitle,url) => dispatch => {
+  dispatch(requestPosts(postsTitle))
   return fetch(url)
     .then(response => response.json())
-    .then(json => dispatch(receivePosts(json)))
+    .then(json => dispatch(receivePosts(postsTitle, json)))
 }
+

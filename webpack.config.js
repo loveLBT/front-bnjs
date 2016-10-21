@@ -31,6 +31,15 @@ var config={
 	  extensions:['','.js','.jsx','.css'],
 	},
 	plugins:[
+	    new webpack.optimize.UglifyJsPlugin({
+			output: {comments: false},
+			compress:{warnings: false}
+		}),
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: JSON.stringify('production'),
+			}
+		}),
 	    new ExtractTextPlugin('app.css'),
 	    new webpack.optimize.CommonsChunkPlugin('vendor','vendor.js')
 	]

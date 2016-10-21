@@ -1,9 +1,6 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router'
 import { withRouter } from 'react-router'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as actions from '../actions'
 import Auth from '../components/Auth.js'
 import {Input,Radio,Button,Toast,Loading} from '../components'
 
@@ -14,14 +11,8 @@ class Login extends Component{
 		this.state={
 			username:"",
 			password:"",
+			loading:false
 		}
-	}
-	componentWillReceiveProps(nextProps) {
-	    if(this.props.userData.isFetching!==nextProps.userData.isFetching){
-	    	this.setState({
-	    		isFetching:nextProps.userData.isFetching
-	    	})
-	    }
 	}
 	handleChange(name,val){
 		let newState={}
@@ -30,14 +21,23 @@ class Login extends Component{
 	}
 	handleSubmit(){
 		const {username,password}=this.state
-		const {actions,location}=this.props
+		this.setState({loading:true})
 		const loginUrl=apiUrl+"/wslogin?username="+username+"&password="+password
-		actions.fetchPosts(loginUrl)
+		Auth.login(loginUrl,(res)=>{
+			this.setState({loading:false})
+			if(!res.loggedIn)
+				Toast.tip(res.errormsg)
+			const { location } = this.props
+
+		    if (location.state && location.state.nextPathname) {
+		      this.props.router.replace(location.state.nextPathname)
+		    } else {
+		      this.props.router.replace('/')
+		    }
+		})
 	}
 	render(){
 		document.title="用户登录"
-		const {userData}=this.props
-		console.log(userData)
 		return (
 			<div className="login">
 				<div className="logo"></div>
@@ -82,11 +82,11 @@ class Login extends Component{
 					  </div>
 				</form>
 				<p className="link_to">
-					<Link className="not_user" to="/">
+					<Link className="not_user" to="/register">
 						没有账号立即?立即注册
 					</Link>
 				</p>
-				{this.state.isFetching && 
+				{this.state.loading &&
 					<Loading text="正在登录，请等待" />
 				}
 			</div>
@@ -94,15 +94,5 @@ class Login extends Component{
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		userData:state.userData
-	}
-}
-
-const mapDispatchToProps = dispatch =>({
-	actions:bindActionCreators(actions,dispatch)
-})
-
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
+export default withRouter(Login)
 

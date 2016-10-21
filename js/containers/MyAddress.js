@@ -3,9 +3,9 @@ import {UserTop,Panel,Button} from "../components"
 
 class MyAddress extends Component{
 	render(){
+		document.title="我的地址"
 		return (
 			<div className="myaddress">
-				<UserTop />
 				<div className="data_cell">
 					<div className="contact borderBottom">
 						<Panel title="收货人" hasBorder={true}  />

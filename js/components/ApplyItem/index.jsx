@@ -5,24 +5,26 @@ import './applyitem.css'
 
 class ApplyItem extends Component{
 	render(){
+		const {item}=this.props
 		return (
 			<div className="applyitem flex-ai">
 				<div className="avator_cell">
-					<Avator />
+					<Avator avatorUrl={item.gravatarThumb} />
 				</div>
 				<div className="msg_cell flex-1 flex-column-between">
 					<div>
-						<h3 className="fontStyle_163">杨涛（18926584403）</h3>
+						<h3 className="fontStyle_163">{item.trueName}（{item.phone}）</h3>
 					</div>
 					<div>
-						<p>身份证号：330382198906192510</p>
-						<p>等级：三级代理</p>
+						<p className="fontStyle_136">身份证号：{item.zfzh}</p>
+						<p className="fontStyle_136">等级：{item.agentLevelName}</p>
 					</div>
 				</div>
 				<div className="btn_small_cell">
 					<Button 
 						btnCn="btn_small btn_radius btn_danger" 
 						text="详情"
+						handleTouchEnd={this.props.handleLinkTo}
 					/>
 				</div>
 			</div>

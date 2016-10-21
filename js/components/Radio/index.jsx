@@ -4,12 +4,16 @@ import classnames from 'classnames'
 import "./radio.css"
 
 class Radio extends Component{
+	onValChange(event){
+		if(!!this.props.handleChange)
+			this.props.handleChange(event.target.value) 
+	}
 	render(){
-		const {txt,id,defaultChecked,radioCn,radioStyle,radioName}=this.props
+		const {txt,id,defaultChecked,radioName,radioCn,radioStyle,value}=this.props
 		const s=objectAssign({},{width:"50%"},radioStyle)
 		return (
 			<div className={classnames(radioCn,"radio")} style={s}>
-				<input type="radio" id={id} defaultChecked={defaultChecked} name={radioName} />
+				<input onChange={this.onValChange.bind(this)} type="radio" id={id} defaultChecked={defaultChecked} name={radioName} value={value} />
 				<label htmlFor={id}>{txt}</label>
 			</div>
 		)

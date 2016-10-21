@@ -3,7 +3,9 @@ import classnames from 'classnames'
 import './button.css'
 class Button extends Component{
 	handleTouchEnd(){
-		this.props.handleTouchEnd()
+		const {handleTouchEnd}=this.props
+		if(!!handleTouchEnd)
+			this.props.handleTouchEnd()
 	}
 	render(){
 		const {text,btnCn}=this.props

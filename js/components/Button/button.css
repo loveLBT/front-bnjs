@@ -26,7 +26,7 @@
 }
 [data-dpr="3"] .btn_center{
 	font-size: 51px;
-	height: 1.8rem;
+	height: 135px;
 }
 .btn_small{
 	font-size: 15px;
@@ -64,4 +64,9 @@
 .btn_default:active{
 	background-color:#7f7c7c;
 	border-color: #7a7979; 
+}
+
+
+.btn_disabled{
+	background-color: #999;
 }

@@ -9,7 +9,8 @@ class Scroll extends Component{
 	render(){
 		const scrollStyle={position:"relative",height:"100%",width:"100%"}
 		const options={
-  			click:true
+  			click:true,
+  			probeType:3,
 		}
 		return (
 			<ReactIScroll

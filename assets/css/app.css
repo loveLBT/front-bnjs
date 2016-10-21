@@ -24,6 +24,9 @@ a{
 .red{
   color: #e34949;
 }
+.blue{
+	color: #03a9f5;
+}
 .fontStyle_163{
 	color: #333;
 	font-size: 16px;
@@ -54,6 +57,26 @@ a{
 [data-dpr="3"] .fontStyle_146{
   font-size: 42px;
 }
+.fontStyle_136{
+	color: #666;
+	font-size: 13px;
+}
+[data-dpr="2"] .fontStyle_136{
+  font-size: 26px;
+}
+[data-dpr="3"] .fontStyle_136{
+  font-size: 39px;
+}
+.fontStyle_126{
+	color: #666;
+	font-size: 12px;
+}
+[data-dpr="2"] .fontStyle_126{
+  font-size: 24px;
+}
+[data-dpr="3"] .fontStyle_126{
+  font-size: 36px;
+}
 .borderBottom{
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -76,20 +99,42 @@ a{
 [data-dpr="3"] .borderRight{
   border-right-width: 3px;
 }
+.borderLeft{
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #ccc;
+}
+[data-dpr="2"] .borderLeft{
+  border-left-width: 2px;
+}
+[data-dpr="3"] .borderLeft{
+  border-left-width: 3px;
+}
+.border{
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+}
+[data-dpr="2"] .border{
+  border-width: 2px;
+}
+[data-dpr="3"] .border{
+  border-width: 3px;
+}
 
 .logo{
 	width: 100%;
-	height: 170px;
+	height: 150px;
 	background-repeat: no-repeat; 
 	background-position:center center;
 	background-image: url(../../assets/img/logo.png);
 }
 [data-dpr="2"] .logo{
-	height: 4.533333rem;
+	height: 4.0rem;
 	background-image: url(../../assets/img/logo@2x.png);
 }
 [data-dpr="3"] .logo{
-	height: 510px;
+	height: 450px;
 	background-image: url(../../assets/img/logo@3x.png);
 }
 
@@ -133,7 +178,7 @@ a{
 	padding-top: 15px;
 }
 [data-dpr="2"] .link_to{
-	padding-top: 30px;
+	padding-top: 0.4rem;
 }
 [data-dpr="3"] .link_to{
 	padding-top: 45px;
@@ -152,6 +197,92 @@ a{
 }
 
 /*            首面样式          */
+
+.home .order_cell{
+	position: relative;
+	width: 100%;
+	background: #e34949;
+	padding-bottom: 18px;
+}
+[data-dpr="2"] .home .order_cell{
+	padding-bottom: 0.48rem;
+}
+[data-dpr="3"] .home .order_cell{
+	padding-bottom: 54px;
+}
+.home .order_cell ul{
+	position: relative;
+	width: 100%;
+}
+.home .order_cell ul:after{
+	content: "";
+	position: absolute;
+	display: block;
+	width: 1px;
+	height: 100%;
+	background: #ee9292;
+	left: 50%;
+	top: 0;
+}
+.home .order_cell ul li{
+	position: relative;
+	width: 50%;
+	display: inline-block;
+	text-align: center;
+}
+.home .order_cell ul li a{
+	display: inline-block;
+	padding-top: 0.24rem;
+	height: 100%;
+	color: #fff;
+	font-size: 18px;
+}
+[data-dpr="2"] .home .order_cell ul li a{
+	font-size: 36px;
+}
+[data-dpr="3"] .home .order_cell ul li a{
+	font-size: 54px;
+}
+.home .order_cell ul li a .icon{
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	background: url('../../assets/img/icon.png');
+	vertical-align: middle;
+	margin-right: 0.32rem;
+}
+[data-dpr="2"] .home .order_cell ul li a .icon{
+	width: 48px;
+	height: 48px;
+	background: url('../../assets/img/icon@2x.png');
+}
+[data-dpr="3"] .home .order_cell ul li a .icon{
+	width: 72px;
+	height: 72px;
+	background: url('../../assets/img/icon@3x.png');
+}
+.home .order_cell ul li a .icon_myorder{
+	background-position-x:-44px;
+}
+[data-dpr="2"] .home .order_cell ul li a .icon_myorder{
+	background-position-x:-88px;
+}
+[data-dpr="3"] .home .order_cell ul li a .icon_myorder{
+	background-position-x:-132px;
+}
+.home .order_cell ul li a .icon_userorder{
+	background-position-x:-44px;
+	background-position-y: -24px; 
+}
+[data-dpr="2"] .home .order_cell ul li a .icon_userorder{
+	background-position-x:-88px;
+	background-position-y: -48px; 
+}
+[data-dpr="3"] .home .order_cell ul li a .icon_userorder{
+	background-position-x:-132px;
+	background-position-y: -72px; 
+}
+
 .home .menu_cell{
 	position: relative;
 	height: 375px;
@@ -283,19 +414,19 @@ a{
 
 /*            注册页样式          */
 .register .radio_cell{
-	height: 84px;
+	height: 100px;
 	padding-left: 37px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 [data-dpr="2"] .register .radio_cell{
-	height: 168px;
-	padding-left: 74px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	height: 2.666667rem;
+	padding-left: 0.986667rem;
+	padding-top: 0.266667rem;
+	padding-bottom: 0.266667rem;
 }
 [data-dpr="3"] .register .radio_cell{
-	height: 252px;
+	height: 320px;
 	padding-left: 111px;
 	padding-top: 30px;
 	padding-bottom: 30px;
@@ -309,6 +440,24 @@ a{
 	width: 100%;
 	height: 100%;
 } 
+.myorder .count_cell{
+	position: relative;
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	font-size: 14px;
+	padding-left: 0.32rem;
+	color: #333;
+	z-index: 999;
+}                 
+[data-dpr="2"] .myorder .count_cell{
+	height: 0.96rem;
+	font-size: 28px;
+}
+[data-dpr="3"] .myorder .count_cell{
+	height: 108px;
+	font-size: 42px;
+}
 
 /*            客户订单页          */ 
 .userorder{
@@ -316,41 +465,140 @@ a{
 	width: 100%;
 	height: 100%;
 }
+.userorder .count_cell{
+	position: relative;
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	font-size: 14px;
+	padding-left: 0.32rem;
+	color: #333;
+	z-index: 999;
+}                 
+[data-dpr="2"] .userorder .count_cell{
+	height: 0.96rem;
+	font-size: 28px;
+}
+[data-dpr="3"] .userorder .count_cell{
+	height: 108px;
+	font-size: 42px;
+}
+
+/*            我的账户页          */ 
+.myaccount{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 175px;
+}
+[data-dpr="2"] .myaccount{
+	padding-bottom: 4.666667rem;
+}
+[data-dpr="3"] .myaccount{
+	padding-bottom: 565px;
+}
+.myaccount .count_cell{
+	position: relative;
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	font-size: 14px;
+	padding-left: 0.32rem;
+	color: #333;
+	z-index: 999;
+}                 
+[data-dpr="2"] .myaccount .count_cell{
+	height: 0.96rem;
+	font-size: 28px;
+}
+[data-dpr="3"] .myaccount .count_cell{
+	height: 108px;
+	font-size: 42px;
+}
+
+/*            我的团队页          */ 
+.mytea{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.mytea .count_cell{
+	position: relative;
+	width: 100%;
+	height: 36px;
+	background: #f2f2f2;
+	font-size: 14px;
+	padding-left: 0.32rem;
+	color: #333;
+	z-index: 999;
+}                 
+[data-dpr="2"] .mytea .count_cell{
+	height: 0.96rem;
+	font-size: 28px;
+}
+[data-dpr="3"] .mytea .count_cell{
+	height: 108px;
+	font-size: 42px;
+}
+.mytea .myteaitem{
+	width: 100%;
+	padding: 0 0.32rem;
+	background: #fff;
+	margin-bottom: 0.32rem;
+}
+.mytea .myteaitem .msg_cell{
+	height: 64px;
+	padding-left: 0.32rem;
+}
+[data-dpr="2"] .mytea .myteaitem .msg_cell{
+	height: 1.706667rem;
+}
+[data-dpr="3"] .mytea .myteaitem .msg_cell{
+	height: 192px;
+}
+.mytea .myteaitem .kinds_cell{
+	height: 40px;
+}
+[data-dpr="2"] .mytea .myteaitem .kinds_cell{
+	height: 1.066667rem;
+}
+[data-dpr="3"] .mytea .myteaitem .kinds_cell{
+	height: 120px;
+}
 
 /*            订单详情页         */ 
-.panel .title{
+.orderdetail .item .title{
 	width: 100%;
 	height: 36px;
 	color: #333;
 	font-size: 16px;
 	padding-left: 0.32rem;
 }
-[data-dpr="2"] .panel .title{
+[data-dpr="2"] .orderdetail .item .title{
 	height: 0.96rem;
 	font-size: 32px;
 }
-[data-dpr="3"] .panel .title{
+[data-dpr="3"] .orderdetail .item .title{
 	height: 108px;
 	font-size: 48px;
 }
-.panel .content{
+.orderdetail .item .body{
 	width: 100%;
 	background: #fff;
 }
-.panel .content p{
+.orderdetail .item .body .txt{
 	font-size: 14px;
 	color: #333;
-	padding: 0.42rem 0.32rem;
+	padding: 0.32rem;
 }
-[data-dpr="2"] .panel .content p{
+[data-dpr="2"] .orderdetail .item .body .txt{
 	font-size: 28px;
 }
-[data-dpr="3"] .panel .content p{
+[data-dpr="3"] .orderdetail .item .body .txt{
 	font-size: 42px;
 }
 
 /*            个人资料页         */ 
-
 .data_cell{
 	width: 100%;
 }
@@ -383,3 +631,193 @@ a{
 	width: 100%;
 	height: 100%;
 } 
+
+/*            产品列列表页         */
+.buyproduct{
+	position: relative;
+	width: 100%;
+	padding: 0.32rem;
+}
+.buyproduct_cell{
+	background: #fff;
+}
+
+.buyproduct_cell .nature{
+	height: 54px;
+	padding: 0 0.32rem;
+}
+[data-dpr="2"] .buyproduct_cell .nature{
+	height: 1.44rem;
+}
+[data-dpr="3"] .buyproduct_cell .nature{
+	height: 162px;
+}
+.buyproduct_cell .nature .content{
+	text-align: right;
+}
+.buyproduct_cell .nature .content span{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 30px;
+	text-align: center;
+	color: #333;
+	border:1px solid #ccc;
+	background-color: #f5f5f5;
+	box-sizing: border-box;
+}
+[data-dpr="2"] .buyproduct_cell .nature .content span{
+	width: 0.8rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.8rem;
+	border:2px solid #ccc;
+}
+[data-dpr="3"] .buyproduct_cell .nature .content span{
+	width: 90px;
+	height: 90px;
+	line-height: 90px;
+	font-size: 90px;
+	border:3px solid #ccc;
+}
+.buyproduct_cell .nature .content input{
+	width: 50px;
+	height: 30px;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+[data-dpr="2"] .buyproduct_cell .nature .content input{
+	width: 1.333333rem;
+	height: 0.8rem;
+	border-top:2px solid #ccc;
+	border-bottom:2px solid #ccc;
+}
+[data-dpr="3"] .buyproduct_cell .nature .content input{
+	width: 150px;
+	height: 90px;
+	border-top:3px solid #ccc;
+	border-bottom:3px solid #ccc;
+}
+
+/*            产品升级页         */
+.upgrade{
+	position: relative;
+	width: 100%;
+	padding: 0.32rem;
+}
+.upgrade_cell{
+	background: #fff;
+}
+
+.upgrade_cell .nature{
+	height: 54px;
+	padding: 0 0.32rem;
+}
+[data-dpr="2"] .upgrade_cell .nature{
+	height: 1.44rem;
+}
+[data-dpr="3"] .upgrade_cell .nature{
+	height: 162px;
+}
+.upgrade_cell .nature div{
+	margin-right: 0.32rem;
+}
+/*            申请列表页         */
+
+.apply{
+	width: 100%;
+	height: 100%;
+	padding-bottom: 76px;
+	overflow: hidden;
+}
+[data-dpr="2"] .apply{
+	padding-bottom: 2.026667rem;
+}
+[data-dpr="3"] .apply{
+	padding-bottom: 228px;
+}
+.apply .item{
+	padding-top: 0.32rem;
+}
+
+/*            授权页面          */
+.empower{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding-top: 0.506667rem;
+}
+.empower .certificate_cell{
+	position: relative;
+	width: 9.2rem;
+	height: 13.066667rem;
+	margin: 0 auto;
+	background: url(../img/icon_empower@2x.png);
+	background-repeat: no-repeat;
+	background-size: contain;  
+}
+
+.empower .certificate_cell .msg_cell{
+	position: relative;
+	width: 8.133333rem;
+	height: 8.4rem;
+	left: 0;
+	right: 0;
+	top: 3.6rem;
+	margin:0 auto;
+}
+.empower .certificate_cell .msg_cell .msg{
+	position: absolute;
+	font-size: 15px;
+	color: #333;
+	width: 1.733333rem;
+	text-align: right;
+}
+[data-dpr="2"] .empower .certificate_cell .msg_cell .msg{
+	font-size: 0.4rem;
+}
+[data-dpr="3"] .empower .certificate_cell .msg_cell .msg{
+	font-size: 45px;
+}
+.empower .certificate_cell .msg_cell .name{
+	top: 0.4rem;
+	left: 0.1rem;
+}
+.empower .certificate_cell .msg_cell .leaver{
+	top:0.9rem;
+	left: 0.35rem;
+}
+.empower .certificate_cell .msg_cell .upname{
+	top:7.4rem;
+	left: 3.4rem;
+}
+.empower .certificate_cell .msg_cell .number{
+	position: absolute;
+	font-size: 12px;
+	color: #333;
+	text-align: right;
+	left: 2.4rem;
+}
+[data-dpr="2"] .empower .certificate_cell .msg_cell .number{
+	font-size: 24px;
+}
+[data-dpr="3"] .empower .certificate_cell .msg_cell .number{
+	font-size: 36px;
+}
+.empower .certificate_cell .msg_cell .carid{
+	top: 2.613333rem;
+}
+.empower .certificate_cell .msg_cell .weixin{
+	top: 3.146667rem;
+}
+.empower .certificate_cell .msg_cell .phone{
+	top: 3.706667rem;
+}
+.empower .certificate_cell .msg_cell .code{
+	top: 4.213333rem;
+}

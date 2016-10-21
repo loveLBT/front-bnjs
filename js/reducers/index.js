@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import {userData} from './userData'
+import posts from './posts'
 
 const reducers={
-	userData
+	posts,
 }
 
 const rootReducer=combineReducers({

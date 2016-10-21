@@ -2,23 +2,23 @@ import * as types from "../constants/ActionTypes"
 
 const initialState={
 	isFetching:false,
-	userData:""
 }
 
-export const userData=(state=initialState,action)=>{
+const posts = (state=initialState,action)=>{
 	switch(action.type) {
 		case types.REQUEST_POSTS:
 			return {
 				...state,
-				isFetching:true
+				isFetching:true,
 			}
 		case types.RECEIVE_POSTS:
 			return {
 				...state,
 				isFetching:false,
-				userData:action.data
+				[action.postsTitle]:action.posts
 			}
 		default:
 			return state
 	}
 }
+export default posts

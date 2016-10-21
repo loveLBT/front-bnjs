@@ -1,18 +1,21 @@
+import fetch from 'isomorphic-fetch'
+
 module.exports = {
-  login(email, pass, cb) {
+  login(loginUrl, cb) {
     cb = arguments[arguments.length - 1]
     if (localStorage.token) {
-      if (cb) cb(true)
+      if (cb) cb({loggedIn:true})
       this.onChange(true)
       return
     }
-    pretendRequest(email, pass, (res) => {
+    pretendRequest(loginUrl, (res) => {
       if (res.authenticated) {
         localStorage.token = res.token
-        if (cb) cb(true)
+        localStorage.setItem("userData",JSON.stringify(res.userData))
+        if (cb) cb({loggedIn:true})
         this.onChange(true)
       } else {
-        if (cb) cb(false)
+        if (cb) cb({loggedIn:false,errormsg:res.errormsg})
         this.onChange(false)
       }
     })
@@ -22,8 +25,13 @@ module.exports = {
     return localStorage.token
   },
 
+  getUserData:function(){
+    return JSON.parse(localStorage.getItem("userData"))
+  },
+
   logout: function (cb) {
     delete localStorage.token
+    delete localStorage.userData
     if (cb) cb()
     this.onChange(false)
   },
@@ -32,18 +40,23 @@ module.exports = {
     return !!localStorage.token
   },
 
-  onChange: function () {}
+  onChange: function () {},
 }
 
-function pretendRequest(email, pass, cb) {
+function pretendRequest(loginUrl, cb) {
   setTimeout(() => {
-    if (email === '1303043735@qq.com' && pass === '930525') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7)
+    fetch(loginUrl)
+      .then(response=>response.json())
+      .then(json=>{
+        if(json.result.status==="success"){
+          cb({
+              authenticated: true,
+              token: Math.random().toString(36).substring(7),
+              userData:json.result.result
+            })
+        }else{
+          cb({ authenticated: false,errormsg:json.result.result.message })
+        }
       })
-    } else {
-      cb({ authenticated: false })
-    }
-  }, 0)
+  }, 2000)
 }
