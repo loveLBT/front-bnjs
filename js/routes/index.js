@@ -28,7 +28,7 @@ const rootRoute = {
 	        })
 	      }
 	    },
-	    { onEnter: redirectToDashboard,
+	    { /*onEnter: redirectToDashboard,*/
 	      childRoutes: [
 	        { path: '/login',
 	          getComponent: (nextState, cb) => {
@@ -39,7 +39,7 @@ const rootRoute = {
 	        }
 	      ]
 	    },
-	    { onEnter: redirectToDashboard,
+	    { /*onEnter: redirectToDashboard,*/
 	      childRoutes: [
 	        { path: '/register',
 	          getComponent: (nextState, cb) => {
@@ -198,6 +198,13 @@ const rootRoute = {
 	              getComponent: (nextState, cb) => {
 	                require.ensure([], (require) => {
 	                  cb(null, require('../containers/RetailProduct'))
+	                })
+	              }
+	            },
+	            { path: '/backproduct',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/BackProduct'))
 	                })
 	              }
 	            },

@@ -34,6 +34,11 @@ class MyTeaItem extends Component{
 
 class MyTea extends Component{
 	componentWillMount(){
+		if(!this.props.mytea){
+			this.getMyTea()
+		}
+	}
+	getMyTea(){
 		const {actions}=this.props
 		const myteasUrl=apiUrl+"/WSMyCustomerList?page=1&pageNum=100"
 		actions.fetchPosts("mytea",myteasUrl)
@@ -41,16 +46,18 @@ class MyTea extends Component{
 	render(){
 		document.title="我的团队"
 		const {mytea}=this.props
-		const items=!mytea?null:mytea.result.customerList
+		console.log(mytea)
 		return (
 			<div className="mytea">
-				<div className="count_cell flex-ai">
-					<p>直接邀请成员：<span className="red">1760人</span></p>
-				</div>
+				{mytea &&
+					<div className="count_cell flex-ai">
+						<p>直接邀请成员：<span className="red">{mytea.result.totalCount}人</span></p>
+					</div>
+				}
 				<Scroll>
 					<div className="scroll_cell">
-						{items && 
-							items.map((item,i)=>{
+						{mytea && 
+							mytea.result.customerList.map((item,i)=>{
 								return (
 									<MyTeaItem key={i} item={item} />
 								)

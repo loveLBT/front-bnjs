@@ -1,2 +1,2 @@
-global.apiUrl="http://202.107.219.19/api/v1/shop.aspx"
-global.hostUrl="http://202.107.219.19"
+global.apiUrl="http://ws.7hsj.com/api/v1/shop.aspx"
+global.hostUrl="http://ws.7hsj.com"

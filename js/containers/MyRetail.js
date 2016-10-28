@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -10,6 +11,9 @@ class MyRetail extends Component{
 		const myretailUrl=apiUrl+"/WSMyRetailSellOrders?page=1&pageNum=100"
 		actions.fetchPosts("myretail",myretailUrl)
 	}
+	handleTouchEnd(){
+		this.props.router.push("/retailproduct")
+	}
 	render(){
 		document.title="我的零售"
 		const {myretail}=this.props
@@ -18,6 +22,7 @@ class MyRetail extends Component{
 			<div className="myretail">
 				<div className="btn_center_cell">
 					<Button
+						handleTouchEnd={this.handleTouchEnd.bind(this)}
 						btnCn="btn_center btn_radius btn_danger"
 					  	text="零售"
 					 />
@@ -54,4 +59,4 @@ const mapDispatchToProps=(dispatch)=>({
 	actions:bindActionCreators(actions,dispatch)
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(MyRetail) 
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(MyRetail) )

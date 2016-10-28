@@ -1,5 +1,5 @@
 import * as types from "../constants/ActionTypes"
-import fetch from "isomorphic-fetch"
+import 'whatwg-fetch'
 
 
 export const requestPosts = (postsTitle) => ({
@@ -15,7 +15,12 @@ export const receivePosts = (postsTitle, json) => ({
 
 export const fetchPosts = (postsTitle,url) => dispatch => {
   dispatch(requestPosts(postsTitle))
-  return fetch(url)
+  return fetch(url,{
+  	  headers:{
+  	  	'Cookie':'ASP.NET_SessionId=1i2lk5osm53kmbbroctyjsor'
+  	  },
+	  credentials: 'include'
+	})
     .then(response => response.json())
     .then(json => dispatch(receivePosts(postsTitle, json)))
 }

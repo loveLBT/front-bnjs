@@ -15,25 +15,38 @@ class BuyProduct extends Component{
 		this.state={
 			items:[],
 			index:0,
-			count:"",
-			price:"",
+			count:0,
+			price:0,
 			loading:false
 		}
 	}
 	componentWillMount(){
-		const {actions}=this.props
-		const productUrl=apiUrl+"/WSProductList"
-		actions.fetchPosts("product",productUrl)
+		const {index}=this.state
+		const {product}=this.props
+		if(!product){
+			this.getProduct()
+		}else{
+			this.setState({
+				items:product.result.productlist,
+				count:product.result.productlist[index].minConsumption,
+				price:product.result.productlist[index].price
+			})
+		}
 	}
 	componentWillReceiveProps(nextProps){
 		const {index}=this.state
-		if(this.props.posts!==nextProps.posts && !!nextProps.posts.product){
+		if(nextProps.product){
 			this.setState({
-				items:nextProps.posts.product.result.productlist,
-				count:nextProps.posts.product.result.productlist[index].minConsumption,
-				price:nextProps.posts.product.result.productlist[index].price
+				items:nextProps.product.result.productlist,
+				count:nextProps.product.result.productlist[index].minConsumption,
+				price:nextProps.product.result.productlist[index].price
 			})
 		}
+	}
+	getProduct(){
+		const {actions}=this.props
+		const productUrl=apiUrl+"/WSProductList"
+		actions.fetchPosts("product",productUrl)
 	}
 	handleDecrement(){
 		const {count,items,index}=this.state
@@ -75,7 +88,7 @@ class BuyProduct extends Component{
 						Toast.tip("订单提交成功")
 						this.props.router.push('/myorder')
 					}else{
-						Toast.tip("订单提交失败")
+						Toast.tip(data.posts.result.message)
 					}
 				})
 		},2000)
@@ -83,42 +96,42 @@ class BuyProduct extends Component{
 	}
 	render(){
 		document.title="商品列表"
-		const {index,items,count,price}=this.state
+		const {items,index,price,count}=this.state
 		return (
 			<div className="buyproduct">
-				<div className="buyproduct_cell">
-					{items[index] &&
+				{items[index] &&
+					<div className="buyproduct_cell">
 						<ProductItem 
 							changeIndex={this.changeIndex.bind(this)}
 							maskText={items[index] && items[index].name}
 						>
 							{items.map((item,i)=>{
 								return (
-									<Link key={i} className="slider-item" style={{backgroundImage:'url('+hostUrl+item.pic+')'}}></Link>
+									<img src={hostUrl+item.pic} className="slider-item" key={i} alt=""/>
 								)
 							})}
 						</ProductItem>
-					}
-					<div className="nature flex-ai">
-						<p className="title fontStyle_143">
-							价格：<span className="red">￥{price*count}</span>
-						</p>
-						<div className="content flex-1">
-							<span style={items[index] && {color:count<=items[index].minConsumption?"#ccc":"#333"}} onTouchEnd={this.handleDecrement.bind(this)}>-</span>
-							<input disabled type="number" placeholder={count} />
-							<span onTouchEnd={this.handleIncrement.bind(this)}>+</span>
+						<div className="nature flex-ai">
+							<p className="title fontStyle_143">
+								价格：<span className="red">￥{price*count}</span>
+							</p>
+							<div className="content flex-1">
+								<span style={items[index] && {color:count<=items[index].minConsumption?"#ccc":"#333"}} onTouchEnd={this.handleDecrement.bind(this)}>-</span>
+								<input disabled type="number" placeholder={count} />
+								<span onTouchEnd={this.handleIncrement.bind(this)}>+</span>
+							</div>
+						</div>
+						<div className="btn_big_cell">
+							<Button
+							  	btnCn="btn_big btn_radius btn_danger"
+							  	text="立即下单"
+							  	handleTouchEnd={this.handleTouchEnd.bind(this)}
+							 >
+						 	 </Button>
 						</div>
 					</div>
-					<div className="btn_big_cell">
-					  <Button
-					  	btnCn="btn_big btn_radius btn_danger"
-					  	text="立即下单"
-					  	handleTouchEnd={this.handleTouchEnd.bind(this)}
-					  >
-				 	 </Button>
-					</div>
-				</div>
-				{this.state.loading &&
+				}
+				{this.state.loading && 
 					<Loading text="订单正在提交，请等待" />
 				}
 			</div>
@@ -127,8 +140,14 @@ class BuyProduct extends Component{
 }
 
 const mapStateToProps=state=>{
+	const {posts}=state
+	const {
+		isFetching,
+		product
+	}=posts
 	return {
-		posts:state.posts,
+		isFetching,
+		product
 	}
 }
 

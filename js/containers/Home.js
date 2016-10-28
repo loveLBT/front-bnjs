@@ -42,6 +42,11 @@ class Menu extends Component {
 }									
 class Home extends Component{
 	componentWillMount(){
+		if(!this.props.home){
+			this.getHome()
+		}
+	}
+	getHome(){
 		const {actions}=this.props
 		const homeUrl=apiUrl+"/WSAppIndexState"
 		actions.fetchPosts("home",homeUrl)
@@ -52,38 +57,37 @@ class Home extends Component{
 	render(){
 		document.title="首页"
 		const {home}=this.props
-		const data=!home?null:home.result
 		return (
 			<div className="home">
-				{!!data && 
+				{home &&
 					<div className="order_cell" style={{paddingTop:"3px",marginTop:"-2px"}} onTouchStart={this.handleTouchStart.bind(this)}>
 						<ul>
 							<li>
 								<Link to="/myorder"><i className="icon icon_myorder"></i><span ref="badgePosition1">我的订单</span></Link>
 								<Badge 
-									count={data.myOrderNum}
+									count={home.result.myOrderNum}
 								/>
 							</li>
 							<li>
 								<Link to="/userorder"><i className="icon icon_userorder"></i><span>客户订单</span></Link>
 								<Badge 
-									count={data.customerOrderNum} 
+									count={home.result.customerOrderNum} 
 								/>
 							</li>
 						</ul>
 					</div>
 				}
-				{!!data && 
+				{home && 
 					<div className="menu_cell flex-column" onTouchStart={this.handleTouchStart.bind(this)}>
 						<div className="item borderBottom flex-1 flex">
 							<Menu linkTo="/mytea" hasBorder={true} iconCn="icon_mytea" menuName="我的团队" />
-							<Menu linkTo="/apply" hasBorder={true} iconCn="icon_apply" menuName="申请列表" count={data.userRegNum} />
-							<Menu linkTo="/myaccount" iconCn="icon_user" menuName="我的账户" count={data.productUpgradeNum} />
+							<Menu linkTo="/apply" hasBorder={true} iconCn="icon_apply" menuName="申请列表" count={home.result.userRegNum} />
+							<Menu linkTo="/myaccount" iconCn="icon_user" menuName="我的账户" count={home.result.productUpgradeNum} />
 						</div>
 						<div className="item borderBottom flex-1 flex">
 							<Menu linkTo="/myretail" hasBorder={true} iconCn="icon_retial" menuName="我的零售" />
 							<Menu linkTo="/buyproduct" hasBorder={true} iconCn="icon_stock" menuName="我要进货" />
-							<Menu linkTo="/" iconCn="icon_back" menuName="退货申请" />
+							<Menu linkTo="/backproduct" iconCn="icon_back" menuName="退货申请" />
 						</div>
 						<div className="item borderBottom flex-1 flex">
 							<Menu linkTo="/myaddress" hasBorder={true} iconCn="icon_address" menuName="我的地址" />
@@ -113,3 +117,4 @@ const mapDispatchToProps = dispatch =>({
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home)
+

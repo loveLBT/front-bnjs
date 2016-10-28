@@ -6,6 +6,11 @@ import {UserTop,Panel} from '../components'
 
 class Personal extends Component{
 	componentWillMount(){
+		if(!this.props.personal){
+			this.getPersonal()
+		}
+	}
+	getPersonal(){
 		const {actions}=this.props
 		const personalUrl=apiUrl+"/WSMyRegDetail"
 		actions.fetchPosts("personal",personalUrl)
@@ -13,18 +18,17 @@ class Personal extends Component{
 	render(){
 		document.title="个人资料"
 		const {personal}=this.props
-		const data=!personal?null:personal.result
 		return (
 			<div className="personal">
-				{!!data && 
+				{personal && 
 					<div className="data_cell">
 						<div className="contact borderBottom">
-							<Panel title="微信" text={data.weiXingH} hasBorder={true} />
-							<Panel title="手机号" text={data.phone} />
+							<Panel title="微信" text={personal.result.weiXingH} hasBorder={true} />
+							<Panel title="手机号" text={personal.result.phone} />
 						</div>
 						<div className="car borderBottom">
-							<Panel title="身份证号码" text={data.sfzh} hasBorder={true} />
-							<Panel title="身份证照片" carImg={data.sfzhZM} carReverseImg={data.sfzhFM} hasCarImg={true} />
+							<Panel title="身份证号码" text={personal.result.sfzh} hasBorder={true} />
+							<Panel title="身份证照片" carImg={personal.result.sfzhZM} carReverseImg={personal.result.sfzhFM} hasCarImg={true} />
 						</div>
 					</div>
 				}

@@ -24,6 +24,7 @@
 }
 .usertop .data_cell .name_cell .name{
 	font-size: 18px;
+	color: #fff;
 }
 [data-dpr="2"] .usertop .data_cell .name_cell .name{
 	font-size: 36px;

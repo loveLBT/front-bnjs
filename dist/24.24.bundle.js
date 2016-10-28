@@ -1,4 +1,4 @@
-webpackJsonp([11],{
+webpackJsonp([24],{
 
 /***/ 268:
 /***/ function(module, exports, __webpack_require__) {
@@ -5938,62 +5938,7 @@ webpackJsonp([11],{
 
 /***/ },
 
-/***/ 336:
-/***/ function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.fetchPosts = exports.receivePosts = exports.requestPosts = undefined;
-
-	var _ActionTypes = __webpack_require__(199);
-
-	var types = _interopRequireWildcard(_ActionTypes);
-
-	__webpack_require__(263);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	var requestPosts = exports.requestPosts = function requestPosts(postsTitle) {
-	  return {
-	    type: types.REQUEST_POSTS,
-	    postsTitle: postsTitle
-	  };
-	};
-
-	var receivePosts = exports.receivePosts = function receivePosts(postsTitle, json) {
-	  return {
-	    type: types.RECEIVE_POSTS,
-	    postsTitle: postsTitle,
-	    posts: json.result
-	  };
-	};
-
-	var fetchPosts = exports.fetchPosts = function fetchPosts(postsTitle, url) {
-	  return function (dispatch) {
-	    dispatch(requestPosts(postsTitle));
-	    return fetch(url, {
-	      headers: {
-	        'Cookie': 'ASP.NET_SessionId=1i2lk5osm53kmbbroctyjsor'
-	      },
-	      credentials: 'include'
-	    }).then(function (response) {
-	      return response.json();
-	    }).then(function (json) {
-	      return dispatch(receivePosts(postsTitle, json));
-	    });
-	  };
-	};
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-
-/***/ 344:
+/***/ 357:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -6010,17 +5955,7 @@ webpackJsonp([11],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _actions = __webpack_require__(336);
-
-	var actions = _interopRequireWildcard(_actions);
-
-	var _reactRedux = __webpack_require__(172);
-
-	var _redux = __webpack_require__(179);
-
 	var _components = __webpack_require__(268);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6030,214 +5965,66 @@ webpackJsonp([11],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var OrderDetail = function (_Component) {
-		_inherits(OrderDetail, _Component);
+	var BackProduct = function (_Component) {
+		_inherits(BackProduct, _Component);
 
-		function OrderDetail() {
-			_classCallCheck(this, OrderDetail);
+		function BackProduct() {
+			_classCallCheck(this, BackProduct);
 
-			return _possibleConstructorReturn(this, (OrderDetail.__proto__ || Object.getPrototypeOf(OrderDetail)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (BackProduct.__proto__ || Object.getPrototypeOf(BackProduct)).apply(this, arguments));
 		}
 
-		_createClass(OrderDetail, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				if (!this.props.myorderdetail) {
-					this.getMyOrderDetail();
-				}
-			}
-		}, {
-			key: 'getMyOrderDetail',
-			value: function getMyOrderDetail() {
-				var actions = this.props.actions;
-
-				var myOrderDetailUrl = apiUrl + "/WSMyOrderDetail?orderId=" + this.props.params.id;
-				actions.fetchPosts("myorderdetail", myOrderDetailUrl);
+		_createClass(BackProduct, [{
+			key: 'handleTouchEnd',
+			value: function handleTouchEnd() {
+				_components.Toast.tip("暂未开放，敬请期待");
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				document.title = "订单详情";
-				var btnCount = [{ btnText: "退货" }];
-				var myorderdetail = this.props.myorderdetail;
-
-				console.log(myorderdetail);
 				return _react2.default.createElement(
 					'div',
-					{ className: 'orderdetail' },
-					myorderdetail && _react2.default.createElement(
-						_components.Scroll,
-						null,
+					{ className: 'backproduct' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'count_cell flex-ai' },
 						_react2.default.createElement(
-							'div',
-							{ style: { paddingBottom: "1.33rem" } },
+							'p',
+							null,
+							'\u603B\u91CF\uFF1A',
 							_react2.default.createElement(
-								'div',
-								{ className: 'item borderBottom' },
-								_react2.default.createElement(
-									'h3',
-									{ className: 'title flex-ai' },
-									'\u6536\u8D27\u5730\u5740'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'body' },
-									_react2.default.createElement(
-										'p',
-										{ className: 'txt' },
-										myorderdetail.result.ShipAddressRegion
-									)
-								)
+								'span',
+								{ style: { marginRight: '0.32rem' }, className: 'red' },
+								'\u6682\u65E0\u6570\u636E'
 							),
+							'\u5E93\u5B58\uFF1A',
 							_react2.default.createElement(
-								'div',
-								{ className: 'item borderBottom' },
-								_react2.default.createElement(
-									'h3',
-									{ className: 'title flex-ai' },
-									'\u6536\u83B7\u4EBA'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'body' },
-									_react2.default.createElement(
-										'p',
-										{ className: 'txt' },
-										myorderdetail.result.ShipName
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'item borderBottom' },
-								_react2.default.createElement(
-									'h3',
-									{ className: 'title flex-ai' },
-									'\u8054\u7CFB\u7535\u8BDD'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'body' },
-									_react2.default.createElement(
-										'p',
-										{ className: 'txt' },
-										myorderdetail.result.ShipCellPhone
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'item borderBottom' },
-								_react2.default.createElement(
-									'h3',
-									{ className: 'title flex-ai' },
-									'\u8BA2\u8D2D\u5546\u54C1'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'body' },
-									_react2.default.createElement(_components.OrderItem, { style: { marginBottom: 0 }, item: myorderdetail.result })
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'item borderBottom' },
-								_react2.default.createElement(
-									'h3',
-									{ className: 'title flex-ai' },
-									'\u62FF\u8D27\u6765\u6E90'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'body' },
-									_react2.default.createElement(
-										'p',
-										{ className: 'txt' },
-										myorderdetail.result.UpTrueName,
-										'  \uFF08',
-										_react2.default.createElement(
-											'span',
-											{ className: 'blue' },
-											myorderdetail.result.UpPhone
-										),
-										'\uFF09'
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'item borderBottom' },
-								_react2.default.createElement(
-									'h3',
-									{ className: 'title flex-ai' },
-									'\u7269\u6D41\u5355\u53F7'
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'body' },
-									_react2.default.createElement(
-										'p',
-										{ className: 'txt' },
-										myorderdetail.result.orderCode
-									)
-								)
+								'span',
+								{ className: 'red' },
+								'\u6682\u65E0\u6570\u636E'
 							)
 						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'btn_center_cell' },
+						_react2.default.createElement(_components.Button, {
+							handleTouchEnd: this.handleTouchEnd.bind(this),
+							btnCn: 'btn_center btn_radius btn_danger',
+							text: '\u9000\u8D27'
+						})
 					)
 				);
 			}
 		}]);
 
-		return OrderDetail;
+		return BackProduct;
 	}(_react.Component);
 
-	var mapStateToProps = function mapStateToProps(state) {
-		var posts = state.posts;
-		var isFetching = posts.isFetching;
-		var myorderdetail = posts.myorderdetail;
-
-		return {
-			isFetching: isFetching,
-			myorderdetail: myorderdetail
-		};
-	};
-
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-		return {
-			actions: (0, _redux.bindActionCreators)(actions, dispatch)
-		};
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(OrderDetail);
-
-	/*<div className="item borderBottom">
-						<h3 className="title flex-ai">收货地址</h3>
-						<div className="body">
-							<p className="txt">{item.ShipAddressRegion}</p>
-						</div>
-					</div>
-					<div className="item borderBottom">
-						<h3 className="title flex-ai">收货地址</h3>
-						<div className="body">
-							<OrderItem style={{marginBottom:0}} item={this.state.item} />
-						</div>
-					</div>
-					<div className="item borderBottom">
-						<h3 className="title flex-ai">拿货来源</h3>
-						<div className="body">
-							<p className="txt">{item.UpTrueName}  （<span className="blue">{item.UpPhone}</span>）</p>
-						</div>
-					</div>
-					<div className="item borderBottom">
-						<h3 className="title flex-ai">物流单号</h3>
-						<div className="body">
-							<p className="txt">{item.orderCode}</p>
-						</div>
-					</div>*/
-
+	exports.default = BackProduct;
 	module.exports = exports['default'];
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "MyOrderDetail.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "BackProduct.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }
 

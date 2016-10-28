@@ -95,6 +95,7 @@ class Register extends Component{
 						iconName="icon_pwd"
 						id="pwd"
 						placeholder="密码"
+						type="password"
 					 />
 					 <Input
 					 	handleChange={this.handleChange.bind(this,"WeiXingH")}

@@ -7,7 +7,7 @@ var config={
 		vendor:['react','react-dom','react-router','object-assign']
 	},
 	output:{
-		filename:'[name].bundle.js',
+		filename:'[name].[chunkhash:8].js',
 		path:path.resolve(__dirname,"dist"),
 		publicPath:'/dist/'
 	},
@@ -42,7 +42,7 @@ var config={
 				NODE_ENV: JSON.stringify('production'),
 			}
 		}),
-	    new ExtractTextPlugin('app.css'),
+	    new ExtractTextPlugin('app.[chunkhash].css'),
 	    new webpack.optimize.CommonsChunkPlugin('vendor','vendor.js')
 	]
 }

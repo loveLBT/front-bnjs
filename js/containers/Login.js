@@ -11,15 +11,27 @@ class Login extends Component{
 		this.state={
 			username:"",
 			password:"",
+			rememberPwd:true,
 			loading:false
 		}
+	}
+	componentWillMount(){
+		this.setRememberPwd()
+		Auth.logout()
 	}
 	handleChange(name,val){
 		let newState={}
 		newState[name]=val
 		this.setState(newState)
 	}
+	handleChangeState(e){
+		const {rememberPwd}=this.state
+		this.setState({
+			rememberPwd:!rememberPwd
+		})
+	}
 	handleSubmit(){
+
 		const {username,password}=this.state
 		this.setState({loading:true})
 		const loginUrl=apiUrl+"/wslogin?username="+username+"&password="+password
@@ -35,9 +47,33 @@ class Login extends Component{
 		      this.props.router.replace('/')
 		    }
 		})
+		this.requireRememberPwd(username,password)
+		
+	}
+	setRememberPwd(){
+		if(localStorage.password){
+			this.setState({
+				username:localStorage.username,
+				password:localStorage.password
+			})
+		}else{
+			this.setState({
+				username:localStorage.username,
+			})
+		}
+	}
+	requireRememberPwd(user,pwd){
+		const {rememberPwd}=this.state
+		localStorage.username=user
+		if(rememberPwd){
+			localStorage.password=pwd
+		}else{
+			delete localStorage.password
+		}
 	}
 	render(){
 		document.title="用户登录"
+		const {username,password,rememberPwd}=this.state
 		return (
 			<div className="login">
 				<div className="logo"></div>
@@ -49,6 +85,7 @@ class Login extends Component{
 						id="phone"
 						placeholder="请输入账号"
 						type="text"
+						defaultValue={localStorage.username}
 					 />
 					 <Input
 					 	handleChange={this.handleChange.bind(this,"password")}
@@ -57,13 +94,16 @@ class Login extends Component{
 					 	id="pwd"
 					 	placeholder="密码"
 					 	type="password"
+					 	defaultValue={localStorage.password}
 					  />
 					  <div className="radio_cell flex-ai">
 						<Radio 
 							id="remember"
 							txt="记住密码"
-							defaultChecked={true}
+							defaultChecked={rememberPwd}
 							radioCn="flex-1"
+							type="checkbox"
+							handleChange={this.handleChangeState.bind(this)}
 						/>
 						<Link 
 							to="/" 
@@ -95,4 +135,3 @@ class Login extends Component{
 }
 
 export default withRouter(Login)
-

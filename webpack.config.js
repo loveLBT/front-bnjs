@@ -1,10 +1,11 @@
 var path =require('path')
 var webpack=require('webpack')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var config={
 	entry:{
 		main:path.resolve(__dirname,'js/main.js'),
-		vendor:['react','react-dom','react-router','object-assign']
+		vendor:['react','react-dom','react-router','object-assign','whatwg-fetch']
 	},
 	output:{
 		filename:'[name].bundle.js',
@@ -31,15 +32,6 @@ var config={
 	  extensions:['','.js','.jsx','.css'],
 	},
 	plugins:[
-	    new webpack.optimize.UglifyJsPlugin({
-			output: {comments: false},
-			compress:{warnings: false}
-		}),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify('production'),
-			}
-		}),
 	    new ExtractTextPlugin('app.css'),
 	    new webpack.optimize.CommonsChunkPlugin('vendor','vendor.js')
 	]

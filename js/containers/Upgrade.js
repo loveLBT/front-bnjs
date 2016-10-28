@@ -12,24 +12,20 @@ class Upgrade extends Component{
 		super(props)
 
 		this.state={
-			items:[],
 			index:0,
 			loading:false,
 			btnText:"升级"
 		}
 	}
 	componentWillMount(){
+		if(!this.props.upgrade){
+			this.getUpgrade()
+		}
+	}
+	getUpgrade(){
 		const {actions}=this.props
 		const upgradeUrl=apiUrl+"/WSMyProductUpgrades"
 		actions.fetchPosts("upgrade",upgradeUrl)
-	}
-	componentWillReceiveProps(nextProps){
-		const {index}=this.state
-		if(this.props.posts!==nextProps.posts && !!nextProps.posts.upgrade){
-			this.setState({
-				items:nextProps.posts.upgrade.result.upgradeProducts,
-			})
-		}
 	}
 	changeIndex(index){
 		this.setState({
@@ -37,18 +33,19 @@ class Upgrade extends Component{
 		})
 	}
 	handleTouchEnd(){
-		const {items,index}=this.state
-		if(items[index].upGrade==1){
+		const {index}=this.state
+		const {upgrade,actions}=this.props
+		if(upgrade.result.upgradeProducts[index].upGrade==1){
 			this.setState({
 				loading:true
 			})
-			const upproductUrl=apiUrl+"/WSMyUpGrade?productId="+items[index].productId
+			const upproductUrl=apiUrl+"/WSMyUpGrade?productId="+upgrade.result.upgradeProducts[index].productId
 			this.timer=setTimeout(()=>{
 				actions.fetchPosts("upproduct",upproductUrl)
 				.then(data=>{
 					if(data.posts.status==="success"){
 						Toast.tip("升级申请已提交")
-						this.props.router.push('/apply')
+						this.getUpgrade()
 					}else{
 						Toast.tip("升级失败")
 					}
@@ -61,39 +58,37 @@ class Upgrade extends Component{
 	}
 	render(){
 		document.title="产品升级"
-		const {items,index}=this.state
+		const {index}=this.state
+		const {upgrade}=this.props
+		let items=!upgrade?null:upgrade.result.upgradeProducts
 		return (
 			<div className="upgrade">
-				<div className="upgrade_cell">
-					{items[index] &&
+				{items && 
+					<div className="upgrade_cell">
 						<ProductItem 
 							changeIndex={this.changeIndex.bind(this)}
 							maskText={items[index].productName}
 						>
 							{items.map((item,i)=>{
 								return (
-									<Link key={i} className="slider-item" style={{backgroundImage:'url('+hostUrl+item.thumbnailUrl+')'}}></Link>
+									<img src={hostUrl+item.thumbnailUrl} className="slider-item" key={i} alt=""/>
 								)
 							})}
 						</ProductItem>
-					}
-					{items[index] && 
 						<div className="nature flex-ai">
 							<div className="fontStyle_143">当前等级：<span className="red">{items[index].agentLevelName}</span></div>
 							<div className="fontStyle_143">累计拿货量：<span className="red">{items[index].sumPurchase}盒</span></div>
 						</div>
-					}
-					<div className="btn_big_cell">
-					  {items[index] &&
-						<Button
-						  	btnCn={classnames("btn_big btn_radius",{btn_danger:items[index].upGrade==1},{btn_disabled:items[index].upGrade!=1})}
-						  	text="升级"
-						  	handleTouchEnd={this.handleTouchEnd.bind(this)}
-						  >
-					 	 </Button>
-					  }
+						<div className="btn_big_cell">
+							<Button
+							  	btnCn={classnames("btn_big btn_radius",{btn_danger:items[index].upGrade==1},{btn_disabled:items[index].upGrade!=1})}
+							  	text="升级"
+							  	handleTouchEnd={this.handleTouchEnd.bind(this)}
+							  >
+						 	 </Button>
+						</div>
 					</div>
-				</div>
+				}
 				{this.state.loading && 
 					<Loading text="正在升级请等待" />
 				}
@@ -103,8 +98,14 @@ class Upgrade extends Component{
 }
 
 const mapStateToProps=state=>{
+	const {posts}=state
+	const {
+		isFetching,
+		upgrade
+	}=posts
 	return {
-		posts:state.posts,
+		isFetching,
+		upgrade
 	}
 }
 

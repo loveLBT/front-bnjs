@@ -4,7 +4,7 @@ import rootReducer from '../reducers'
 
 const composedCreateStore=compose(
 	applyMiddleware(thunk),
-	window.devToolsExtension && window.devToolsExtension()
+/*	window.devToolsExtension && window.devToolsExtension()*/
 )(createStore)
 
 

@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
-import { withRouter } from 'react-router'
-import { Link } from 'react-router'
+import { withRouter,Link } from 'react-router'
 import objectAssign from "object-assign"
 import classnames from 'classnames'
 import Avator from '../Avator'
@@ -77,7 +76,7 @@ class UserTop extends Component{
 				<div className="data_cell flex-ai">
 					<Avator isUpload={this.props.isUpload} avatorUrl={userData.gravatar} />
 					<div className="name_cell flex-1 flex-column-around">
-						<h1 className="name">{userData.trueName}<i className="icon_name"></i></h1>
+						<Link to="/personal" className="name">{userData.trueName}<i className="icon_name"></i></Link>
 						<p className="leave">等级：<span>{userData.agentLevelName}</span></p>
 					</div>
 					{hasBeAuth && 
