@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var config={
 	entry:{
 		main:path.resolve(__dirname,'js/main.js'),
-		vendor:['react','react-dom','react-router','object-assign','whatwg-fetch']
+		vendor:['react','react-dom','redux','react-redux','react-router','object-assign','whatwg-fetch']
 	},
 	output:{
 		filename:'[name].bundle.js',
@@ -29,7 +29,7 @@ var config={
 		]
 	},
 	resolve:{
-	  extensions:['','.js','.jsx','.css'],
+	  extensions:['','.js','.jsx','.css']
 	},
 	plugins:[
 	    new ExtractTextPlugin('app.css'),

@@ -15,9 +15,8 @@ class Dashboard extends Component{
 	render(){
 		const {isFetching}=this.props
 		const {userData}=this.state
-		const s={position:"absolute",width:"100%",height:"100%",top:0,bottom:0,left:0,right:0}
 		return (
-			<div style={s}>
+			<div className="dashboard" >
 				{!this.props.params.id && 
 					<UserTop isUpload={true} userData={userData} />
 				}

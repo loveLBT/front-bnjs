@@ -3,7 +3,8 @@ import objectAssign from "object-assign"
 import classnames from 'classnames'
 import './button.css'
 class Button extends Component{
-	handleTouchEnd(){
+	handleTouchEnd(event){
+		event.preventDefault()
 		const {handleTouchEnd}=this.props
 		if(!!handleTouchEnd)
 			this.props.handleTouchEnd()

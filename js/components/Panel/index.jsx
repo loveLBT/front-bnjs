@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import classnames from "classnames"
 import Ajax from '../Ajax.js'
 import Toast from '../Toast'
+import Loading from '../Loading'
 import "./panel.css"
 
 class Panel extends Component{
@@ -10,7 +11,8 @@ class Panel extends Component{
 
 		this.state={
 			img1Url:"",
-			img2Url:""
+			img2Url:"",
+			loading:false
 		}
 	}
 	renderCarImg(){
@@ -43,7 +45,7 @@ class Panel extends Component{
 						 	{!!imgUrl1 &&
 						 		<img width="100%" height="100%" src={hostUrl+imgUrl1} alt="身份证正面"/>
 						 	}
-							<input onChange={this.handleUploadFom1.bind(this)} type="file" name="file" />
+							<input id="zfzZM" onChange={this.handleUploadFom1.bind(this)} type="file" name="file" />
 						 </form>
 					</div>
 					<div className="dashed sfz_reverse">
@@ -51,7 +53,7 @@ class Panel extends Component{
 							{!!imgUrl2 &&
 						 		<img width="100%" height="100%" src={hostUrl+imgUrl2} alt="身份证正面"/>
 						 	}
-							<input onChange={this.handleUploadFom2.bind(this)} type="file" name="file" />
+							<input id="zfzFM" onChange={this.handleUploadFom2.bind(this)} type="file" name="file" />
 						</form>
 					</div>
 				</div>
@@ -59,26 +61,30 @@ class Panel extends Component{
 		}
 	}
 	handleUploadFom1(){
-		const uploadUrl=hostUrl+"/AD/WSsfzPhotoUpdate"
+		const uploadUrl=hostUrl+"/AD/WSsfzPhotoUpdateZM"
 		const formdata=new FormData(this.refs.form1) 
+		this.setState({loading:true})
 		Ajax.upload(formdata,uploadUrl,(res)=>{
 			if(res.status==="success"){
 				this.setState({
-					imgUrl1:res.result.sfzh
+					imgUrl1:res.result.sfzhThumb
 				})
 				Toast.tip("上传成功")
+				this.setState({loading:false})
 			}
 		})
 	}
 	handleUploadFom2(){
-		const uploadUrl=hostUrl+"/AD/WSsfzPhotoUpdate"
+		const uploadUrl=hostUrl+"/AD/WSsfzPhotoUpdateFM"
 		const formdata=new FormData(this.refs.form2) 
+		this.setState({loading:true})
 		Ajax.upload(formdata,uploadUrl,(res)=>{
 			if(res.status==="success"){
 				this.setState({
-					imgUrl2:res.result.sfzh
+					imgUrl2:res.result.sfzhThumb
 				})
 				Toast.tip("上传成功")
+				this.setState({loading:false})
 			}
 		})
 	}
@@ -86,7 +92,7 @@ class Panel extends Component{
 		this.props.handleChange(event.target.value)
 	}
 	render(){
-		const {title,text,hasBorder,contentHtml,input}=this.props
+		const {title,text,hasBorder,contentHtml,input,type,maxlength,defaultValue}=this.props
 		return (
 			<div className={classnames("panel flex",{borderBottom:hasBorder})}>
 				<h3 className="fontStyle_163">{title}</h3>
@@ -94,10 +100,13 @@ class Panel extends Component{
 					<p className="fontStyle_143">{text}</p>
 				}
 				{input && 
-					<input onChange={this.handleChange.bind(this)} className="fontStyle_143" type="text" placeholder={input} />
+					<input maxLength={maxlength} onChange={this.handleChange.bind(this)} className="fontStyle_143" type={type} placeholder={input} defaultValue={defaultValue} />
 				}
 				{this.renderCarImg()}
 				{this.renderUploadImg()}
+				{this.state.loading && 
+					<Loading text="正在上传，请等待" />
+				}
 			</div>
 		)
 	}

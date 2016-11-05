@@ -9,30 +9,30 @@
 	background: #fff;
 	color: #333;
 }
-.usertop .data_cell{
+.usertop .datas_cell{
 	height: 64px;
 }
-[data-dpr="2"] .usertop .data_cell{
+[data-dpr="2"] .usertop .datas_cell{
 	height: 1.706667rem;
 }
-[data-dpr="3"] .usertop .data_cell{
+[data-dpr="3"] .usertop .datas_cell{
 	height: 192px;
 }
-.usertop .data_cell .name_cell{
+.usertop .datas_cell .name_cell{
 	height: 100%;
 	padding-left: 0.4rem;
 }
-.usertop .data_cell .name_cell .name{
+.usertop .datas_cell .name_cell .name{
 	font-size: 18px;
 	color: #fff;
 }
-[data-dpr="2"] .usertop .data_cell .name_cell .name{
+[data-dpr="2"] .usertop .datas_cell .name_cell .name{
 	font-size: 36px;
 }
-[data-dpr="3"] .usertop .data_cell .name_cell .name{
+[data-dpr="3"] .usertop .datas_cell .name_cell .name{
 	font-size: 54px;
 }
-.usertop .data_cell .name_cell .name .icon_name{
+.usertop .datas_cell .name_cell .name .icon_name{
 	width: 20px;
 	height: 16px;
 	display: inline-block;
@@ -41,33 +41,33 @@
 	background-position-y:-48px;
 	margin-left: 0.266667rem;
 }
-[data-dpr="2"] .usertop .data_cell .name_cell .name .icon_name{
+[data-dpr="2"] .usertop .datas_cell .name_cell .name .icon_name{
 	width: 40px;
 	height: 32px;
 	background-image: url(../../../assets/img/icon@2x.png); 
 	background-position-x:-88px;
 	background-position-y:-96px;
 }
-[data-dpr="3"] .usertop .data_cell .name_cell .name .icon_name{
+[data-dpr="3"] .usertop .datas_cell .name_cell .name .icon_name{
 	width: 60px;
 	height: 48px;
 	background-image: url(../../../assets/img/icon@3x.png); 
 	background-position-x:-132px;
 	background-position-y:-144px;
 }
-.usertop .data_cell .name_cell .leave{
+.usertop .datas_cell .name_cell .leave{
 	font-size: 14px;
 }
-[data-dpr="2"] .usertop .data_cell .name_cell .leave{
+[data-dpr="2"] .usertop .datas_cell .name_cell .leave{
 	font-size: 28px;
 }
-[data-dpr="3"] .usertop .data_cell .name_cell .leave{
+[data-dpr="3"] .usertop .datas_cell .name_cell .leave{
 	font-size: 42px;
 }
-.usertop .data_cell .be_auth{
+.usertop .datas_cell .be_auth{
 	text-align: right;
 }
-.usertop .data_cell .be_auth button{
+.usertop .datas_cell .be_auth button{
 	display: block;
 	width: 68px;
 	height: 24px;
@@ -77,19 +77,19 @@
 	text-align: center;;
 	border-radius: 12px;
 }
-[data-dpr="2"] .usertop .data_cell .be_auth button{
+[data-dpr="2"] .usertop .datas_cell .be_auth button{
 	width: 136px;
 	height: 48px;
 	font-size: 30px;
 	border-radius: 24px;
 }
-[data-dpr="3"] .usertop .data_cell .be_auth button{
+[data-dpr="3"] .usertop .datas_cell .be_auth button{
 	width: 204px;
 	height: 72px;
 	font-size: 45px;
 	border-radius: 36px;
 }
-.usertop .data_cell .be_auth button:active{
+.usertop .datas_cell .be_auth button:active{
 	background: #e5e5e5;
 }
 

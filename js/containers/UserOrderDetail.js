@@ -29,6 +29,18 @@ class OrderDetail extends Component{
 							</div>
 						</div>
 						<div className="item borderBottom">
+							<h3 className="title flex-ai">收货人</h3>
+							<div className="body">
+								<p className="txt">{userorderdetail.result.ShipName}</p>
+							</div>
+						</div>
+						<div className="item borderBottom">
+								<h3 className="title flex-ai">联系电话</h3>
+								<div className="body">
+									<a href={"tel:"+userorderdetail.result.ShipCellPhone} className="txt">{userorderdetail.result.ShipCellPhone}</a>
+								</div>
+							</div>
+						<div className="item borderBottom">
 							<h3 className="title flex-ai">订购商品</h3>
 							<div className="body">
 								<OrderItem style={{marginBottom:0}} item={userorderdetail.result} />
@@ -37,7 +49,7 @@ class OrderDetail extends Component{
 						<div className="item borderBottom">
 							<h3 className="title flex-ai">物流单号</h3>
 							<div className="body">
-								<p className="txt">{userorderdetail.result.orderCode}</p>
+								<p className="txt">{userorderdetail.result.ShipOrderNumber}</p>
 							</div>
 						</div>
 					</div>

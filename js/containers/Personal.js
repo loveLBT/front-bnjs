@@ -28,7 +28,7 @@ class Personal extends Component{
 						</div>
 						<div className="car borderBottom">
 							<Panel title="身份证号码" text={personal.result.sfzh} hasBorder={true} />
-							<Panel title="身份证照片" carImg={personal.result.sfzhZM} carReverseImg={personal.result.sfzhFM} hasCarImg={true} />
+							<Panel title="身份证照片" carImg={personal.result.sfzhZMThumb} carReverseImg={personal.result.sfzhFMThumb} hasCarImg={true} />
 						</div>
 					</div>
 				}

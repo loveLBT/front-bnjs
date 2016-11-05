@@ -51,23 +51,23 @@ window.LAreaFn = (function() {
                 _self.gearArea = document.createElement("div");
                 _self.gearArea.className = "gearArea";
                 _self.gearArea.innerHTML = '<div class="area_ctrl slideInUp">' +
-                    '<div class="area_btn_box">' +
+                    '<div class="area_btn_box flex flex-main-betwnn flex-cross-stretch">' +
                     '<div class="area_btn larea_cancel">取消</div>' +
                     '<div class="area_btn larea_finish">确定</div>' +
                     '</div>' +
                     '<div class="area_roll_mask">' +
-                    '<div class="area_roll">' +
-                    '<div>' +
+                    '<div class="area_roll flex">' +
+                    '<div class="flex-1">' +
                     '<div class="gear area_province" data-areatype="area_province"></div>' +
                     '<div class="area_grid">' +
                     '</div>' +
                     '</div>' +
-                    '<div>' +
+                    '<div class="flex-1">' +
                     '<div class="gear area_city" data-areatype="area_city"></div>' +
                     '<div class="area_grid">' +
                     '</div>' +
                     '</div>' +
-                    '<div>' +
+                    '<div class="flex-1">' +
                     '<div class="gear area_county" data-areatype="area_county"></div>' +
                     '<div class="area_grid">' +
                     '</div>' +

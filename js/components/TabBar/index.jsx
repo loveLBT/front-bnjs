@@ -7,7 +7,7 @@ class TabBar extends Component{
 	}
 	render(){
 		return (
-			<div className="tabbar flex-center" onTouchStart={this.handleTouchStart.bind(this)}>
+			<div style={this.props.style} id="tabbar" className="tabbar flex-center" onTouchStart={this.handleTouchStart.bind(this)}>
 				<IndexLink className="tabbar_item flex-1" activeClassName="active" to='/'>
 					<div className="tabbar_icon icon_home"></div>
 					<p className="tabbar_label">首页</p>

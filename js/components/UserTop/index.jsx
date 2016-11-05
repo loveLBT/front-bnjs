@@ -73,10 +73,15 @@ class UserTop extends Component{
 		const {className,userData}=this.props
 		return (
 			<div className={classnames("usertop",className)}>
-				<div className="data_cell flex-ai">
+				<div className="datas_cell flex-ai">
 					<Avator isUpload={this.props.isUpload} avatorUrl={userData.gravatar} />
 					<div className="name_cell flex-1 flex-column-around">
-						<Link to="/personal" className="name">{userData.trueName}<i className="icon_name"></i></Link>
+						{hasBeAuth && 
+							<Link to="/personal" className="name">{userData.trueName}<i className="icon_name"></i></Link>	
+						}
+						{!hasBeAuth &&
+							<p className="fontStyle_163">{userData.trueName}（{userData.phone}）</p>
+						}
 						<p className="leave">等级：<span>{userData.agentLevelName}</span></p>
 					</div>
 					{hasBeAuth && 

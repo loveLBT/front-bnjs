@@ -75,9 +75,7 @@ class UserOrder extends Component{
 		}
 	}
 	componentWillMount(){
-		if(!this.props.userorder){
-			this.getUserOrder()
-		}
+		this.getUserOrder()
 	}
 	getUserOrder(){
 		const {page,pageNum}=this.state
@@ -134,7 +132,7 @@ class UserOrder extends Component{
 			<div className="userorder">
 				{userorder &&
 					<div className="count_cell flex-ai">
-						<p>共计：<span className="red">{userorder.result.totalPrice}</span></p>
+						<p>共计：<span className="red">{userorder.result.totalPrice}￥</span></p>
 					</div>
 				}
 				<Scroll>

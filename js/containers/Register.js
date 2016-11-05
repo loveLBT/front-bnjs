@@ -5,42 +5,70 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { withRouter } from 'react-router'
 import Auth from '../components/Auth.js'
-import { Input,Radio,Button,Toast,Loading } from "../components"
+import { Input,Radio,Button,Toast,Loading,Scroll } from "../components"
 
 class Register extends Component{
 	constructor(props){
 		super(props)
 
 		this.state={
-			register:"",
 			loading:false,
-			UserName:"",
-			TrueName:"",
-			Password:"",
-			WeiXingH:"",
-			UpPhone:"",
+			formArry:[
+				{key:"UserName",value:"",type:"tel",tip:"手机号码格式不正确",reg:/^1[34578]\d{9}$/,placeholder:"手机号",hasChildBorder:true,iconName:"icon_phone",maxlength:"11"},
+				{key:"TrueName",value:"",type:"text",tip:"名字由2-5个汉字组成",reg:/^[\u4E00-\u9FA5]{2,5}$/,placeholder:"真实姓名",hasChildBorder:true,iconName:"icon_user",maxlength:"20"},
+				{key:"Password",value:"",type:"password",tip:"密码由6-20个字母数字下划线组成",reg:/^\w{6,20}$/,placeholder:"密码",hasChildBorder:true,iconName:"icon_pwd",maxlength:"20"},
+				{key:"WeiXingH",value:"",type:"text",tip:"微信号由英文数字组成",reg:/^[A-Za-z0-9]+$/,placeholder:"微信号",hasChildBorder:true,iconName:"icon_weixin",maxlength:"20"},
+				{key:"UpPhone",value:"",type:"tel",tip:"上级手机号码格式不正确",reg:/^1[34578]\d{9}$/,placeholder:"推荐人手机号",hasInputBorder:true,iconName:"icon_person",maxlength:"11"}
+			],
 			AgentID:"2",
 		}
 	}
 	componentWillMount(){
+		if(!this.props.register){
+			this.getRegister()
+		}
+	}
+	getRegister(){
 		const {actions}=this.props
 		const radioUrl=apiUrl+"/WSRegisterData"
 		actions.fetchPosts("register",radioUrl)
 	}
-	componentWillReceiveProps(nextProps){
-		if(this.props.posts!==nextProps.posts && !!nextProps.posts.register){
-			this.setState({
-				register:nextProps.posts.register
-			})
-		}
-	}
 	handleChange(name,val){
+		const {formArry}=this.state
+		let arry=formArry
+		arry.map((item,i)=>{
+			if(item.key==name){
+				item.value=val
+			}
+		})
+		this.setState({
+			formArry:arry
+		})
+	}
+	handleChangeRadioState(name,val){
 		let newState={}
 		newState[name]=val
 		this.setState(newState)
 	}
+	getRegisterUrl(cb){
+		const {formArry,AgentID}=this.state
+		let registerUrl=apiUrl+"/WSRegisterUser?"
+		for(var i=0;i<formArry.length;i++){
+			if(formArry[i].value==""){
+				Toast.tip(formArry[i].placeholder+"不能为空")
+				cb(false)
+				return false
+			}else if(!formArry[i].reg.test(formArry[i].value)){
+				Toast.tip(formArry[i].tip)
+				cb(false)
+				return false
+			}
+			registerUrl+=formArry[i].key+"="+formArry[i].value+"&"
+		}
+		cb(registerUrl+"AgentID="+AgentID)
+	}
 	renderRadios(){
-		const {register}=this.state
+		const {register}=this.props
 		if(!!register){
 			return (
 				register.result.map((item,i)=>
@@ -49,7 +77,7 @@ class Register extends Component{
 				 		radioName="agentGroup"
 						txt={item.name}
 						value={item.agentID}
-						handleChange={this.handleChange.bind(this,"AgentID")}
+						handleChange={this.handleChangeRadioState.bind(this,"AgentID")}
 						defaultChecked={item.agentID==this.state.AgentID}
 					/>
 				)
@@ -57,76 +85,64 @@ class Register extends Component{
 		}
 	}
 	handleSubmit(){
-		const {UserName,TrueName,Password,WeiXingH,UpPhone,AgentID}=this.state
-		const registerUrl=apiUrl+'/WSRegisterUser?UserName='+UserName+'&Password='+Password+'&TrueName='+TrueName+'&WeiXingH='+WeiXingH+'&UpPhone='+UpPhone+'&AgentID='+AgentID
-		this.setState({loading:true})
-		Auth.login(registerUrl,(res)=>{
-			this.setState({loading:false})
-			if(!res.loggedIn)
-				Toast.tip(res.errormsg)
-		    else{
-		    	this.props.router.replace('/')
-		    }
+		document.activeElement.blur()
+		const {formArry,AgentID}=this.state
+		this.getRegisterUrl((url)=>{
+			if(url){
+				this.setState({loading:true})
+				Auth.login(url,(res)=>{
+					this.setState({loading:false})
+					if(!res.loggedIn)
+						Toast.tip(res.errormsg)
+				    else{
+				    	this.props.router.replace('/')
+				    }
+				})
+			}
 		})
 	}
 	render(){
 		document.title="用户注册"
+		const {register}=this.props
+		const {formArry}=this.state
 		return (
 			<div className="register">
 				<div className="logo"></div>
-				<form action="">
-					<Input
-						handleChange={this.handleChange.bind(this,"UserName")}
-						hasChildBorder={true}
-						iconName="icon_phone"
-						id="phone"
-						placeholder="注册手机号"
-					 />
-					 <Input
-					 	handleChange={this.handleChange.bind(this,"TrueName")}
-						hasChildBorder={true}
-						iconName="icon_user"
-						id="user"
-						placeholder="真实姓名"
-					 />
-					 <Input
-					 	handleChange={this.handleChange.bind(this,"Password")}
-						hasChildBorder={true}
-						iconName="icon_pwd"
-						id="pwd"
-						placeholder="密码"
-						type="password"
-					 />
-					 <Input
-					 	handleChange={this.handleChange.bind(this,"WeiXingH")}
-						hasChildBorder={true}
-						iconName="icon_weixin"
-						id="weixin"
-						placeholder="微信号"
-					 />
-					 <Input
-					 	handleChange={this.handleChange.bind(this,"UpPhone")}
-						hasInputBorder={true}
-						iconName="icon_person"
-						id="person"
-						placeholder="推荐人手机号"
-					 />
-					 <div className="radio_cell flex-ai flex-multiple">
-					 	{this.renderRadios()}
-					 </div>
-					 <div className="btn_big_cell">
-						<Button
-							handleTouchEnd={this.handleSubmit.bind(this)} 
-							btnCn="btn_big btn_radius btn_danger"
-					  		text="注册"
-						 />
-					 </div>
-				</form>
-				<p className="link_to">
-					<Link className="not_user" to="/login">
-						已有账号?马上登录
-					</Link>
-				</p>
+					{register && 
+						<form action="">
+							{formArry.map((item,i)=>{
+								return (
+									<Input
+										key={i}
+									 	handleChange={this.handleChange.bind(this,item.key)}
+										hasChildBorder={item.hasChildBorder}
+										hasInputBorder={item.hasInputBorder}
+										iconName={item.iconName}
+										type={item.type}
+										placeholder={item.placeholder}
+										maxlength={item.maxlength}
+									 />
+								)
+							})
+
+							}
+							 <div className="radio_cell">
+							 	{this.renderRadios()}
+							 </div>
+							 <div className="btn_big_cell">
+								<Button
+									handleTouchEnd={this.handleSubmit.bind(this)} 
+									btnCn="btn_big btn_radius btn_danger"
+							  		text="注册"
+								 />
+							 </div>
+							 <p className="link_to">
+								<Link className="not_user" to="/login">
+									已有账号?马上登录
+								</Link>
+							 </p>
+						</form>
+					}
 				{this.state.loading &&
 					<Loading text="正在注册，请等待" />
 				}
@@ -136,8 +152,14 @@ class Register extends Component{
 }
 
 const mapStateToProps=state=>{
+	const {posts}=state
+	const {
+		isFetching,
+		register
+	}=posts
 	return {
-		posts:state.posts
+		isFetching,
+		register
 	}
 }
 

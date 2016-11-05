@@ -18,13 +18,15 @@ class MyAccount extends Component{
 		const items=!cargorecord?null:cargorecord.result.orderList
 		return (
 			<div className="item">
-				{!!items &&
-					items.map((item,i)=>{
-						return (
-							<OrderItem linkTo={/myorder/+item.orderId} key={i} item={item} hasFooter={false} />
-						)
-					})
-				}
+				<div>
+					{!!items &&
+						items.map((item,i)=>{
+							return (
+								<OrderItem linkTo={/myorder/+item.orderId} key={i} item={item} hasFooter={false} />
+							)
+						})
+					}
+				</div>
 			</div>
 		)
 	}
@@ -33,13 +35,15 @@ class MyAccount extends Component{
 		const items=!shipmentrecord?null:shipmentrecord.result.orderList
 		return (
 			<div className="item">
-				{!!items &&
-					items.map((item,i)=>{
-						return (
-							<OrderItem linkTo={/userorder/+item.orderId} key={i} item={item} hasFooter={false} />
-						)
-					})
-				}
+				<div>
+					{!!items &&
+						items.map((item,i)=>{
+							return (
+								<OrderItem linkTo={/userorder/+item.orderId} key={i} item={item} hasFooter={false} />
+							)
+						})
+					}
+				</div>
 			</div>
 		)
 	}
@@ -60,7 +64,7 @@ class MyAccount extends Component{
 			<div className="myaccount">
 				{!!myaccountdata &&
 					<div className="count_cell flex-ai">
-						<p>总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{myaccountdata.AllSumPurchase}</span>当前库存：<span className="red">{myaccountdata.AllStock}盒</span></p>
+						<p className="fontStyle_143">总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{myaccountdata.AllSumPurchase}</span>当前库存：<span className="red">{myaccountdata.AllStock}盒</span></p>
 					</div>
 				}
 				 <div className="btn_center_cell">

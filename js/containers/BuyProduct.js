@@ -54,15 +54,43 @@ class BuyProduct extends Component{
 			this.setState({
 				count:count-1
 			})
+			this.refs.count.value=count-1
 		}
+		this.changePrice(count-1)
 	}
 	handleIncrement(){
 		const {count,items,index}=this.state
 		let num=count
-		num+=1
+		num=parseInt(num)+1
 		this.setState({
 			count:num
 		})
+		this.refs.count.value=num
+		this.changePrice(num)
+	}
+	handleChangeCount(event){
+		this.setState({
+			count:event.target.value
+		})
+		this.changePrice(event.target.value)
+	}
+	changePrice(count){
+		const {index,items}=this.state
+		let agentLevels=items[index].agentLevels
+		let i=0
+		for(i;i<agentLevels.length;i++){
+			if(count>=agentLevels[i].escalationThreshold){
+				this.setState({
+					price:agentLevels[i].price
+				})
+				return false
+			}
+		}
+		if(i==agentLevels.length){
+			this.setState({
+				price:items[index].price
+			})
+		}
 	}
 	changeIndex(index){
 		this.setState({
@@ -70,13 +98,19 @@ class BuyProduct extends Component{
 			count:this.state.items[index].minConsumption,
 			price:this.state.items[index].price
 		})
+		this.refs.count.value=this.state.items[index].minConsumption
 	}
 	handleTouchEnd(){
+		document.activeElement.blur()
 		const {actions}=this.props
 		const {items,index,price,count}=this.state
 		const ProductId=items[index].id
 		const priceSum=price*count
 		const submitOrderUrl=apiUrl+"/WSSubmitOrder?productId="+ProductId+"&count="+count+"&priceSum="+priceSum
+		if(count<items[index].minConsumption){
+			Toast.tip("该商品的最低购买数量为"+items[index].minConsumption+"件")
+			return false
+		}
 		this.setState({
 			loading:true
 		})
@@ -117,7 +151,7 @@ class BuyProduct extends Component{
 							</p>
 							<div className="content flex-1">
 								<span style={items[index] && {color:count<=items[index].minConsumption?"#ccc":"#333"}} onTouchEnd={this.handleDecrement.bind(this)}>-</span>
-								<input disabled type="number" placeholder={count} />
+								<input ref="count" onChange={this.handleChangeCount.bind(this)} type="number" defaultValue={count} />
 								<span onTouchEnd={this.handleIncrement.bind(this)}>+</span>
 							</div>
 						</div>

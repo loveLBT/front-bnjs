@@ -1,4 +1,5 @@
-import 'whatwg-fetch'
+import {polyfill} from 'es6-promise'
+import fetch from 'isomorphic-fetch'
 
 module.exports = {
   login(loginUrl, cb) {
@@ -45,12 +46,7 @@ module.exports = {
 
 function pretendRequest(loginUrl, cb) {
   setTimeout(() => {
-    fetch(loginUrl,{
-      headers:{
-        'Cookie':'ASP.NET_SessionId=1i2lk5osm53kmbbroctyjsor'
-      },
-      credentials: 'include'
-    })
+    fetch(loginUrl)
       .then(response=>response.json())
       .then(json=>{
         if(json.result.status==="success"){
@@ -65,3 +61,5 @@ function pretendRequest(loginUrl, cb) {
       })
   }, 2000)
 }
+
+/*credentials: 'include'*/

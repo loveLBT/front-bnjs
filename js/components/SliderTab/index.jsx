@@ -178,7 +178,7 @@ class SliderTab extends Component{
 					</div>
 				</div>
 				<div 
-					className={classnames('group flex flex-1',{transition:isTransition})}
+					className={classnames('group flex-1 flex',{transition:isTransition})}
 					style={this.renderStyle(offset,100)}
 				>
 					{this.renderItem()}

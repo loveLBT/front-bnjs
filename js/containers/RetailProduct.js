@@ -75,7 +75,7 @@ class BuyProduct extends Component{
 						Toast.tip("零售成功")
 						this.props.router.push('/myretail')
 					}else{
-						Toast.tip("零售失败")
+						Toast.tip(data.posts.result.message)
 					}
 				})
 		},2000)

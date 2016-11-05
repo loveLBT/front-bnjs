@@ -7,11 +7,11 @@ class Input extends Component{
 			this.props.handleChange(event.target.value) 
 	}
 	render(){
-		const {placeholder,id,iconName,hasInputBorder,hasChildBorder,type,defaultValue}=this.props
+		const {placeholder,iconName,hasInputBorder,hasChildBorder,type,defaultValue,maxlength}=this.props
 		return (
 			<div className={classnames("input flex",{borderBottom:hasInputBorder})}>
-				<label className={iconName} htmlFor={id}></label>
-				<input defaultValue={defaultValue} onChange={this.onTextChange.bind(this)} className={classnames("flex-1",{borderBottom:hasChildBorder})} id={id} type={type} placeholder={placeholder}/>
+				<label className={iconName}></label>
+				<input maxLength={maxlength} defaultValue={defaultValue} onChange={this.onTextChange.bind(this)} className={classnames("flex-1",{borderBottom:hasChildBorder})} type={type} placeholder={placeholder}/>
 			</div>
 		)
 	}

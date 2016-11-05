@@ -42,9 +42,7 @@ class Menu extends Component {
 }									
 class Home extends Component{
 	componentWillMount(){
-		if(!this.props.home){
-			this.getHome()
-		}
+		this.getHome()
 	}
 	getHome(){
 		const {actions}=this.props
@@ -64,15 +62,19 @@ class Home extends Component{
 						<ul>
 							<li>
 								<Link to="/myorder"><i className="icon icon_myorder"></i><span ref="badgePosition1">我的订单</span></Link>
-								<Badge 
-									count={home.result.myOrderNum}
-								/>
+								{home.result.myOrderNum!=0 &&
+									<Badge 
+										count={home.result.myOrderNum}
+									/>
+								}
 							</li>
 							<li>
 								<Link to="/userorder"><i className="icon icon_userorder"></i><span>客户订单</span></Link>
-								<Badge 
-									count={home.result.customerOrderNum} 
-								/>
+								{home.result.customerOrderNum!=0 &&
+									<Badge 
+										count={home.result.customerOrderNum} 
+									/>
+								}
 							</li>
 						</ul>
 					</div>

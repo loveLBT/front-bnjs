@@ -20,7 +20,7 @@ class LArea extends Component{
 	render(){
 		return (
 			<div className="larea content-block" id="test" >
-				<input  className="fontStyle_143" id="demo2" type="text" readOnly={true} placeholder={this.props.input} />
+				<input  className="fontStyle_143" id="demo2" type="text" readOnly={true} defaultValue={this.props.input} />
             	<input  className="fontStyle_143" id="value2" type="hidden" readOnly={true}  defaultValue={this.props.regionCode} />
 			</div>
 		)

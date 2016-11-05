@@ -19,35 +19,50 @@ class EditPwd extends Component{
 		}
 	}
 	handleTouchEnd(){
-		const oldpwd=document.getElementById("oldpwd").value
-		const newpwd=document.getElementById("newpwd").value
-		const confirmpwd=document.getElementById("confirmpwd").value
-		if(!oldpwd || !newpwd || !confirmpwd){
-			Toast.tip("请输入")
+		document.activeElement.blur()
+		const {oldpwd,newpwd,confirmpwd}=this.state
+		const {actions}=this.props
+		const reg=/^\w{6,20}$/
+		if(oldpwd==""){
+			Toast.tip("请输入原密码")
 			return false
-		}else if(newpwd!==confirmpwd){
+		}
+		if(newpwd==""){
+			Toast.tip("请输入新密码")
+			return false
+		}
+		if(!reg.test(newpwd)){
+			Toast.tip("新密码由6-20个字母数字下划线组成")
+			return false
+		}
+		if(confirmpwd==""){
+			Toast.tip("请再次输入新密码")
+			return false
+		}
+		if(newpwd!==confirmpwd){
 			Toast.tip("两次输入的密码不一致")
 			return false
-		}else{
-			const {actions}=this.props
-			const editpwdUrl=apiUrl+"/WSModifyPsd?oldPassWord="+oldpwd+"&newPassWord="+newpwd
-			this.setState({
-				loading:true
-			})
-			this.timer=setTimeout(()=>{
-				actions.fetchPosts("editpwd",editpwdUrl)
-					.then(data=>{
-						this.setState({loading:false})
-						if(data.posts.status==="success"){
-							Toast.tip("密码修改成功")
-							this.props.router.replace('/')
-						}else{
-							Toast.tip(data.posts.result.message)
-						}
-					})
-			},2000)
 		}
-		
+		if(newpwd.indexOf(" ")==0 || oldpwd.indexOf(" ")==0){
+			Toast.tip("密码不能有空格")
+			return false
+		}
+		const editpwdUrl=apiUrl+"/WSModifyPsd?oldPassWord="+oldpwd+"&newPassWord="+newpwd
+		this.setState({
+			loading:true
+		})
+		this.timer=setTimeout(()=>{
+			actions.fetchPosts("editpwd",editpwdUrl)
+				.then(data=>{
+					this.setState({loading:false})
+					if(data.posts.status==="success"){
+						Toast.tip("密码修改成功")
+						this.props.router.replace('/')
+					}else{
+						Toast.tip("修改失败："+data.posts.result.message)
+					}
+				})
+		},2000)
 	}
 	handleChange(name,val){
 		let newState={}
@@ -67,7 +82,7 @@ class EditPwd extends Component{
 						id="oldpwd"
 						placeholder="原密码"
 						type="password"
-						ref="oldpwd"
+						maxlength="20"
 					 />
 					 <Input
 					 	handleChange={this.handleChange.bind(this,"newpwd")}
@@ -76,7 +91,7 @@ class EditPwd extends Component{
 					 	id="newpwd"
 					 	placeholder="新密码"
 					 	type="password"
-					 	ref="newpwd"
+					 	maxlength="20"
 					  />
 					  <Input
 					 	handleChange={this.handleChange.bind(this,"confirmpwd")}
@@ -85,7 +100,7 @@ class EditPwd extends Component{
 					 	id="confirmpwd"
 					 	placeholder="重复新密码"
 					 	type="password"
-					 	ref="confirmpwd"
+					 	maxlength="20"
 					  />
 					  <div className="btn_big_cell" style={{marginTop:"0.32rem"}}>
 					  	<Button

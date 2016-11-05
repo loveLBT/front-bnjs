@@ -13,20 +13,19 @@
 	transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .productitem .slider .slider_cell{
-	height: 8.0rem;
+	height: 7.6rem;
 	transform: translate3d(0,0,0);
 	-ms-transform: translate3d(0,0,0);
 	-webkit-transform: translate3d(0,0,0);
 }
 .productitem .slider .slider-item{
-	-webkit-box-flex: none;
-    -moz-flex-grow: none;
-	box-flex: none;
-    flex-grow: none; 
-    flex-shrink: none; 
-	flex: none;
-	display: block;
 	width: 100%;
+	height: 100%;
+	display: block;
+	-webkit-box-flex: none;
+    -moz-flex: none;
+    -webkit-flex: none;  
+	flex: none;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: center;

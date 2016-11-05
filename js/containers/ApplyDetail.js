@@ -3,27 +3,16 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {UserTop,Panel,Toast} from "../components"
+import {UserTop,Panel,Toast,Scroll} from "../components"
 
 class ApplyDetail extends Component{
-	constructor(props){
-		super(props)
-
-		this.state={
-			items:"",
-		}
-	}
 	componentWillMount(){
+		this.getApplydetail()
+	}
+	getApplydetail(){
 		const {actions}=this.props
 		const applydetailUrl=apiUrl+"/WSMyCustomerRegRequestDetail?userID="+this.props.params.id
 		actions.fetchPosts("applydetail",applydetailUrl)
-	}
-	componentWillReceiveProps(nextProps){
-		if(this.props.posts!==nextProps.posts && !!nextProps.posts.applydetail){
-			this.setState({
-				items:nextProps.posts.applydetail.result
-			})
-		}
 	}
 	handleTouchAgree(){
 		const {actions}=this.props
@@ -46,28 +35,28 @@ class ApplyDetail extends Component{
 	}
 	render(){
 		document.title="申请详情"
-		const {items}=this.state
+		const {applydetail}=this.props
 		return (
-			<div className="applydetail">
-				{!!items && 
+			<div className="applydetail" style={{position:"relative",height:"100%",width:"100%"}}>
+				{applydetail && 
 					<div>
 						<UserTop 
 							className="writeBg" 
 							hasStateCell={true}
 							state={0}
 							hasBeAuth={false}
-							userData={items}
+							userData={applydetail.result}
 							auditingUrl={"/WSMyCustomerRegRequestCheck?userID="+this.props.params.id+"&isPass="}
 							handleTouchAgree={this.handleTouchAgree.bind(this)}
 							handleTouchReject={this.handleTouchReject.bind(this)}
 						/>
 						<div className="data_cell">
 							<div className="contact borderBottom">
-								<Panel title="微信" text={items.weiXingH} />
+								<Panel title="微信号" text={applydetail.result.weiXingH} hasBorder={true} />
 							</div>
 							<div className="car borderBottom">
-								<Panel title="身份证号码" text={items.sfzh} />
-								<Panel title="身份证照片" carImg={items.sfzhZM} carReverseImg={items.sfzhFM} hasCarImg={true} />
+								<Panel title="身份证号码" text={applydetail.result.sfzh} />
+								<Panel title="身份证照片" carImg={applydetail.result.sfzhZMThumb} carReverseImg={applydetail.result.sfzhFMThumb} hasCarImg={true} />
 							</div>
 						</div>
 					</div>
@@ -78,8 +67,14 @@ class ApplyDetail extends Component{
 }
 
 const mapStateToProps=state=>{
+	const {posts}=state
+	const {
+		isFetching,
+		applydetail
+	}=posts
 	return {
-		posts:state.posts
+		isFetching,
+		applydetail
 	}
 }
 

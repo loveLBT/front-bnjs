@@ -1,16 +1,32 @@
 import React,{Component} from 'react'
-import {ProductItem,Button,Loading,Toast} from '../components'
+import * as actions from '../actions'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {ProductItem,Button,Loading,Toast,Auth} from '../components'
 
 class BackProduct extends Component{
+	componentWillMount(){
+		this.getBackProduct()
+	}
+	getBackProduct(){
+		const {actions}=this.props
+		const backproductUrl=apiUrl+"/WSMyAccountData"
+		actions.fetchPosts("backproduct",backproductUrl)
+	}
 	handleTouchEnd(){
 		Toast.tip("暂未开放，敬请期待")
 	}
 	render(){
+		document.title="退货"
+		const {backproduct}=this.props
+		console.log(backproduct)
 		return (
 			<div className="backproduct">
-				<div className="count_cell flex-ai">
-					<p>总量：<span style={{marginRight:'0.32rem'}} className="red">暂无数据</span>库存：<span className="red">暂无数据</span></p>
-				</div>
+				{backproduct &&
+					<div className="count_cell flex-ai">
+						<p className="fontStyle_143">总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{backproduct.result.AllSumPurchase}</span>当前库存：<span className="red">{backproduct.result.AllStock}盒</span></p>
+					</div>
+				}
 				<div className="btn_center_cell">
 				  	<Button
 				  		handleTouchEnd={this.handleTouchEnd.bind(this)}
@@ -24,5 +40,20 @@ class BackProduct extends Component{
 	}
 }
 
+const mapStateToProps=state=>{
+	const {posts}=state
+	const {
+		isFetching,
+		backproduct,
+	}=posts
+	return {
+		isFetching,
+		backproduct,
+	}
+}
 
-export default BackProduct
+const mapDispatchToProps=(dispatch)=>({
+	actions:bindActionCreators(actions,dispatch)
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(BackProduct) 

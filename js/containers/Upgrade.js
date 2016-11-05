@@ -14,13 +14,10 @@ class Upgrade extends Component{
 		this.state={
 			index:0,
 			loading:false,
-			btnText:"升级"
 		}
 	}
 	componentWillMount(){
-		if(!this.props.upgrade){
-			this.getUpgrade()
-		}
+		this.getUpgrade()
 	}
 	getUpgrade(){
 		const {actions}=this.props
@@ -36,18 +33,17 @@ class Upgrade extends Component{
 		const {index}=this.state
 		const {upgrade,actions}=this.props
 		if(upgrade.result.upgradeProducts[index].upGrade==1){
-			this.setState({
-				loading:true
-			})
+			this.setState({loading:true})
 			const upproductUrl=apiUrl+"/WSMyUpGrade?productId="+upgrade.result.upgradeProducts[index].productId
 			this.timer=setTimeout(()=>{
 				actions.fetchPosts("upproduct",upproductUrl)
 				.then(data=>{
+					this.setState({loading:false})
 					if(data.posts.status==="success"){
-						Toast.tip("升级申请已提交")
+						Toast.tip(data.posts.result.message)
 						this.getUpgrade()
 					}else{
-						Toast.tip("升级失败")
+						Toast.tip(data.posts.result.message)
 					}
 				})
 			},2000)
@@ -60,6 +56,7 @@ class Upgrade extends Component{
 		document.title="产品升级"
 		const {index}=this.state
 		const {upgrade}=this.props
+		console.log(upgrade)
 		let items=!upgrade?null:upgrade.result.upgradeProducts
 		return (
 			<div className="upgrade">
@@ -82,7 +79,7 @@ class Upgrade extends Component{
 						<div className="btn_big_cell">
 							<Button
 							  	btnCn={classnames("btn_big btn_radius",{btn_danger:items[index].upGrade==1},{btn_disabled:items[index].upGrade!=1})}
-							  	text="升级"
+							  	text={items[index].upGrade==2?"升级中...":"升级"}
 							  	handleTouchEnd={this.handleTouchEnd.bind(this)}
 							  >
 						 	 </Button>

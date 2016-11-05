@@ -46,7 +46,6 @@ class MyTea extends Component{
 	render(){
 		document.title="我的团队"
 		const {mytea}=this.props
-		console.log(mytea)
 		return (
 			<div className="mytea">
 				{mytea &&

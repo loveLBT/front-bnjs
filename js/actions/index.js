@@ -1,5 +1,6 @@
 import * as types from "../constants/ActionTypes"
-import 'whatwg-fetch'
+import {polyfill} from 'es6-promise'
+import fetch from 'isomorphic-fetch'
 
 
 export const requestPosts = (postsTitle) => ({
@@ -15,13 +16,15 @@ export const receivePosts = (postsTitle, json) => ({
 
 export const fetchPosts = (postsTitle,url) => dispatch => {
   dispatch(requestPosts(postsTitle))
-  return fetch(url,{
-  	  headers:{
-  	  	'Cookie':'ASP.NET_SessionId=1i2lk5osm53kmbbroctyjsor'
-  	  },
-	  credentials: 'include'
-	})
+  return fetch(url)
     .then(response => response.json())
-    .then(json => dispatch(receivePosts(postsTitle, json)))
+    .then(json => {
+    	if(!json.result.result.error_code=="110"){
+        window.location.replace("/login")
+        return false
+    	}else {
+        return dispatch(receivePosts(postsTitle, json))
+      }
+    })
 }
 

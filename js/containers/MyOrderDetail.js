@@ -6,9 +6,7 @@ import { OrderItem,Scroll } from '../components'
 
 class OrderDetail extends Component{
 	componentWillMount(){
-		if(!this.props.myorderdetail){
-			this.getMyOrderDetail()
-		}
+		this.getMyOrderDetail()
 	}
 	getMyOrderDetail(){
 		const {actions}=this.props
@@ -19,7 +17,6 @@ class OrderDetail extends Component{
 		document.title="订单详情"
 		let btnCount=[{btnText:"退货"}]
 		const {myorderdetail}=this.props
-		console.log(myorderdetail)
 		return (
 			<div className="orderdetail">
 				{myorderdetail && 
@@ -32,7 +29,7 @@ class OrderDetail extends Component{
 								</div>
 							</div>
 							<div className="item borderBottom">
-								<h3 className="title flex-ai">收获人</h3>
+								<h3 className="title flex-ai">收货人</h3>
 								<div className="body">
 									<p className="txt">{myorderdetail.result.ShipName}</p>
 								</div>
@@ -40,7 +37,7 @@ class OrderDetail extends Component{
 							<div className="item borderBottom">
 								<h3 className="title flex-ai">联系电话</h3>
 								<div className="body">
-									<p className="txt">{myorderdetail.result.ShipCellPhone}</p>
+									<a href={"tel:"+myorderdetail.result.ShipCellPhone} className="txt">{myorderdetail.result.ShipCellPhone}</a>
 								</div>
 							</div>
 							<div className="item borderBottom">
@@ -52,13 +49,13 @@ class OrderDetail extends Component{
 							<div className="item borderBottom">
 								<h3 className="title flex-ai">拿货来源</h3>
 								<div className="body">
-									<p className="txt">{myorderdetail.result.UpTrueName}  （<span className="blue">{myorderdetail.result.UpPhone}</span>）</p>
+									<a href={"tel:"+myorderdetail.result.UpPhone} className="txt">{myorderdetail.result.UpTrueName}  （<span className="blue">{myorderdetail.result.UpPhone}</span>）</a>
 								</div>
 							</div>
 							<div className="item borderBottom">
 								<h3 className="title flex-ai">物流单号</h3>
 								<div className="body">
-									<p className="txt">{myorderdetail.result.orderCode}</p>
+									<p className="txt">{myorderdetail.result.ShipOrderNumber}</p>
 								</div>
 							</div>
 						</div>
@@ -86,28 +83,3 @@ const mapDispatchToProps=(dispatch)=>({
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(OrderDetail)
-
-/*<div className="item borderBottom">
-					<h3 className="title flex-ai">收货地址</h3>
-					<div className="body">
-						<p className="txt">{item.ShipAddressRegion}</p>
-					</div>
-				</div>
-				<div className="item borderBottom">
-					<h3 className="title flex-ai">收货地址</h3>
-					<div className="body">
-						<OrderItem style={{marginBottom:0}} item={this.state.item} />
-					</div>
-				</div>
-				<div className="item borderBottom">
-					<h3 className="title flex-ai">拿货来源</h3>
-					<div className="body">
-						<p className="txt">{item.UpTrueName}  （<span className="blue">{item.UpPhone}</span>）</p>
-					</div>
-				</div>
-				<div className="item borderBottom">
-					<h3 className="title flex-ai">物流单号</h3>
-					<div className="body">
-						<p className="txt">{item.orderCode}</p>
-					</div>
-				</div>*/

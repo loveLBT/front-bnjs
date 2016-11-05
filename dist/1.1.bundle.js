@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 266:
+/***/ 269:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {

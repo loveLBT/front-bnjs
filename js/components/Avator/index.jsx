@@ -26,13 +26,14 @@ class Avator extends Component{
 	}
 	render(){
 		const {avatorUrl}=this.state
+		const {isUpload}=this.props
 		return (
 			<div className="avator">
-				
+				{isUpload && 
 					<form ref="form1" name="form1" id="form1" >
 						<input onChange={this.handleUpload.bind(this)} name="file" type="file"/>
 					</form>
-				
+				}
 				<img ref="avator" width="100%" height="100%" src={hostUrl+avatorUrl} alt="用户头像"/>
 				}
 			</div>

@@ -16,7 +16,7 @@
 .tabbar:before{
 	content:"";
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 0;
 	width: 100%;
 	height: 0.026667rem;
@@ -24,6 +24,7 @@
 }
 .tabbar_item{
 	text-align: center;
+	display: block;
 }
 .tabbar_item .tabbar_label{
 	color: #8c8c8c;
