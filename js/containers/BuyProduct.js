@@ -128,9 +128,16 @@ class BuyProduct extends Component{
 		},2000)
 
 	}
+	handleFocus(){
+		document.getElementsByClassName("dashboard")[0].style.overflow="visible"
+	}
+	handleBlur(){
+		document.getElementsByClassName("dashboard")[0].style.overflow="hidden"
+	}
 	render(){
 		document.title="商品列表"
 		const {items,index,price,count}=this.state
+		console.log(count)
 		return (
 			<div className="buyproduct">
 				{items[index] &&
@@ -151,7 +158,7 @@ class BuyProduct extends Component{
 							</p>
 							<div className="content flex-1">
 								<span style={items[index] && {color:count<=items[index].minConsumption?"#ccc":"#333"}} onTouchEnd={this.handleDecrement.bind(this)}>-</span>
-								<input ref="count" onChange={this.handleChangeCount.bind(this)} type="number" defaultValue={count} />
+								<input onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)} ref="count" onChange={this.handleChangeCount.bind(this)} type="number" defaultValue={count} />
 								<span onTouchEnd={this.handleIncrement.bind(this)}>+</span>
 							</div>
 						</div>

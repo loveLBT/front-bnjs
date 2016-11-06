@@ -5488,7 +5488,7 @@ webpackJsonp([21],{
 
 
 	// module
-	exports.push([module.id, ".slider-tab{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\toverflow: hidden;\r\n}\r\n.slider-tab .transition{\r\n\ttransition-duration: 500ms; \r\n\ttransition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\r\n\t-webkit-transition-duration: 500ms; \r\n\t-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\r\n\t-ms-transition-duration: 500ms; \r\n\t-ms-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\r\n}\r\n.slider-tab .nav{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\theight: 1.066667rem;\r\n\tz-index: 1000;\r\n\tbackground: #fff;\r\n}\r\n.slider-tab .nav:after{\r\n\tcontent: \"\";\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\twidth: 100%;\r\n\theight: 2px;\r\n\tbackground: #f3f3f3;\r\n}\r\n[data-dpr=\"2\"] .slider-tab .nav:after{\r\n\theight: 0.053333rem;\r\n}\r\n[data-dpr=\"3\"] .slider-tab .nav:after{\r\n\theight: 6px;\r\n}\r\n.slider-tab .nav a{\r\n\tdisplay: block;\r\n\twidth: 50%;\r\n\tcolor: #333;\r\n\tfont-size: 16px;\r\n\ttext-align: center;\r\n}\r\n[data-dpr=\"2\"] .slider-tab .nav a{\r\n\tfont-size: 0.426667rem;\r\n}\r\n[data-dpr=\"3\"] .slider-tab .nav a{\r\n\tfont-size: 48px;\r\n}\r\n.slider-tab .nav .progress{\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\twidth: 50%;\r\n\theight: 2px;\r\n\tbackground: #e34949;\r\n\tz-index: 1001;\r\n}\r\n[data-dpr=\"2\"] .slider-tab .nav .progress{\r\n\theight: 0.053333rem;\r\n}\r\n[data-dpr=\"3\"] .slider-tab .nav .progress{\r\n\theight: 6px;\r\n}\r\n.slider-tab .group{\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\ttransform: translate3d(0,0,0);\r\n\t-ms-transform: translate3d(0,0,0);\r\n\t-webkit-transform: translate3d(0,0,0);\r\n\tz-index: 999;\r\n}\r\n.slider-tab .group .items{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tdisplay: block;\r\n\t-webkit-box-flex: none;\r\n    -moz-flex: none;\r\n    -webkit-flex: none;  \r\n\tflex: none;\r\n\tpadding-bottom: 2.9rem;\r\n}\r\n", ""]);
+	exports.push([module.id, ".slider-tab{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\toverflow: hidden;\r\n}\r\n.slider-tab .transition{\r\n\ttransition-duration: 500ms; \r\n\ttransition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\r\n\t-webkit-transition-duration: 500ms; \r\n\t-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\r\n\t-ms-transition-duration: 500ms; \r\n\t-ms-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);\r\n}\r\n.slider-tab .nav{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\theight: 1.066667rem;\r\n\tz-index: 1000;\r\n\tbackground: #fff;\r\n}\r\n.slider-tab .nav:after{\r\n\tcontent: \"\";\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\twidth: 100%;\r\n\theight: 2px;\r\n\tbackground: #f3f3f3;\r\n}\r\n[data-dpr=\"2\"] .slider-tab .nav:after{\r\n\theight: 0.053333rem;\r\n}\r\n[data-dpr=\"3\"] .slider-tab .nav:after{\r\n\theight: 6px;\r\n}\r\n.slider-tab .nav a{\r\n\tdisplay: block;\r\n\twidth: 50%;\r\n\tcolor: #333;\r\n\tfont-size: 16px;\r\n\ttext-align: center;\r\n}\r\n[data-dpr=\"2\"] .slider-tab .nav a{\r\n\tfont-size: 0.426667rem;\r\n}\r\n[data-dpr=\"3\"] .slider-tab .nav a{\r\n\tfont-size: 48px;\r\n}\r\n.slider-tab .nav .progress{\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\twidth: 50%;\r\n\theight: 2px;\r\n\tbackground: #e34949;\r\n\tz-index: 1001;\r\n}\r\n[data-dpr=\"2\"] .slider-tab .nav .progress{\r\n\theight: 0.053333rem;\r\n}\r\n[data-dpr=\"3\"] .slider-tab .nav .progress{\r\n\theight: 6px;\r\n}\r\n.slider-tab .group{\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\ttransform: translate3d(0,0,0);\r\n\t-ms-transform: translate3d(0,0,0);\r\n\t-webkit-transform: translate3d(0,0,0);\r\n\tz-index: 999;\r\n}\r\n.slider-tab .group .items{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\tdisplay: block;\r\n\t-webkit-box-flex: none;\r\n    -moz-flex: none;\r\n    -webkit-flex: none;  \r\n\tflex: none;\r\n\tpadding-bottom: 3.2rem;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -6088,38 +6088,30 @@ webpackJsonp([21],{
 				return _react2.default.createElement(
 					'div',
 					{ className: 'item' },
-					!!items && _react2.default.createElement(
+					_react2.default.createElement(
 						'div',
 						null,
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false })
+						!!items && items.map(function (item, i) {
+							return _react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + item.orderId, key: i, item: item, hasFooter: false });
+						})
 					)
 				);
 			}
 		}, {
 			key: 'renderItem2',
 			value: function renderItem2() {
-				var _props = this.props;
-				var shipmentrecord = _props.shipmentrecord;
-				var cargorecord = _props.cargorecord;
+				var shipmentrecord = this.props.shipmentrecord;
 
-				var items = !cargorecord ? null : cargorecord.result.orderList;
+				var items = !shipmentrecord ? null : shipmentrecord.result.orderList;
 				return _react2.default.createElement(
 					'div',
 					{ className: 'item' },
-					!!items && _react2.default.createElement(
+					_react2.default.createElement(
 						'div',
 						null,
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false }),
-						_react2.default.createElement(_components.OrderItem, { linkTo: /myorder/ + items[0].orderId, item: items[0], hasFooter: false })
+						!!items && items.map(function (item, i) {
+							return _react2.default.createElement(_components.OrderItem, { linkTo: /userorder/ + item.orderId, key: i, item: item, hasFooter: false });
+						})
 					)
 				);
 			}

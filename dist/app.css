@@ -1028,6 +1028,7 @@ a{
 .buyproduct{
 	position: relative;
 	width: 100%;
+	background: #f2f2f2;
 	padding: 0.32rem;
 	z-index: 1002;
 }

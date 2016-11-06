@@ -9,6 +9,10 @@ class  Popup extends Component{
 	handlePopupSend(){
 		const  {orderId,actions}=this.props
 		const ordernumber=this.refs.ordernumber.value
+		if(ordernumber==""){
+			Toast.tip("订单号不能为空")
+			return false
+		}
 		const sendOederUrl=apiUrl+"/WSCustomerOrderShip?orderId="+orderId+"&shipOrderNumber="+ordernumber
 		this.props.setLoading(true,"正在发货，请等待")
 		this.props.closePopup()

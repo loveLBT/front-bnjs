@@ -63,9 +63,7 @@ class MyAddress extends Component{
 			return false
 		}
 		const submitaddressUrl=apiUrl+"/WSEditAddress?name="+name+"&cellphone="+cellphone+"&code="+regionCode+"&address="+address
-		this.setState({
-			loading:true
-		})
+		/*this.setState({loading:true})
 		this.timer=setTimeout(()=>{
 			actions.fetchPosts("submitaddress",submitaddressUrl)
 				.then(data=>{
@@ -77,7 +75,7 @@ class MyAddress extends Component{
 						Toast.tip(data.posts.result.message)
 					}
 				})
-		},2000)
+		},2000)*/
 	}
 	handleChange(name,value){
 		const {myaddress}=this.state
@@ -102,7 +100,7 @@ class MyAddress extends Component{
 	render(){
 		document.title="我的地址"
 		const {myaddress}=this.state
-		console.log(myaddress)
+		console.log(this.props.myaddress)
 		return (
 			<div className="myaddress" style={{width:"100%",height:"100%"}}>
 				<UserTop isUpload={true} userData={this.state.userData} />
