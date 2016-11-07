@@ -1650,7 +1650,7 @@ webpackJsonp([5],{
 
 
 	// module
-	exports.push([module.id, ".orderitem{\r\n\twidth: 100%;\r\n\tbackground: #fff;\r\n\tpadding-left: 0.32rem;\r\n\tmargin-bottom: 0.266667rem;\r\n}\r\n.orderitem .header{\r\n\theight: 36px;\r\n\tfont-size: 14px;\r\n\tcolor: #333;\r\n}\r\n[data-dpr=\"2\"] .orderitem .header{\r\n\theight: 0.96rem;\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .header{\r\n\theight: 108px;\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .content {\r\n\tpadding: 0.32rem 0;\r\n}\r\n.orderitem .content .wares_img{\r\n\twidth: 80px;\r\n\theight: 80px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_img{\r\n\twidth: 2.133333rem;\r\n\theight: 2.133333rem;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_img{\r\n\theight: 240px;\r\n\twidth: 240px;\r\n}\r\n.orderitem .content .wares_present{\r\n\tmargin-left: 0.32rem;\r\n}\r\n.orderitem .content .wares_present .name{\r\n\tcolor: #333;\r\n\tfont-size: 17px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 34px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 51px;\r\n}\r\n.orderitem .content .wares_present .number{\r\n\tcolor: #333;\r\n\tfont-size: 16px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 32px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 48px;\r\n}\r\n.orderitem .content .wares_present .price{\r\n\tcolor: #333;\r\n\tfont-size: 14px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .footer{\r\n\theight: 52px;\r\n\tpadding-right: 0.32rem;\r\n}\r\n[data-dpr=\"2\"] .orderitem .footer{\r\n\theight: 1.386667rem;\r\n}\r\n[data-dpr=\"3\"] .orderitem .footer{\r\n\theight: 156px;\r\n}\r\n.orderitem .footer .state{\r\n\tcolor: #ff9900;\r\n\tfont-size: 15px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .footer .state{\r\n\tfont-size: 30px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .footer .state{\r\n\tfont-size: 45px;\r\n}\r\n", ""]);
+	exports.push([module.id, ".orderitem{\r\n\twidth: 100%;\r\n\tbackground: #fff;\r\n\tpadding-left: 0.32rem;\r\n\tmargin-bottom: 0.266667rem;\r\n}\r\n.orderitem .header{\r\n\theight: 0.96rem;\r\n\tfont-size: 14px;\r\n\tcolor: #333;\r\n}\r\n[data-dpr=\"2\"] .orderitem .header{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .header{\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .content {\r\n\tpadding: 0.32rem 0;\r\n}\r\n.orderitem .content .wares_img{\r\n\twidth: 2.133333rem;\r\n\theight: 2.133333rem;\r\n}\r\n.orderitem .content .wares_present{\r\n\tmargin-left: 0.32rem;\r\n}\r\n.orderitem .content .wares_present .name{\r\n\tcolor: #333;\r\n\tfont-size: 17px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 34px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 51px;\r\n}\r\n.orderitem .content .wares_present .number{\r\n\tcolor: #333;\r\n\tfont-size: 16px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 32px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 48px;\r\n}\r\n.orderitem .content .wares_present .price{\r\n\tcolor: #333;\r\n\tfont-size: 14px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .footer{\r\n\theight: 1.386667rem;\r\n\tpadding-right: 0.32rem;\r\n}\r\n.orderitem .footer .state{\r\n\tcolor: #ff9900;\r\n\tfont-size: 15px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .footer .state{\r\n\tfont-size: 30px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .footer .state{\r\n\tfont-size: 45px;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -1690,9 +1690,9 @@ webpackJsonp([5],{
 
 	var _reactIscroll2 = _interopRequireDefault(_reactIscroll);
 
-	var _iscroll = __webpack_require__(309);
+	var _iscrollProbe = __webpack_require__(309);
 
-	var _iscroll2 = _interopRequireDefault(_iscroll);
+	var _iscrollProbe2 = _interopRequireDefault(_iscrollProbe);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1722,7 +1722,7 @@ webpackJsonp([5],{
 					_reactIscroll2.default,
 					{
 						style: scrollStyle,
-						iScroll: _iscroll2.default,
+						iScroll: _iscrollProbe2.default,
 						options: options
 					},
 					this.props.children
@@ -2547,6 +2547,9 @@ webpackJsonp([5],{
 
 		this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
 
+		if ( this.options.probeType == 3 ) {
+			this.options.useTransition = false;	}
+
 	// INSERT POINT: NORMALIZATION
 
 		// Some defaults
@@ -2757,13 +2760,19 @@ webpackJsonp([5],{
 			this._translate(newX, newY);
 
 	/* REPLACE START: _move */
-
 			if ( timestamp - this.startTime > 300 ) {
 				this.startTime = timestamp;
 				this.startX = this.x;
 				this.startY = this.y;
+
+				if ( this.options.probeType == 1 ) {
+					this._execEvent('scroll');
+				}
 			}
 
+			if ( this.options.probeType > 1 ) {
+				this._execEvent('scroll');
+			}
 	/* REPLACE END: _move */
 
 		},
@@ -3380,6 +3389,10 @@ webpackJsonp([5],{
 
 			this.scrollTo(newX, newY, 0);
 
+			if ( this.options.probeType > 1 ) {
+				this._execEvent('scroll');
+			}
+
 	// INSERT POINT: _wheel
 		},
 
@@ -3768,7 +3781,7 @@ webpackJsonp([5],{
 				if ( now >= destTime ) {
 					that.isAnimating = false;
 					that._translate(destX, destY);
-
+					
 					if ( !that.resetPosition(that.options.bounceTime) ) {
 						that._execEvent('scrollEnd');
 					}
@@ -3785,11 +3798,16 @@ webpackJsonp([5],{
 				if ( that.isAnimating ) {
 					rAF(step);
 				}
+
+				if ( that.options.probeType == 3 ) {
+					that._execEvent('scroll');
+				}
 			}
 
 			this.isAnimating = true;
 			step();
 		},
+
 		handleEvent: function (e) {
 			switch ( e.type ) {
 				case 'touchstart':
@@ -3833,7 +3851,7 @@ webpackJsonp([5],{
 					this._key(e);
 					break;
 				case 'click':
-					if ( this.enabled && !e._constructed && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
+					if ( this.enabled && !e._constructed ) {
 						e.preventDefault();
 						e.stopPropagation();
 					}
@@ -4039,6 +4057,15 @@ webpackJsonp([5],{
 			newY = this.y + deltaY;
 
 			this._pos(newX, newY);
+
+
+			if ( this.scroller.options.probeType == 1 && timestamp - this.startTime > 300 ) {
+				this.startTime = timestamp;
+				this.scroller._execEvent('scroll');
+			} else if ( this.scroller.options.probeType > 1 ) {
+				this.scroller._execEvent('scroll');
+			}
+
 
 	// INSERT POINT: indicator._move
 

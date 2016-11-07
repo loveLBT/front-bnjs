@@ -382,37 +382,20 @@ a{
 .btn_big_cell{
 	position: relative;
 	width: 100%;
-	padding: 0 12px;
+	padding: 0 0.32rem;
 }
-[data-dpr="2"] .btn_big_cell{
-	padding: 0 24px;
-}
-[data-dpr="3"] .btn_big_cell{
-	padding: 0 36px;
-}
+
 .btn_center_cell{
 	position: relative;
 	width: 100%;
-	padding: 12px 87px;
+	padding: 0.32rem 2.32rem;
 	background: #f2f2f2;
 	z-index: 999;
 }
-[data-dpr="2"] .btn_center_cell{
-	padding: 0.32rem 2.32rem;
-}
-[data-dpr="3"] .btn_center_cell{
-	padding: 36px 268px;
-}
-
 .btn_small_cell{
-	width: 68px;
-}
-[data-dpr="2"] .btn_small_cell{
 	width: 1.813333rem;
 }
-[data-dpr="3"] .btn_small_cell{
-	width: 204px;
-}
+
 
 .link_to{
 	text-align: center;
@@ -428,14 +411,8 @@ a{
 	color: #03a9f5;
 }
 .scroll_cell{
-	padding-bottom:188px;
-}  
-[data-dpr="2"] .scroll_cell{
 	padding-bottom: 5rem;
-}
-[data-dpr="3"] .scroll_cell{
-	padding-bottom: 564px;
-}
+}  
 
 /*            首面样式          */
 
@@ -620,19 +597,15 @@ a{
 }
 /*            登陆页面样式          */
 .login .radio_cell{
-	height: 1.466667rem;
-	padding: 0 12px;
-}
-[data-dpr="2"] .login .radio_cell{
-	padding: 0 24px;
-}
-[data-dpr="3"] .login .radio_cell{
-	padding: 0 36px;
+	padding: 0.32rem;
 }
 .login .radio_cell .remember{
+	width: 50%;
 	text-align: right;
 	color: #03a9f5;
 	font-size: 16px;
+	display: inline-block;
+	text-align: right;
 }
 [data-dpr="2"] .login .radio_cell .remember{
 	font-size: 32px;
@@ -951,7 +924,6 @@ a{
 .data_cell{
 	position: relative;
 	width: 100%;
-	z-index: 1001;
 	background: #f2f2f2;
 }
 .data_cell .contact,
@@ -1030,7 +1002,6 @@ a{
 	width: 100%;
 	background: #f2f2f2;
 	padding: 0.32rem;
-	z-index: 1002;
 }
 .buyproduct_cell{
 	background: #fff;

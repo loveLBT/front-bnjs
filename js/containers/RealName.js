@@ -14,7 +14,7 @@ class RealName extends Component{
 			trueName:"",
 			sfzh:"",
 			loading:false,
-			userData:Auth.getUserData()
+			userData:Auth.getUserData(),
 		}
 	}
 	componentWillMount(){
@@ -84,6 +84,63 @@ class RealName extends Component{
 		newState[name]=val
 		this.setState(newState)
 	}
+	renderRealName(){
+		const {realname}=this.props
+		const CheckState=!realname?null:realname.result.CheckState
+		if(CheckState){
+			switch(CheckState) {
+				case 0:
+				case 1:
+					return <div>
+								<div className="data_cell">
+									<div className="contact borderBottom">
+										<Panel title="微信号" text={realname.result.weiXingH} />
+									</div>
+									<div className="car borderBottom">
+										<Panel title="真实姓名"   hasBorder={true} text={realname.result.trueName}  />
+										<Panel title="身份证号" text={realname.result.sfzh}   />
+									</div>
+									<div className="car borderBottom">
+										<Panel title="身份证照片" carImg={realname.result.sfzhZMThumb} carReverseImg={realname.result.sfzhFMThumb} hasCarImg={true} />
+									</div>
+								</div>
+								<div className="btn_big_cell" style={{marginTop:"0.32rem"}}>
+								  	<Button 
+								  		btnCn="btn_big btn_radius btn_disabled"
+								  		text={CheckState==1?"已认证":"申请中"}
+								  	>
+								  	</Button>
+								</div>
+							</div>
+					break;
+				case -1:
+				case -2:
+					return <div className="data_cell">
+								<div className="contact borderBottom">
+									<Panel title="微信号"  input={"你的微信号"} maxlength="20" handleChange={this.handleChange.bind(this,"weiXingH")} />
+								</div>
+								<div className="car borderBottom">
+									<Panel title="真实姓名"   hasBorder={true} input={"你的真实姓名"} handleChange={this.handleChange.bind(this,"trueName")} />
+									<Panel maxlength="17" title="身份证号" input={"你的身份证号码"} type="number" handleChange={this.handleChange.bind(this,"sfzh")}  />
+								</div>
+								<div className="car borderBottom">
+									<Panel title="身份证照片" UploadImg={true}   />
+								</div>
+								<div className="btn_big_cell" style={{marginTop:"0.32rem"}}>
+								  	<Button 
+								  		handleTouchEnd={this.handleTouchEnd.bind(this)}
+								  		btnCn="btn_big btn_radius btn_danger"
+								  		text="保存并提交"
+								  	>
+								  	</Button>
+								</div>
+							</div>
+					break;
+				default:
+					return <div></div>
+			}
+		}
+	}
 	render(){
 		document.title="实名认证"
 		const {realname}=this.props
@@ -91,51 +148,7 @@ class RealName extends Component{
 		return (
 			<div className="realname" style={{width:"100%",height:"100%"}}>
 				<UserTop isUpload={true} userData={this.state.userData} />
-				{CheckState==0||CheckState==1 &&
-					<div>
-						<div className="data_cell">
-							<div className="contact borderBottom">
-								<Panel title="微信号" text={realname.result.weiXingH} />
-							</div>
-							<div className="car borderBottom">
-								<Panel title="真实姓名"   hasBorder={true} text={realname.result.trueName}  />
-								<Panel title="身份证号" text={realname.result.sfzh}   />
-							</div>
-							<div className="car borderBottom">
-								<Panel title="身份证照片" carImg={realname.result.sfzhZMThumb} carReverseImg={realname.result.sfzhFMThumb} hasCarImg={true} />
-							</div>
-						</div>
-						<div className="btn_big_cell" style={{marginTop:"0.32rem"}}>
-						  	<Button 
-						  		btnCn="btn_big btn_radius btn_disabled"
-						  		text={CheckState==1?"已认证":"申请中"}
-						  	>
-						  	</Button>
-						</div>
-					</div>
-				}
-				{CheckState==-2||CheckState==-1 &&
-					<div className="data_cell">
-						<div className="contact borderBottom">
-							<Panel title="微信号"  input={"你的微信号"} maxlength="20" handleChange={this.handleChange.bind(this,"weiXingH")} />
-						</div>
-						<div className="car borderBottom">
-							<Panel title="真实姓名"   hasBorder={true} input={"你的真实姓名"} handleChange={this.handleChange.bind(this,"trueName")} />
-							<Panel maxlength="17" title="身份证号" input={"你的身份证号码"} type="number" handleChange={this.handleChange.bind(this,"sfzh")}  />
-						</div>
-						<div className="car borderBottom">
-							<Panel title="身份证照片" UploadImg={true}   />
-						</div>
-						<div className="btn_big_cell" style={{marginTop:"0.32rem"}}>
-						  	<Button 
-						  		handleTouchEnd={this.handleTouchEnd.bind(this)}
-						  		btnCn="btn_big btn_radius btn_danger"
-						  		text="保存并提交"
-						  	>
-						  	</Button>
-						</div>
-					</div>
-				}
+				{this.renderRealName()}
 				<TabBar/>
 				{this.state.loading && 
 					<Loading text="正在提交请等待" />

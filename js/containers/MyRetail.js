@@ -28,7 +28,7 @@ class MyRetail extends Component{
 					 />
 				</div>
 				<Scroll>
-					<div className="scroll_cell">
+					<div className="scroll_cell" style={{paddingBottom:"5.8rem"}}>
 						{items &&
 							items.map((item,i)=>{
 								return (

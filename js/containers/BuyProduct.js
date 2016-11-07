@@ -137,7 +137,6 @@ class BuyProduct extends Component{
 	render(){
 		document.title="商品列表"
 		const {items,index,price,count}=this.state
-		console.log(count)
 		return (
 			<div className="buyproduct">
 				{items[index] &&

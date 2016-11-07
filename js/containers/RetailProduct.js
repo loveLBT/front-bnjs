@@ -8,32 +8,45 @@ import {ProductItem,Button,Loading,Toast} from "../components"
 
 
 
-class BuyProduct extends Component{
+class RetailProduct extends Component{
 	constructor(props){
 		super(props)
 
 		this.state={
 			items:[],
 			index:0,
-			count:"",
-			price:"",
+			count:0,
+			price:0,
 			loading:false
 		}
 	}
 	componentWillMount(){
-		const {actions}=this.props
-		const retailProductUrl=apiUrl+"/WSRetailSellProductList"
-		actions.fetchPosts("retailproduct",retailProductUrl)
+		const {index}=this.state
+		const {retailproduct}=this.props
+		if(!retailproduct){
+			this.getRetailProduct()
+		}else{
+			this.setState({
+				items:retailproduct.result.productlist,
+				count:retailproduct.result.productlist[index].minConsumption,
+				price:retailproduct.result.productlist[index].price
+			})
+		}
 	}
 	componentWillReceiveProps(nextProps){
 		const {index}=this.state
-		if(this.props.posts!==nextProps.posts && !!nextProps.posts.retailproduct){
+		if(nextProps.retailproduct){
 			this.setState({
-				items:nextProps.posts.retailproduct.result.productlist,
-				count:nextProps.posts.retailproduct.result.productlist[index].minConsumption,
-				price:nextProps.posts.retailproduct.result.productlist[index].price
+				items:nextProps.retailproduct.result.productlist,
+				count:nextProps.retailproduct.result.productlist[index].minConsumption,
+				price:nextProps.retailproduct.result.productlist[index].price
 			})
 		}
+	}
+	getRetailProduct(){
+		const {actions}=this.props
+		const retailProductUrl=apiUrl+"/WSRetailSellProductList"
+		actions.fetchPosts("retailproduct",retailProductUrl)
 	}
 	handleDecrement(){
 		const {count,items,index}=this.state
@@ -41,14 +54,21 @@ class BuyProduct extends Component{
 			this.setState({
 				count:count-1
 			})
+			this.refs.count.value=count-1
 		}
 	}
 	handleIncrement(){
 		const {count,items,index}=this.state
 		let num=count
-		num+=1
+		num=parseInt(num)+1
+		this.refs.count.value=num
 		this.setState({
 			count:num
+		})
+	}
+	handleChangeCount(event){
+		this.setState({
+			count:event.target.value
 		})
 	}
 	changeIndex(index){
@@ -57,6 +77,7 @@ class BuyProduct extends Component{
 			count:this.state.items[index].minConsumption,
 			price:this.state.items[index].price
 		})
+		this.refs.count.value=this.state.items[index].minConsumption
 	}
 	handleTouchEnd(){
 		const {actions}=this.props
@@ -81,13 +102,19 @@ class BuyProduct extends Component{
 		},2000)
 
 	}
+	handleFocus(){
+		document.getElementsByClassName("dashboard")[0].style.overflow="visible"
+	}
+	handleBlur(){
+		document.getElementsByClassName("dashboard")[0].style.overflow="hidden"
+	}
 	render(){
 		document.title="零售列表"
 		const {index,items,count,price}=this.state
 		return (
 			<div className="buyproduct">
-				<div className="buyproduct_cell">
-					{items[index] &&
+				{items[index] &&
+					<div className="buyproduct_cell">
 						<ProductItem 
 							changeIndex={this.changeIndex.bind(this)}
 							maskText={items[index] && items[index].name}
@@ -98,26 +125,29 @@ class BuyProduct extends Component{
 								)
 							})}
 						</ProductItem>
-					}
-					<div className="nature flex-ai">
-						<p className="title fontStyle_143">
-							建议零售价：<span className="red">￥{price*count}</span>
-						</p>
-						<div className="content flex-1">
-							<span style={items[index] && {color:count<=items[index].minConsumption?"#ccc":"#333"}} onTouchEnd={this.handleDecrement.bind(this)}>-</span>
-							<input disabled type="number" placeholder={count} />
-							<span onTouchEnd={this.handleIncrement.bind(this)}>+</span>
+						<div className="nature flex-ai">
+							<p className="title fontStyle_143">
+								建议零售价：<span className="red">￥{price*count}</span>
+							</p>
+							<div className="content flex-1">
+								<span style={items[index] && {color:count<=items[index].minConsumption?"#ccc":"#333"}} onTouchEnd={this.handleDecrement.bind(this)}>-</span>
+								<input onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)} ref="count" type="number" defaultValue={count} onChange={this.handleChangeCount.bind(this)} />
+								<span onTouchEnd={this.handleIncrement.bind(this)}>+</span>
+							</div>
 						</div>
-					</div>
-					<div className="btn_big_cell">
-					  <Button
-					  	btnCn="btn_big btn_radius btn_danger"
-					  	text="零售"
-					  	handleTouchEnd={this.handleTouchEnd.bind(this)}
-					  >
-				 	 </Button>
-					</div>
-				</div>
+						<div className="btn_big_cell">
+						  <Button
+						  	btnCn="btn_big btn_radius btn_danger"
+						  	text="零售"
+						  	handleTouchEnd={this.handleTouchEnd.bind(this)}
+						  >
+					 	 </Button>
+						</div>
+					</div>		
+				}
+				
+					
+					
 				{this.state.loading &&
 					<Loading text="正在提交，请等待" />
 				}
@@ -127,8 +157,14 @@ class BuyProduct extends Component{
 }
 
 const mapStateToProps=state=>{
+	const {posts}=state
+	const {
+		isFetching,
+		retailproduct
+	}=posts
 	return {
-		posts:state.posts,
+		isFetching,
+		retailproduct
 	}
 }
 
@@ -136,4 +172,4 @@ const mapDispatchToProps=(dispatch)=>({
 	actions:bindActionCreators(actions,dispatch)
 })
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(BuyProduct) )
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(RetailProduct) )

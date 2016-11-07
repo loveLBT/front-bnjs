@@ -5,32 +5,22 @@
 	margin-bottom: 0.266667rem;
 }
 .orderitem .header{
-	height: 36px;
+	height: 0.96rem;
 	font-size: 14px;
 	color: #333;
 }
 [data-dpr="2"] .orderitem .header{
-	height: 0.96rem;
 	font-size: 28px;
 }
 [data-dpr="3"] .orderitem .header{
-	height: 108px;
 	font-size: 42px;
 }
 .orderitem .content {
 	padding: 0.32rem 0;
 }
 .orderitem .content .wares_img{
-	width: 80px;
-	height: 80px;
-}
-[data-dpr="2"] .orderitem .content .wares_img{
 	width: 2.133333rem;
 	height: 2.133333rem;
-}
-[data-dpr="3"] .orderitem .content .wares_img{
-	height: 240px;
-	width: 240px;
 }
 .orderitem .content .wares_present{
 	margin-left: 0.32rem;
@@ -66,14 +56,8 @@
 	font-size: 42px;
 }
 .orderitem .footer{
-	height: 52px;
-	padding-right: 0.32rem;
-}
-[data-dpr="2"] .orderitem .footer{
 	height: 1.386667rem;
-}
-[data-dpr="3"] .orderitem .footer{
-	height: 156px;
+	padding-right: 0.32rem;
 }
 .orderitem .footer .state{
 	color: #ff9900;

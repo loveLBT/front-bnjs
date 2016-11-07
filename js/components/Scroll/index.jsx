@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import objectAssign from 'object-assign'
 import classnames from 'classnames'
 import ReactIScroll from 'react-iscroll'
-import iScroll from 'iscroll'
+import iScroll from 'iscroll/build/iscroll-probe'
 
 class Scroll extends Component{
 	render(){

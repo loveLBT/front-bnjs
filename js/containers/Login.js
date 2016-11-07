@@ -135,19 +135,17 @@ class Login extends Component{
 					 	type="password"
 					 	defaultValue={localStorage.password}
 					  />
-					  <div className="radio_cell flex-ai">
+					  <div className="radio_cell">
 						<Radio 
 							id="remember"
 							txt="记住密码"
 							defaultChecked={rememberPwd}
-							radioCn="flex-1"
 							type="checkbox"
 							handleChange={this.handleChangeState.bind(this)}
 						/>
 						<a 
 							href="tel:13575407573"
-							className="flex-1 remember" 
-							style={{display:"block"}}
+							className="remember" 
 						>
 							忘记密码？
 						</a>

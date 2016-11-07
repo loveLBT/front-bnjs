@@ -10,14 +10,9 @@
 	color: #333;
 }
 .usertop .datas_cell{
-	height: 64px;
-}
-[data-dpr="2"] .usertop .datas_cell{
 	height: 1.706667rem;
 }
-[data-dpr="3"] .usertop .datas_cell{
-	height: 192px;
-}
+
 .usertop .datas_cell .name_cell{
 	height: 100%;
 	padding-left: 0.4rem;

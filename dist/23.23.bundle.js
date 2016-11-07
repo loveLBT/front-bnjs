@@ -1650,7 +1650,7 @@ webpackJsonp([23],{
 
 
 	// module
-	exports.push([module.id, ".orderitem{\r\n\twidth: 100%;\r\n\tbackground: #fff;\r\n\tpadding-left: 0.32rem;\r\n\tmargin-bottom: 0.266667rem;\r\n}\r\n.orderitem .header{\r\n\theight: 36px;\r\n\tfont-size: 14px;\r\n\tcolor: #333;\r\n}\r\n[data-dpr=\"2\"] .orderitem .header{\r\n\theight: 0.96rem;\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .header{\r\n\theight: 108px;\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .content {\r\n\tpadding: 0.32rem 0;\r\n}\r\n.orderitem .content .wares_img{\r\n\twidth: 80px;\r\n\theight: 80px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_img{\r\n\twidth: 2.133333rem;\r\n\theight: 2.133333rem;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_img{\r\n\theight: 240px;\r\n\twidth: 240px;\r\n}\r\n.orderitem .content .wares_present{\r\n\tmargin-left: 0.32rem;\r\n}\r\n.orderitem .content .wares_present .name{\r\n\tcolor: #333;\r\n\tfont-size: 17px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 34px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 51px;\r\n}\r\n.orderitem .content .wares_present .number{\r\n\tcolor: #333;\r\n\tfont-size: 16px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 32px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 48px;\r\n}\r\n.orderitem .content .wares_present .price{\r\n\tcolor: #333;\r\n\tfont-size: 14px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .footer{\r\n\theight: 52px;\r\n\tpadding-right: 0.32rem;\r\n}\r\n[data-dpr=\"2\"] .orderitem .footer{\r\n\theight: 1.386667rem;\r\n}\r\n[data-dpr=\"3\"] .orderitem .footer{\r\n\theight: 156px;\r\n}\r\n.orderitem .footer .state{\r\n\tcolor: #ff9900;\r\n\tfont-size: 15px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .footer .state{\r\n\tfont-size: 30px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .footer .state{\r\n\tfont-size: 45px;\r\n}\r\n", ""]);
+	exports.push([module.id, ".orderitem{\r\n\twidth: 100%;\r\n\tbackground: #fff;\r\n\tpadding-left: 0.32rem;\r\n\tmargin-bottom: 0.266667rem;\r\n}\r\n.orderitem .header{\r\n\theight: 0.96rem;\r\n\tfont-size: 14px;\r\n\tcolor: #333;\r\n}\r\n[data-dpr=\"2\"] .orderitem .header{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .header{\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .content {\r\n\tpadding: 0.32rem 0;\r\n}\r\n.orderitem .content .wares_img{\r\n\twidth: 2.133333rem;\r\n\theight: 2.133333rem;\r\n}\r\n.orderitem .content .wares_present{\r\n\tmargin-left: 0.32rem;\r\n}\r\n.orderitem .content .wares_present .name{\r\n\tcolor: #333;\r\n\tfont-size: 17px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 34px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .name{\r\n\tfont-size: 51px;\r\n}\r\n.orderitem .content .wares_present .number{\r\n\tcolor: #333;\r\n\tfont-size: 16px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 32px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .number{\r\n\tfont-size: 48px;\r\n}\r\n.orderitem .content .wares_present .price{\r\n\tcolor: #333;\r\n\tfont-size: 14px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .content .wares_present .price{\r\n\tfont-size: 42px;\r\n}\r\n.orderitem .footer{\r\n\theight: 1.386667rem;\r\n\tpadding-right: 0.32rem;\r\n}\r\n.orderitem .footer .state{\r\n\tcolor: #ff9900;\r\n\tfont-size: 15px;\r\n}\r\n[data-dpr=\"2\"] .orderitem .footer .state{\r\n\tfont-size: 30px;\r\n}\r\n[data-dpr=\"3\"] .orderitem .footer .state{\r\n\tfont-size: 45px;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -1690,9 +1690,9 @@ webpackJsonp([23],{
 
 	var _reactIscroll2 = _interopRequireDefault(_reactIscroll);
 
-	var _iscroll = __webpack_require__(309);
+	var _iscrollProbe = __webpack_require__(309);
 
-	var _iscroll2 = _interopRequireDefault(_iscroll);
+	var _iscrollProbe2 = _interopRequireDefault(_iscrollProbe);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1722,7 +1722,7 @@ webpackJsonp([23],{
 					_reactIscroll2.default,
 					{
 						style: scrollStyle,
-						iScroll: _iscroll2.default,
+						iScroll: _iscrollProbe2.default,
 						options: options
 					},
 					this.props.children
@@ -2547,6 +2547,9 @@ webpackJsonp([23],{
 
 		this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
 
+		if ( this.options.probeType == 3 ) {
+			this.options.useTransition = false;	}
+
 	// INSERT POINT: NORMALIZATION
 
 		// Some defaults
@@ -2757,13 +2760,19 @@ webpackJsonp([23],{
 			this._translate(newX, newY);
 
 	/* REPLACE START: _move */
-
 			if ( timestamp - this.startTime > 300 ) {
 				this.startTime = timestamp;
 				this.startX = this.x;
 				this.startY = this.y;
+
+				if ( this.options.probeType == 1 ) {
+					this._execEvent('scroll');
+				}
 			}
 
+			if ( this.options.probeType > 1 ) {
+				this._execEvent('scroll');
+			}
 	/* REPLACE END: _move */
 
 		},
@@ -3380,6 +3389,10 @@ webpackJsonp([23],{
 
 			this.scrollTo(newX, newY, 0);
 
+			if ( this.options.probeType > 1 ) {
+				this._execEvent('scroll');
+			}
+
 	// INSERT POINT: _wheel
 		},
 
@@ -3768,7 +3781,7 @@ webpackJsonp([23],{
 				if ( now >= destTime ) {
 					that.isAnimating = false;
 					that._translate(destX, destY);
-
+					
 					if ( !that.resetPosition(that.options.bounceTime) ) {
 						that._execEvent('scrollEnd');
 					}
@@ -3785,11 +3798,16 @@ webpackJsonp([23],{
 				if ( that.isAnimating ) {
 					rAF(step);
 				}
+
+				if ( that.options.probeType == 3 ) {
+					that._execEvent('scroll');
+				}
 			}
 
 			this.isAnimating = true;
 			step();
 		},
+
 		handleEvent: function (e) {
 			switch ( e.type ) {
 				case 'touchstart':
@@ -3833,7 +3851,7 @@ webpackJsonp([23],{
 					this._key(e);
 					break;
 				case 'click':
-					if ( this.enabled && !e._constructed && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
+					if ( this.enabled && !e._constructed ) {
 						e.preventDefault();
 						e.stopPropagation();
 					}
@@ -4039,6 +4057,15 @@ webpackJsonp([23],{
 			newY = this.y + deltaY;
 
 			this._pos(newX, newY);
+
+
+			if ( this.scroller.options.probeType == 1 && timestamp - this.startTime > 300 ) {
+				this.startTime = timestamp;
+				this.scroller._execEvent('scroll');
+			} else if ( this.scroller.options.probeType > 1 ) {
+				this.scroller._execEvent('scroll');
+			}
+
 
 	// INSERT POINT: indicator._move
 
@@ -6060,44 +6087,60 @@ webpackJsonp([23],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var BuyProduct = function (_Component) {
-		_inherits(BuyProduct, _Component);
+	var RetailProduct = function (_Component) {
+		_inherits(RetailProduct, _Component);
 
-		function BuyProduct(props) {
-			_classCallCheck(this, BuyProduct);
+		function RetailProduct(props) {
+			_classCallCheck(this, RetailProduct);
 
-			var _this = _possibleConstructorReturn(this, (BuyProduct.__proto__ || Object.getPrototypeOf(BuyProduct)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (RetailProduct.__proto__ || Object.getPrototypeOf(RetailProduct)).call(this, props));
 
 			_this.state = {
 				items: [],
 				index: 0,
-				count: "",
-				price: "",
+				count: 0,
+				price: 0,
 				loading: false
 			};
 			return _this;
 		}
 
-		_createClass(BuyProduct, [{
+		_createClass(RetailProduct, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				var actions = this.props.actions;
+				var index = this.state.index;
+				var retailproduct = this.props.retailproduct;
 
-				var retailProductUrl = apiUrl + "/WSRetailSellProductList";
-				actions.fetchPosts("retailproduct", retailProductUrl);
+				if (!retailproduct) {
+					this.getRetailProduct();
+				} else {
+					this.setState({
+						items: retailproduct.result.productlist,
+						count: retailproduct.result.productlist[index].minConsumption,
+						price: retailproduct.result.productlist[index].price
+					});
+				}
 			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
 				var index = this.state.index;
 
-				if (this.props.posts !== nextProps.posts && !!nextProps.posts.retailproduct) {
+				if (nextProps.retailproduct) {
 					this.setState({
-						items: nextProps.posts.retailproduct.result.productlist,
-						count: nextProps.posts.retailproduct.result.productlist[index].minConsumption,
-						price: nextProps.posts.retailproduct.result.productlist[index].price
+						items: nextProps.retailproduct.result.productlist,
+						count: nextProps.retailproduct.result.productlist[index].minConsumption,
+						price: nextProps.retailproduct.result.productlist[index].price
 					});
 				}
+			}
+		}, {
+			key: 'getRetailProduct',
+			value: function getRetailProduct() {
+				var actions = this.props.actions;
+
+				var retailProductUrl = apiUrl + "/WSRetailSellProductList";
+				actions.fetchPosts("retailproduct", retailProductUrl);
 			}
 		}, {
 			key: 'handleDecrement',
@@ -6111,6 +6154,7 @@ webpackJsonp([23],{
 					this.setState({
 						count: count - 1
 					});
+					this.refs.count.value = count - 1;
 				}
 			}
 		}, {
@@ -6122,9 +6166,17 @@ webpackJsonp([23],{
 				var index = _state2.index;
 
 				var num = count;
-				num += 1;
+				num = parseInt(num) + 1;
+				this.refs.count.value = num;
 				this.setState({
 					count: num
+				});
+			}
+		}, {
+			key: 'handleChangeCount',
+			value: function handleChangeCount(event) {
+				this.setState({
+					count: event.target.value
 				});
 			}
 		}, {
@@ -6135,6 +6187,7 @@ webpackJsonp([23],{
 					count: this.state.items[index].minConsumption,
 					price: this.state.items[index].price
 				});
+				this.refs.count.value = this.state.items[index].minConsumption;
 			}
 		}, {
 			key: 'handleTouchEnd',
@@ -6167,6 +6220,16 @@ webpackJsonp([23],{
 				}, 2000);
 			}
 		}, {
+			key: 'handleFocus',
+			value: function handleFocus() {
+				document.getElementsByClassName("dashboard")[0].style.overflow = "visible";
+			}
+		}, {
+			key: 'handleBlur',
+			value: function handleBlur() {
+				document.getElementsByClassName("dashboard")[0].style.overflow = "hidden";
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				document.title = "零售列表";
@@ -6179,10 +6242,10 @@ webpackJsonp([23],{
 				return _react2.default.createElement(
 					'div',
 					{ className: 'buyproduct' },
-					_react2.default.createElement(
+					items[index] && _react2.default.createElement(
 						'div',
 						{ className: 'buyproduct_cell' },
-						items[index] && _react2.default.createElement(
+						_react2.default.createElement(
 							_components.ProductItem,
 							{
 								changeIndex: this.changeIndex.bind(this),
@@ -6214,7 +6277,7 @@ webpackJsonp([23],{
 									{ style: items[index] && { color: count <= items[index].minConsumption ? "#ccc" : "#333" }, onTouchEnd: this.handleDecrement.bind(this) },
 									'-'
 								),
-								_react2.default.createElement('input', { disabled: true, type: 'number', placeholder: count }),
+								_react2.default.createElement('input', { onBlur: this.handleBlur.bind(this), onFocus: this.handleFocus.bind(this), ref: 'count', type: 'number', defaultValue: count, onChange: this.handleChangeCount.bind(this) }),
 								_react2.default.createElement(
 									'span',
 									{ onTouchEnd: this.handleIncrement.bind(this) },
@@ -6237,12 +6300,17 @@ webpackJsonp([23],{
 			}
 		}]);
 
-		return BuyProduct;
+		return RetailProduct;
 	}(_react.Component);
 
 	var mapStateToProps = function mapStateToProps(state) {
+		var posts = state.posts;
+		var isFetching = posts.isFetching;
+		var retailproduct = posts.retailproduct;
+
 		return {
-			posts: state.posts
+			isFetching: isFetching,
+			retailproduct: retailproduct
 		};
 	};
 
@@ -6252,7 +6320,7 @@ webpackJsonp([23],{
 		};
 	};
 
-	exports.default = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BuyProduct));
+	exports.default = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(RetailProduct));
 	module.exports = exports['default'];
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "RetailProduct.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
