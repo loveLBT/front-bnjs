@@ -64,7 +64,7 @@ class MyAccount extends Component{
 			<div className="myaccount">
 				{!!myaccountdata &&
 					<div className="count_cell flex-ai">
-						<p className="fontStyle_143">总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{myaccountdata.AllSumPurchase}</span>当前库存：<span className="red">{myaccountdata.AllStock}盒</span></p>
+						<p className="fontStyle_143">总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{myaccountdata.AllSumPurchase}盒</span>当前库存：<span className="red">{myaccountdata.AllStock}盒</span></p>
 					</div>
 				}
 				 <div className="btn_center_cell">

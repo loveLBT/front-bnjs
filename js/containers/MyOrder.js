@@ -34,7 +34,7 @@ class MyOrder extends Component{
 			<div className="myorder">
 				{myorder && 
 					<div className="count_cell flex-ai">
-						<p>共计：<span className="red">{myorder.result.totalPrice}￥</span></p>
+						<p>共计：<span className="red">￥{myorder.result.totalPrice}</span></p>
 					</div>
 				}
 				<Scroll>

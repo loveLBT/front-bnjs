@@ -1756,7 +1756,7 @@ webpackJsonp([0],{
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'app', onTouchStart: this.handleTouchStart.bind(this) },
+	        { className: 'app' },
 	        this.props.children
 	      );
 	    }

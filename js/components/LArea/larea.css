@@ -2,6 +2,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 1000;
 }
 .larea input{
     position: absolute;
@@ -15,6 +16,7 @@
     padding-right: 2rem;
     font-size: 14px;
     color: #333;
+    background: rgba(255,255,255,0);
 }
 [data-dpr="2"] .larea input{
     font-size: 28px;

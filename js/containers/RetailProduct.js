@@ -104,9 +104,11 @@ class RetailProduct extends Component{
 	}
 	handleFocus(){
 		document.getElementsByClassName("dashboard")[0].style.overflow="visible"
+		document.getElementsByClassName("buyproduct")[0].style.height="auto"
 	}
 	handleBlur(){
 		document.getElementsByClassName("dashboard")[0].style.overflow="hidden"
+		document.getElementsByClassName("buyproduct")[0].style.height="100%"
 	}
 	render(){
 		document.title="零售列表"

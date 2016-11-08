@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { OrderItem,Scroll } from '../components'
+import { OrderItem } from '../components'
 
 class OrderDetail extends Component{
 	componentWillMount(){
@@ -20,46 +20,44 @@ class OrderDetail extends Component{
 		return (
 			<div className="orderdetail">
 				{myorderdetail && 
-					<Scroll>
-						<div style={{paddingBottom:"1.33rem"}}>
-							<div className="item borderBottom">
-								<h3 className="title flex-ai">收货地址</h3>
-								<div className="body">
-									<p className="txt">{myorderdetail.result.ShipAddressRegion}</p>
-								</div>
-							</div>
-							<div className="item borderBottom">
-								<h3 className="title flex-ai">收货人</h3>
-								<div className="body">
-									<p className="txt">{myorderdetail.result.ShipName}</p>
-								</div>
-							</div>
-							<div className="item borderBottom">
-								<h3 className="title flex-ai">联系电话</h3>
-								<div className="body">
-									<a href={"tel:"+myorderdetail.result.ShipCellPhone} className="txt">{myorderdetail.result.ShipCellPhone}</a>
-								</div>
-							</div>
-							<div className="item borderBottom">
-								<h3 className="title flex-ai">订购商品</h3>
-								<div className="body">
-									<OrderItem style={{marginBottom:0}} item={myorderdetail.result} />
-								</div>
-							</div>
-							<div className="item borderBottom">
-								<h3 className="title flex-ai">拿货来源</h3>
-								<div className="body">
-									<a href={"tel:"+myorderdetail.result.UpPhone} className="txt">{myorderdetail.result.UpTrueName}  （<span className="blue">{myorderdetail.result.UpPhone}</span>）</a>
-								</div>
-							</div>
-							<div className="item borderBottom">
-								<h3 className="title flex-ai">物流单号</h3>
-								<div className="body">
-									<p className="txt">{myorderdetail.result.ShipOrderNumber}</p>
-								</div>
+					<div>
+						<div className="item borderBottom">
+							<h3 className="title flex-ai">收货地址</h3>
+							<div className="body">
+								<p className="txt">{myorderdetail.result.ShipAddressRegion}</p>
 							</div>
 						</div>
-					</Scroll>
+						<div className="item borderBottom">
+							<h3 className="title flex-ai">收货人</h3>
+							<div className="body">
+								<p className="txt">{myorderdetail.result.ShipName}</p>
+							</div>
+						</div>
+						<div className="item borderBottom">
+							<h3 className="title flex-ai">联系电话</h3>
+							<div className="body">
+								<a href={"tel:"+myorderdetail.result.ShipCellPhone} className="txt">{myorderdetail.result.ShipCellPhone}</a>
+							</div>
+						</div>
+						<div className="item borderBottom">
+							<h3 className="title flex-ai">订购商品</h3>
+							<div className="body">
+								<OrderItem style={{marginBottom:0}} item={myorderdetail.result} />
+							</div>
+						</div>
+						<div className="item borderBottom">
+							<h3 className="title flex-ai">拿货来源</h3>
+							<div className="body">
+								<a href={"tel:"+myorderdetail.result.UpPhone} className="txt">{myorderdetail.result.UpTrueName}  （<span className="blue">{myorderdetail.result.UpPhone}</span>）</a>
+							</div>
+						</div>
+						<div className="item borderBottom">
+							<h3 className="title flex-ai">物流单号</h3>
+							<div className="body">
+								<p className="txt">{myorderdetail.result.ShipOrderNumber}</p>
+							</div>
+						</div>
+					</div>
 				}
 			</div>
 		)

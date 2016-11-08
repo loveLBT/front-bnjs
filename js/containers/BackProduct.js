@@ -24,7 +24,7 @@ class BackProduct extends Component{
 			<div className="backproduct">
 				{backproduct &&
 					<div className="count_cell flex-ai">
-						<p className="fontStyle_143">总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{backproduct.result.AllSumPurchase}</span>当前库存：<span className="red">{backproduct.result.AllStock}盒</span></p>
+						<p className="fontStyle_143">总拿货量：<span style={{marginRight:'0.32rem'}} className="red">{backproduct.result.AllSumPurchase}盒</span>当前库存：<span className="red">{backproduct.result.AllStock}盒</span></p>
 					</div>
 				}
 				<div className="btn_center_cell">

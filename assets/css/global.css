@@ -165,7 +165,6 @@ img {
   display: -ms-flexbox; 
   display: -webkit-flex;
   display: flex; 
-  webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -moz-flex-direction: column;
   -webkit-flex-direction: column;

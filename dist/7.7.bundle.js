@@ -28,35 +28,35 @@ webpackJsonp([7],{
 
 	var _UserTop3 = _interopRequireDefault(_UserTop2);
 
-	var _Badge2 = __webpack_require__(289);
+	var _Badge2 = __webpack_require__(292);
 
 	var _Badge3 = _interopRequireDefault(_Badge2);
 
-	var _Input2 = __webpack_require__(297);
+	var _Input2 = __webpack_require__(300);
 
 	var _Input3 = _interopRequireDefault(_Input2);
 
-	var _Radio2 = __webpack_require__(300);
+	var _Radio2 = __webpack_require__(303);
 
 	var _Radio3 = _interopRequireDefault(_Radio2);
 
-	var _Button2 = __webpack_require__(292);
+	var _Button2 = __webpack_require__(295);
 
 	var _Button3 = _interopRequireDefault(_Button2);
 
-	var _OrderItem2 = __webpack_require__(303);
+	var _OrderItem2 = __webpack_require__(306);
 
 	var _OrderItem3 = _interopRequireDefault(_OrderItem2);
 
-	var _Scroll2 = __webpack_require__(306);
+	var _Scroll2 = __webpack_require__(309);
 
 	var _Scroll3 = _interopRequireDefault(_Scroll2);
 
-	var _ApplyItem2 = __webpack_require__(310);
+	var _ApplyItem2 = __webpack_require__(313);
 
 	var _ApplyItem3 = _interopRequireDefault(_ApplyItem2);
 
-	var _Panel2 = __webpack_require__(313);
+	var _Panel2 = __webpack_require__(316);
 
 	var _Panel3 = _interopRequireDefault(_Panel2);
 
@@ -64,7 +64,7 @@ webpackJsonp([7],{
 
 	var _Toast3 = _interopRequireDefault(_Toast2);
 
-	var _Loading2 = __webpack_require__(314);
+	var _Loading2 = __webpack_require__(287);
 
 	var _Loading3 = _interopRequireDefault(_Loading2);
 
@@ -285,15 +285,15 @@ webpackJsonp([7],{
 
 	var _Avator2 = _interopRequireDefault(_Avator);
 
-	var _Badge = __webpack_require__(289);
+	var _Badge = __webpack_require__(292);
 
 	var _Badge2 = _interopRequireDefault(_Badge);
 
-	var _Button = __webpack_require__(292);
+	var _Button = __webpack_require__(295);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	__webpack_require__(295);
+	__webpack_require__(298);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -542,7 +542,15 @@ webpackJsonp([7],{
 
 	var _Toast2 = _interopRequireDefault(_Toast);
 
-	__webpack_require__(287);
+	var _Auth = __webpack_require__(262);
+
+	var _Auth2 = _interopRequireDefault(_Auth);
+
+	var _Loading = __webpack_require__(287);
+
+	var _Loading2 = _interopRequireDefault(_Loading);
+
+	__webpack_require__(290);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -561,7 +569,9 @@ webpackJsonp([7],{
 			var _this = _possibleConstructorReturn(this, (Avator.__proto__ || Object.getPrototypeOf(Avator)).call(this, props));
 
 			_this.state = {
-				avatorUrl: props.avatorUrl
+				loading: false,
+				avatorUrl: props.avatorUrl,
+				userData: _Auth2.default.getUserData()
 			};
 			return _this;
 		}
@@ -573,11 +583,16 @@ webpackJsonp([7],{
 
 				var gravatarUrl = hostUrl + "/AD/WSGravatarUpdate";
 				var formdata = new FormData(this.refs.form1);
+				var newUserData = this.state.userData;
+				this.setState({ loading: true });
 				_Ajax2.default.upload(formdata, gravatarUrl, function (res) {
 					if (res.status === "success") {
+						_this2.setState({ loading: false });
 						_this2.setState({
 							avatorUrl: res.result.gravatar + "?" + Math.random().toString(8).substring(7)
 						});
+						newUserData.gravatar = res.result.gravatar;
+						sessionStorage.setItem("userData", JSON.stringify(newUserData));
 						_Toast2.default.tip("头像修改成功");
 					} else {
 						_Toast2.default.tip("头像修改失败");
@@ -599,7 +614,8 @@ webpackJsonp([7],{
 						_react2.default.createElement('input', { onChange: this.handleUpload.bind(this), name: 'file', type: 'file' })
 					),
 					_react2.default.createElement('img', { ref: 'avator', width: '100%', height: '100%', src: hostUrl + avatorUrl, alt: '\u7528\u6237\u5934\u50CF' }),
-					'}'
+					'}',
+					this.state.loading && _react2.default.createElement(_Loading2.default, { text: '\u6B63\u5728\u4E0A\u4F20\u5934\u50CF\uFF0C\u8BF7\u7B49\u5F85' })
 				);
 			}
 		}]);
@@ -847,10 +863,121 @@ webpackJsonp([7],{
 /***/ 287:
 /***/ function(module, exports, __webpack_require__) {
 
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(288);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loading = function (_Component) {
+		_inherits(Loading, _Component);
+
+		function Loading() {
+			_classCallCheck(this, Loading);
+
+			return _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).apply(this, arguments));
+		}
+
+		_createClass(Loading, [{
+			key: 'render',
+			value: function render() {
+				var text = this.props.text;
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'loading' },
+					_react2.default.createElement('div', { className: 'mask' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'loading-cell flex-ai' },
+						_react2.default.createElement('i', { className: 'icon' }),
+						_react2.default.createElement(
+							'span',
+							{ className: 'text' },
+							text
+						)
+					)
+				);
+			}
+		}]);
+
+		return Loading;
+	}(_react.Component);
+
+	exports.default = Loading;
+	module.exports = exports['default'];
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+
+/***/ 288:
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(288);
+	var content = __webpack_require__(289);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(279)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./loading.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./loading.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 289:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(275)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".loading{\r\n\t\r\n}\r\n.mask{\r\n\tposition: fixed;\r\n\theight: 100%;\r\n\twidth: 100%;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tbottom: o;\r\n\tright: 0;\r\n\tbackground: rgba(0,0,0,.5);\r\n\tz-index: 1002;\r\n}\r\n.loading .loading-cell{\r\n\tposition: fixed;\r\n\tz-index: 1003;\r\n\twidth: 8rem;\r\n\theight: 1.96rem;\r\n\tborder-radius: 0.16rem;\r\n\tbackground: rgba(0,0,0,.65);\r\n\ttop: 50%;\r\n\tleft: 50%;\r\n\tmargin-top: -0.98rem;\r\n\tmargin-left: -4rem;\r\n\tcolor: #fff;\r\n\tpadding-left: 0.38rem;\r\n}\r\n.loading .loading-cell .text{\r\n\tfont-size: 18px;\r\n\tpadding-left: 0.2rem;\r\n}\r\n[data-dpr=\"2\"] .loading .loading-cell .text{\r\n\tfont-size: 36px;\r\n}\r\n[data-dpr=\"3\"] .loading .loading-cell .text{\r\n\tfont-size: 54px;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+
+/***/ 290:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(291);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -871,7 +998,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 288:
+/***/ 291:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -886,7 +1013,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 289:
+/***/ 292:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -911,7 +1038,7 @@ webpackJsonp([7],{
 
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-	__webpack_require__(290);
+	__webpack_require__(293);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -957,13 +1084,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 290:
+/***/ 293:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(291);
+	var content = __webpack_require__(294);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -984,7 +1111,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 291:
+/***/ 294:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -999,7 +1126,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 292:
+/***/ 295:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -1024,7 +1151,7 @@ webpackJsonp([7],{
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(293);
+	__webpack_require__(296);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1083,13 +1210,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 293:
+/***/ 296:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(294);
+	var content = __webpack_require__(297);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -1110,7 +1237,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 294:
+/***/ 297:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -1125,13 +1252,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 295:
+/***/ 298:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(296);
+	var content = __webpack_require__(299);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -1152,7 +1279,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 296:
+/***/ 299:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -1160,14 +1287,14 @@ webpackJsonp([7],{
 
 
 	// module
-	exports.push([module.id, ".usertop{\r\n\tposition: relative;\r\n\tbackground: #e34949;\r\n\tpadding: 0.48rem 0.32rem;\r\n\tcolor: #fff;\r\n\tz-index: 999;\r\n}\r\n.writeBg{\r\n\tbackground: #fff;\r\n\tcolor: #333;\r\n}\r\n.usertop .datas_cell{\r\n\theight: 64px;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell{\r\n\theight: 1.706667rem;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell{\r\n\theight: 192px;\r\n}\r\n.usertop .datas_cell .name_cell{\r\n\theight: 100%;\r\n\tpadding-left: 0.4rem;\r\n}\r\n.usertop .datas_cell .name_cell .name{\r\n\tfont-size: 18px;\r\n\tcolor: #fff;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .name_cell .name{\r\n\tfont-size: 36px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .name_cell .name{\r\n\tfont-size: 54px;\r\n}\r\n.usertop .datas_cell .name_cell .name .icon_name{\r\n\twidth: 20px;\r\n\theight: 16px;\r\n\tdisplay: inline-block;\r\n\tbackground-image: url(" + __webpack_require__(276) + ");\r\n\tbackground-position-x:-44px; \r\n\tbackground-position-y:-48px;\r\n\tmargin-left: 0.266667rem;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .name_cell .name .icon_name{\r\n\twidth: 40px;\r\n\theight: 32px;\r\n\tbackground-image: url(" + __webpack_require__(277) + "); \r\n\tbackground-position-x:-88px;\r\n\tbackground-position-y:-96px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .name_cell .name .icon_name{\r\n\twidth: 60px;\r\n\theight: 48px;\r\n\tbackground-image: url(" + __webpack_require__(278) + "); \r\n\tbackground-position-x:-132px;\r\n\tbackground-position-y:-144px;\r\n}\r\n.usertop .datas_cell .name_cell .leave{\r\n\tfont-size: 14px;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .name_cell .leave{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .name_cell .leave{\r\n\tfont-size: 42px;\r\n}\r\n.usertop .datas_cell .be_auth{\r\n\ttext-align: right;\r\n}\r\n.usertop .datas_cell .be_auth button{\r\n\tdisplay: block;\r\n\twidth: 68px;\r\n\theight: 24px;\r\n\tbackground: #fff;\r\n\tcolor: #e34949;\r\n\tfont-size: 15px;\r\n\ttext-align: center;;\r\n\tborder-radius: 12px;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .be_auth button{\r\n\twidth: 136px;\r\n\theight: 48px;\r\n\tfont-size: 30px;\r\n\tborder-radius: 24px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .be_auth button{\r\n\twidth: 204px;\r\n\theight: 72px;\r\n\tfont-size: 45px;\r\n\tborder-radius: 36px;\r\n}\r\n.usertop .datas_cell .be_auth button:active{\r\n\tbackground: #e5e5e5;\r\n}\r\n\r\n.usertop .order_cell{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\tpadding-top: 22px;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell{\r\n\tpadding-top: 44px;\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell{\r\n\tpadding-top: 66px;\r\n}\r\n.usertop .order_cell ul{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n}\r\n.usertop .order_cell ul:after{\r\n\tcontent: \"\";\r\n\tposition: absolute;\r\n\tdisplay: block;\r\n\twidth: 1px;\r\n\theight: 100%;\r\n\tbackground: #ee9292;\r\n\tleft: 50%;\r\n\ttop: 0;\r\n}\r\n.usertop .order_cell ul li{\r\n\tposition: relative;\r\n\twidth: 50%;\r\n\tdisplay: inline-block;\r\n\ttext-align: center;\r\n}\r\n.usertop .order_cell ul li a{\r\n\tdisplay: inline-block;\r\n\tpadding-top: 0.24rem;\r\n\theight: 100%;\r\n\tcolor: #fff;\r\n\tfont-size: 18px;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a{\r\n\tfont-size: 36px;\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a{\r\n\tfont-size: 54px;\r\n}\r\n.usertop .order_cell ul li a .icon{\r\n\twidth: 24px;\r\n\theight: 24px;\r\n\tdisplay: inline-block;\r\n\tbackground: url(" + __webpack_require__(276) + ");\r\n\tvertical-align: middle;\r\n\tmargin-right: 0.32rem;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a .icon{\r\n\twidth: 48px;\r\n\theight: 48px;\r\n\tbackground: url(" + __webpack_require__(277) + ");\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a .icon{\r\n\twidth: 72px;\r\n\theight: 72px;\r\n\tbackground: url(" + __webpack_require__(278) + ");\r\n}\r\n.usertop .order_cell ul li a .icon_myorder{\r\n\tbackground-position-x:-44px;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a .icon_myorder{\r\n\tbackground-position-x:-88px;\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a .icon_myorder{\r\n\tbackground-position-x:-132px;\r\n}\r\n.usertop .order_cell ul li a .icon_userorder{\r\n\tbackground-position-x:-44px;\r\n\tbackground-position-y: -24px; \r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a .icon_userorder{\r\n\tbackground-position-x:-88px;\r\n\tbackground-position-y: -48px; \r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a .icon_userorder{\r\n\tbackground-position-x:-132px;\r\n\tbackground-position-y: -72px; \r\n}\r\n\r\n.marginBottom{\r\n\tmargin-bottom: 36px;\r\n}\r\n[data-dpr=\"2\"] .marginBottom{\r\n\tmargin-bottom: 0.96rem;\r\n}\r\n[data-dpr=\"3\"] .marginBottom{\r\n\tmargin-bottom: 108px;\r\n}\r\n.usertop .state_cell{\r\n\twidth: 100%;\r\n\tpadding-top: 0.32rem;\r\n}\r\n.usertop .state_cell .state{\r\n\tfont-size: 15px;\r\n\tcolor: #ff9900;\r\n}\r\n[data-dpr=\"2\"] .usertop .state_cell .state{\r\n\tfont-size: 30px;\r\n}\r\n[data-dpr=\"3\"] .usertop .state_cell .state{\r\n\tfont-size: 45px;\r\n}", ""]);
+	exports.push([module.id, ".usertop{\r\n\tposition: relative;\r\n\tbackground: #e34949;\r\n\tpadding: 0.48rem 0.32rem;\r\n\tcolor: #fff;\r\n\tz-index: 999;\r\n}\r\n.writeBg{\r\n\tbackground: #fff;\r\n\tcolor: #333;\r\n}\r\n.usertop .datas_cell{\r\n\theight: 1.706667rem;\r\n}\r\n\r\n.usertop .datas_cell .name_cell{\r\n\theight: 100%;\r\n\tpadding-left: 0.4rem;\r\n}\r\n.usertop .datas_cell .name_cell .name{\r\n\tfont-size: 18px;\r\n\tcolor: #fff;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .name_cell .name{\r\n\tfont-size: 36px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .name_cell .name{\r\n\tfont-size: 54px;\r\n}\r\n.usertop .datas_cell .name_cell .name .icon_name{\r\n\twidth: 20px;\r\n\theight: 16px;\r\n\tdisplay: inline-block;\r\n\tbackground-image: url(" + __webpack_require__(276) + ");\r\n\tbackground-position-x:-44px; \r\n\tbackground-position-y:-48px;\r\n\tmargin-left: 0.266667rem;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .name_cell .name .icon_name{\r\n\twidth: 40px;\r\n\theight: 32px;\r\n\tbackground-image: url(" + __webpack_require__(277) + "); \r\n\tbackground-position-x:-88px;\r\n\tbackground-position-y:-96px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .name_cell .name .icon_name{\r\n\twidth: 60px;\r\n\theight: 48px;\r\n\tbackground-image: url(" + __webpack_require__(278) + "); \r\n\tbackground-position-x:-132px;\r\n\tbackground-position-y:-144px;\r\n}\r\n.usertop .datas_cell .name_cell .leave{\r\n\tfont-size: 14px;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .name_cell .leave{\r\n\tfont-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .name_cell .leave{\r\n\tfont-size: 42px;\r\n}\r\n.usertop .datas_cell .be_auth{\r\n\ttext-align: right;\r\n}\r\n.usertop .datas_cell .be_auth button{\r\n\tdisplay: block;\r\n\twidth: 68px;\r\n\theight: 24px;\r\n\tbackground: #fff;\r\n\tcolor: #e34949;\r\n\tfont-size: 15px;\r\n\ttext-align: center;;\r\n\tborder-radius: 12px;\r\n}\r\n[data-dpr=\"2\"] .usertop .datas_cell .be_auth button{\r\n\twidth: 136px;\r\n\theight: 48px;\r\n\tfont-size: 30px;\r\n\tborder-radius: 24px;\r\n}\r\n[data-dpr=\"3\"] .usertop .datas_cell .be_auth button{\r\n\twidth: 204px;\r\n\theight: 72px;\r\n\tfont-size: 45px;\r\n\tborder-radius: 36px;\r\n}\r\n.usertop .datas_cell .be_auth button:active{\r\n\tbackground: #e5e5e5;\r\n}\r\n\r\n.usertop .order_cell{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n\tpadding-top: 22px;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell{\r\n\tpadding-top: 44px;\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell{\r\n\tpadding-top: 66px;\r\n}\r\n.usertop .order_cell ul{\r\n\tposition: relative;\r\n\twidth: 100%;\r\n}\r\n.usertop .order_cell ul:after{\r\n\tcontent: \"\";\r\n\tposition: absolute;\r\n\tdisplay: block;\r\n\twidth: 1px;\r\n\theight: 100%;\r\n\tbackground: #ee9292;\r\n\tleft: 50%;\r\n\ttop: 0;\r\n}\r\n.usertop .order_cell ul li{\r\n\tposition: relative;\r\n\twidth: 50%;\r\n\tdisplay: inline-block;\r\n\ttext-align: center;\r\n}\r\n.usertop .order_cell ul li a{\r\n\tdisplay: inline-block;\r\n\tpadding-top: 0.24rem;\r\n\theight: 100%;\r\n\tcolor: #fff;\r\n\tfont-size: 18px;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a{\r\n\tfont-size: 36px;\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a{\r\n\tfont-size: 54px;\r\n}\r\n.usertop .order_cell ul li a .icon{\r\n\twidth: 24px;\r\n\theight: 24px;\r\n\tdisplay: inline-block;\r\n\tbackground: url(" + __webpack_require__(276) + ");\r\n\tvertical-align: middle;\r\n\tmargin-right: 0.32rem;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a .icon{\r\n\twidth: 48px;\r\n\theight: 48px;\r\n\tbackground: url(" + __webpack_require__(277) + ");\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a .icon{\r\n\twidth: 72px;\r\n\theight: 72px;\r\n\tbackground: url(" + __webpack_require__(278) + ");\r\n}\r\n.usertop .order_cell ul li a .icon_myorder{\r\n\tbackground-position-x:-44px;\r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a .icon_myorder{\r\n\tbackground-position-x:-88px;\r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a .icon_myorder{\r\n\tbackground-position-x:-132px;\r\n}\r\n.usertop .order_cell ul li a .icon_userorder{\r\n\tbackground-position-x:-44px;\r\n\tbackground-position-y: -24px; \r\n}\r\n[data-dpr=\"2\"] .usertop .order_cell ul li a .icon_userorder{\r\n\tbackground-position-x:-88px;\r\n\tbackground-position-y: -48px; \r\n}\r\n[data-dpr=\"3\"] .usertop .order_cell ul li a .icon_userorder{\r\n\tbackground-position-x:-132px;\r\n\tbackground-position-y: -72px; \r\n}\r\n\r\n.marginBottom{\r\n\tmargin-bottom: 36px;\r\n}\r\n[data-dpr=\"2\"] .marginBottom{\r\n\tmargin-bottom: 0.96rem;\r\n}\r\n[data-dpr=\"3\"] .marginBottom{\r\n\tmargin-bottom: 108px;\r\n}\r\n.usertop .state_cell{\r\n\twidth: 100%;\r\n\tpadding-top: 0.32rem;\r\n}\r\n.usertop .state_cell .state{\r\n\tfont-size: 15px;\r\n\tcolor: #ff9900;\r\n}\r\n[data-dpr=\"2\"] .usertop .state_cell .state{\r\n\tfont-size: 30px;\r\n}\r\n[data-dpr=\"3\"] .usertop .state_cell .state{\r\n\tfont-size: 45px;\r\n}", ""]);
 
 	// exports
 
 
 /***/ },
 
-/***/ 297:
+/***/ 300:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -1188,7 +1315,7 @@ webpackJsonp([7],{
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(298);
+	__webpack_require__(301);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1243,13 +1370,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 298:
+/***/ 301:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(299);
+	var content = __webpack_require__(302);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -1270,7 +1397,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 299:
+/***/ 302:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -1285,7 +1412,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 300:
+/***/ 303:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -1310,7 +1437,7 @@ webpackJsonp([7],{
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(301);
+	__webpack_require__(304);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1387,13 +1514,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 301:
+/***/ 304:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(302);
+	var content = __webpack_require__(305);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -1414,7 +1541,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 302:
+/***/ 305:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -1429,7 +1556,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 303:
+/***/ 306:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -1448,7 +1575,7 @@ webpackJsonp([7],{
 
 	var _reactRouter = __webpack_require__(201);
 
-	var _Button = __webpack_require__(292);
+	var _Button = __webpack_require__(295);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
@@ -1460,7 +1587,7 @@ webpackJsonp([7],{
 
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-	__webpack_require__(304);
+	__webpack_require__(307);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1615,13 +1742,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 304:
+/***/ 307:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(305);
+	var content = __webpack_require__(308);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -1642,7 +1769,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 305:
+/***/ 308:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -1657,7 +1784,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 306:
+/***/ 309:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -1686,11 +1813,11 @@ webpackJsonp([7],{
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _reactIscroll = __webpack_require__(307);
+	var _reactIscroll = __webpack_require__(310);
 
 	var _reactIscroll2 = _interopRequireDefault(_reactIscroll);
 
-	var _iscrollProbe = __webpack_require__(309);
+	var _iscrollProbe = __webpack_require__(312);
 
 	var _iscrollProbe2 = _interopRequireDefault(_iscrollProbe);
 
@@ -1740,7 +1867,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 307:
+/***/ 310:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -2044,14 +2171,14 @@ webpackJsonp([7],{
 
 
 	if (process.env.NODE_ENV != "production") {
-	  var propTypesMaker = __webpack_require__(308).default;
+	  var propTypesMaker = __webpack_require__(311).default;
 	  ReactIScroll.propTypes = propTypesMaker(availableEventNames);
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 
-/***/ 308:
+/***/ 311:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2201,7 +2328,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 309:
+/***/ 312:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*! iScroll v5.2.0 ~ (c) 2008-2016 Matteo Spinelli ~ http://cubiq.org/license */
@@ -4326,7 +4453,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 310:
+/***/ 313:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -4347,11 +4474,11 @@ webpackJsonp([7],{
 
 	var _Avator2 = _interopRequireDefault(_Avator);
 
-	var _Button = __webpack_require__(292);
+	var _Button = __webpack_require__(295);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	__webpack_require__(311);
+	__webpack_require__(314);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4438,13 +4565,13 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 311:
+/***/ 314:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(312);
+	var content = __webpack_require__(315);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(279)(content, {});
@@ -4465,7 +4592,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 312:
+/***/ 315:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(275)();
@@ -4480,7 +4607,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 313:
+/***/ 316:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -4509,7 +4636,7 @@ webpackJsonp([7],{
 
 	var _Toast2 = _interopRequireDefault(_Toast);
 
-	var _Loading = __webpack_require__(314);
+	var _Loading = __webpack_require__(287);
 
 	var _Loading2 = _interopRequireDefault(_Loading);
 
@@ -4685,117 +4812,6 @@ webpackJsonp([7],{
 	module.exports = exports['default'];
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-
-/***/ 314:
-/***/ function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-api\\modules\\index.js"), RootInstanceProvider = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	__webpack_require__(315);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Loading = function (_Component) {
-		_inherits(Loading, _Component);
-
-		function Loading() {
-			_classCallCheck(this, Loading);
-
-			return _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).apply(this, arguments));
-		}
-
-		_createClass(Loading, [{
-			key: 'render',
-			value: function render() {
-				var text = this.props.text;
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loading' },
-					_react2.default.createElement('div', { className: 'mask' }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'loading-cell flex-ai' },
-						_react2.default.createElement('i', { className: 'icon' }),
-						_react2.default.createElement(
-							'span',
-							{ className: 'text' },
-							text
-						)
-					)
-				);
-			}
-		}]);
-
-		return Loading;
-	}(_react.Component);
-
-	exports.default = Loading;
-	module.exports = exports['default'];
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("G:\\Gitproject\\front-bnjs\\node_modules\\react-hot-loader\\makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-
-/***/ 315:
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(316);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(279)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./loading.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./loading.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-
-/***/ 316:
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(275)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".loading{\r\n\t\r\n}\r\n.mask{\r\n\tposition: fixed;\r\n\theight: 100%;\r\n\twidth: 100%;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tbottom: o;\r\n\tright: 0;\r\n\tbackground: rgba(0,0,0,.5);\r\n\tz-index: 1002;\r\n}\r\n.loading .loading-cell{\r\n\tposition: fixed;\r\n\tz-index: 1003;\r\n\twidth: 8rem;\r\n\theight: 1.96rem;\r\n\tborder-radius: 0.16rem;\r\n\tbackground: rgba(0,0,0,.65);\r\n\ttop: 50%;\r\n\tleft: 50%;\r\n\tmargin-top: -0.98rem;\r\n\tmargin-left: -4rem;\r\n\tcolor: #fff;\r\n\tpadding-left: 0.38rem;\r\n}\r\n.loading .loading-cell .text{\r\n\tfont-size: 18px;\r\n\tpadding-left: 0.2rem;\r\n}\r\n[data-dpr=\"2\"] .loading .loading-cell .text{\r\n\tfont-size: 36px;\r\n}\r\n[data-dpr=\"3\"] .loading .loading-cell .text{\r\n\tfont-size: 54px;\r\n}\r\n", ""]);
-
-	// exports
-
 
 /***/ },
 
@@ -5980,7 +5996,7 @@ webpackJsonp([7],{
 
 
 	// module
-	exports.push([module.id, ".larea{\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.larea input{\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: block;\r\n    white-space:nowrap; \r\n    overflow:hidden; \r\n    text-overflow:ellipsis;\r\n    padding-left: 3rem;\r\n    padding-right: 2rem;\r\n    font-size: 14px;\r\n    color: #333;\r\n}\r\n[data-dpr=\"2\"] .larea input{\r\n    font-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .larea input{\r\n    font-size: 42px;\r\n}\r\n.gearArea {\r\n    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;\r\n    font-size: 10px;\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9900;\r\n    overflow: hidden;\r\n    animation-fill-mode: both\r\n}\r\n[data-dpr=\"2\"] .gearArea{\r\n    font-size: 20px;\r\n}\r\n[data-dpr=\"3\"] .gearArea{\r\n    font-size: 30px;\r\n}\r\n\r\n.area_ctrl {\r\n    vertical-align: middle;\r\n    background-color: #d5d8df;\r\n    color: #000;\r\n    margin: 0;\r\n    height: auto;\r\n    width: 100%;\r\n    position: absolute;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 9901;\r\n    overflow: hidden;\r\n    transform: translate3d(0, 0, 0)\r\n}\r\n\r\n.slideInUp {\r\n    animation: slideInUp .3s;\r\n}\r\n\r\n@keyframes slideInUp {\r\n    from {\r\n        transform: translate3d(0, 100%, 0)\r\n    }\r\n    to {\r\n        transform: translate3d(0, 0, 0)\r\n    }\r\n}\r\n\r\n.area_roll {\r\n    display: flex;\r\n    width: 100%;\r\n    height: auto;\r\n    overflow: hidden;\r\n    background-color: transparent;\r\n    -webkit-mask: -webkit-gradient(linear, 0% 50%, 0% 100%, from(#debb47), to(rgba(36, 142, 36, 0)));\r\n    -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0))\r\n}\r\n\r\n.area_roll>div {\r\n    font-size: 1.6em;\r\n    height: 10em;\r\n    float: left;\r\n    background-color: transparent;\r\n    position: relative;\r\n    overflow: hidden;\r\n    flex: 1\r\n}\r\n\r\n.area_roll>div .gear {\r\n    width: 100%;\r\n    float: left;\r\n    position: absolute;\r\n    z-index: 9902;\r\n    margin-top: 4em\r\n}\r\n\r\n.area_roll_mask {\r\n    -webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(#debb47), to(rgba(36, 142, 36, 0)));\r\n    -webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0));\r\n    padding: 0\r\n}\r\n\r\n.area_grid {\r\n    position: relative;\r\n    top: 4em;\r\n    width: 100%;\r\n    height: 2em;\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n    z-index: 0;\r\n    border-top: 1px solid #abaeb5;\r\n    border-bottom: 1px solid #abaeb5\r\n}\r\n\r\n.area_roll>div:nth-child(3) .area_grid>div {\r\n    left: 42%\r\n}\r\n\r\n.area_btn {\r\n    color: #0575f2;\r\n    font-size: 1.6em;\r\n    line-height: 1em;\r\n    text-align: center;\r\n    padding: .8em 1em\r\n}\r\n\r\n.area_btn_box:before,\r\n.area_btn_box:after {\r\n    content: '';\r\n    position: absolute;\r\n    height: 1px;\r\n    width: 100%;\r\n    display: block;\r\n    background-color: #96979b;\r\n    z-index: 15;\r\n    transform: scaleY(0.33)\r\n}\r\n\r\n.area_btn_box {\r\n    display: flex;\r\n    justify-content:space-between;\r\n    align-items: stretch;\r\n    background-color: #f1f2f4;\r\n    position: relative\r\n}\r\n\r\n.area_btn_box:before {\r\n    left: 0;\r\n    top: 0;\r\n    transform-origin: 50% 20%\r\n}\r\n\r\n.area_btn_box:after {\r\n    left: 0;\r\n    bottom: 0;\r\n    transform-origin: 50% 70%\r\n}\r\n\r\n.tooth {\r\n    height: 2em;\r\n    line-height: 2em;\r\n    text-align: center;\r\n    display: flex;\r\n    line-clamp: 1;\r\n    flex-direction:column;\r\n    overflow: hidden\r\n}\r\n", ""]);
+	exports.push([module.id, ".larea{\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 1000;\r\n}\r\n.larea input{\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: block;\r\n    white-space:nowrap; \r\n    overflow:hidden; \r\n    text-overflow:ellipsis;\r\n    padding-left: 3rem;\r\n    padding-right: 2rem;\r\n    font-size: 14px;\r\n    color: #333;\r\n    background: rgba(255,255,255,0);\r\n}\r\n[data-dpr=\"2\"] .larea input{\r\n    font-size: 28px;\r\n}\r\n[data-dpr=\"3\"] .larea input{\r\n    font-size: 42px;\r\n}\r\n.gearArea {\r\n    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;\r\n    font-size: 10px;\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n    display: block;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9900;\r\n    overflow: hidden;\r\n    animation-fill-mode: both\r\n}\r\n[data-dpr=\"2\"] .gearArea{\r\n    font-size: 20px;\r\n}\r\n[data-dpr=\"3\"] .gearArea{\r\n    font-size: 30px;\r\n}\r\n\r\n.area_ctrl {\r\n    vertical-align: middle;\r\n    background-color: #d5d8df;\r\n    color: #000;\r\n    margin: 0;\r\n    height: auto;\r\n    width: 100%;\r\n    position: absolute;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 9901;\r\n    overflow: hidden;\r\n    transform: translate3d(0, 0, 0)\r\n}\r\n\r\n.slideInUp {\r\n    animation: slideInUp .3s;\r\n}\r\n\r\n@keyframes slideInUp {\r\n    from {\r\n        transform: translate3d(0, 100%, 0)\r\n    }\r\n    to {\r\n        transform: translate3d(0, 0, 0)\r\n    }\r\n}\r\n\r\n.area_roll {\r\n    display: flex;\r\n    width: 100%;\r\n    height: auto;\r\n    overflow: hidden;\r\n    background-color: transparent;\r\n    -webkit-mask: -webkit-gradient(linear, 0% 50%, 0% 100%, from(#debb47), to(rgba(36, 142, 36, 0)));\r\n    -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0))\r\n}\r\n\r\n.area_roll>div {\r\n    font-size: 1.6em;\r\n    height: 10em;\r\n    float: left;\r\n    background-color: transparent;\r\n    position: relative;\r\n    overflow: hidden;\r\n    flex: 1\r\n}\r\n\r\n.area_roll>div .gear {\r\n    width: 100%;\r\n    float: left;\r\n    position: absolute;\r\n    z-index: 9902;\r\n    margin-top: 4em\r\n}\r\n\r\n.area_roll_mask {\r\n    -webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(#debb47), to(rgba(36, 142, 36, 0)));\r\n    -webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0));\r\n    padding: 0\r\n}\r\n\r\n.area_grid {\r\n    position: relative;\r\n    top: 4em;\r\n    width: 100%;\r\n    height: 2em;\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n    z-index: 0;\r\n    border-top: 1px solid #abaeb5;\r\n    border-bottom: 1px solid #abaeb5\r\n}\r\n\r\n.area_roll>div:nth-child(3) .area_grid>div {\r\n    left: 42%\r\n}\r\n\r\n.area_btn {\r\n    color: #0575f2;\r\n    font-size: 1.6em;\r\n    line-height: 1em;\r\n    text-align: center;\r\n    padding: .8em 1em\r\n}\r\n\r\n.area_btn_box:before,\r\n.area_btn_box:after {\r\n    content: '';\r\n    position: absolute;\r\n    height: 1px;\r\n    width: 100%;\r\n    display: block;\r\n    background-color: #96979b;\r\n    z-index: 15;\r\n    transform: scaleY(0.33)\r\n}\r\n\r\n.area_btn_box {\r\n    display: flex;\r\n    justify-content:space-between;\r\n    align-items: stretch;\r\n    background-color: #f1f2f4;\r\n    position: relative\r\n}\r\n\r\n.area_btn_box:before {\r\n    left: 0;\r\n    top: 0;\r\n    transform-origin: 50% 20%\r\n}\r\n\r\n.area_btn_box:after {\r\n    left: 0;\r\n    bottom: 0;\r\n    transform-origin: 50% 70%\r\n}\r\n\r\n.tooth {\r\n    height: 2em;\r\n    line-height: 2em;\r\n    text-align: center;\r\n    display: flex;\r\n    line-clamp: 1;\r\n    flex-direction:column;\r\n    overflow: hidden\r\n}\r\n", ""]);
 
 	// exports
 

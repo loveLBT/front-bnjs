@@ -136,7 +136,7 @@ class UserOrder extends Component{
 			<div className="userorder">
 				{userorder &&
 					<div className="count_cell flex-ai">
-						<p>共计：<span className="red">{userorder.result.totalPrice}￥</span></p>
+						<p>共计：<span className="red">￥{userorder.result.totalPrice}</span></p>
 					</div>
 				}
 				<Scroll>

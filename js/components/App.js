@@ -10,7 +10,7 @@ class App extends Component{
   }
   render(){
     return (
-      <div className="app" onTouchStart={this.handleTouchStart.bind(this)} >
+      <div className="app">
         {this.props.children}
       </div>
     )
