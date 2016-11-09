@@ -100,12 +100,13 @@ class MyAddress extends Component{
 	render(){
 		document.title="我的地址"
 		const {myaddress}=this.state
-		console.log(this.props.myaddress)
 		return (
-			<div className="myaddress" style={{width:"100%",height:"100%"}}>
-				<UserTop isUpload={true} userData={this.state.userData} />
+			<div className="myaddress flex-column" style={{width:"100%",height:"100%"}}>
+				<div className="flex-0">
+					<UserTop isUpload={true} userData={this.state.userData} />
+				</div>
 				{myaddress && 
-					<div className="data_cell">
+					<div className="data_cell flex-auto" style={{paddingBottom:"0.32rem"}}>
 						<div className="contact borderBottom">
 							<Panel handleChange={this.handleChange.bind(this,"name")} title="收货人" hasBorder={true} input="收货人姓名" defaultValue={myaddress.name} maxlength="20"  />
 							<Panel handleChange={this.handleChange.bind(this,"cellphone")} title="手机号" type="tel" input="收货人手机号" defaultValue={myaddress.cellphone} maxlength="11"  />
@@ -128,7 +129,9 @@ class MyAddress extends Component{
 					    </div>
 					</div>
 				}
-				<TabBar />
+				<div className="flex-0">
+					<TabBar style={{position:"static"}} />
+				</div>
 				{this.state.loading && 
 					<Loading text="正在保存，请等待。。。" />
 				}

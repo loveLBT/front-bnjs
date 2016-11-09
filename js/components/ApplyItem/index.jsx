@@ -11,13 +11,13 @@ class ApplyItem extends Component{
 				<div className="avator_cell">
 					<Avator avatorUrl={item.gravatarThumb} />
 				</div>
-				<div className="msg_cell flex-1 flex-column-between">
+				<div className="msg_cell flex-column-between">
 					<div>
 						<h3 className="fontStyle_163">{item.trueName}（{item.phone}）</h3>
 					</div>
 					<div>
-						<p className="fontStyle_136">身份证号：{item.zfzh}</p>
-						<p className="fontStyle_136">等级：{item.agentLevelName}</p>
+						<p className="fontStyle_136">身份证号：{item.sfzh}</p>
+						<p className="fontStyle_136">申请等级：{item.agentLevelName}</p>
 					</div>
 				</div>
 				<div className="btn_small_cell">

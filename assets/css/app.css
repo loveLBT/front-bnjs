@@ -13,6 +13,17 @@
 	overflow: hidden;
 }
 
+
+/*            授权查询          */
+.search{
+	width: 100%;
+	height: 100%;
+}
+.search_cell{
+	width: 100%;
+}
+
+
 /*            全局样式          */
 a{
 	font-size: 16px;
@@ -99,6 +110,17 @@ a{
 }
 [data-dpr="3"] .borderBottom{
   border-bottom-width: 3px;
+}
+.borderTop{
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #ccc;
+}
+[data-dpr="2"] .borderTop{
+  border-top-width: 2px;
+}
+[data-dpr="3"] .bordertop{
+  border-top-width: 3px;
 }
 .borderRight{
   border-right-width: 1px;
@@ -195,6 +217,7 @@ a{
 	height: 100%;
 	overflow-y: auto;
 	padding-bottom: 4rem;
+	margin-top: -0.013333rem;
 }
 .home .order_cell{
 	position: relative;
@@ -650,11 +673,6 @@ a{
 }
 
 /*            个人资料页         */ 
-.data_cell{
-	position: relative;
-	width: 100%;
-	background: #f2f2f2;
-}
 .data_cell .contact,
 .data_cell .car {
 	background: #fff;

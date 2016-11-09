@@ -50,9 +50,7 @@ class MyAccount extends Component{
 	handleChangeTab(){
 		const {actions}=this.props
 		const shipmentrecordUrl=apiUrl+"/WSMySellOrders?page=1&pageNum=100"
-		if(!this.props.shipmentrecord){
-			actions.fetchPosts('shipmentrecord',shipmentrecordUrl)
-		}
+		actions.fetchPosts('shipmentrecord',shipmentrecordUrl)
 	}
 	handleTouchEnd(){
 		this.props.router.push("/upgrade")

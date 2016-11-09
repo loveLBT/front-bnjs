@@ -38,9 +38,7 @@ class Apply extends Component{
 		const {page,pageNum}=this.state
 		const {actions}=this.props
 		const upapplyUrl=apiUrl+"/WSUpGradeRequests?page="+page+"&pageNum="+pageNum
-		if(!this.props.posts.upapply){
-			actions.fetchPosts('upapply',upapplyUrl)
-		}
+		actions.fetchPosts('upapply',upapplyUrl)
 
 	}
 	handleLinkTo(url){

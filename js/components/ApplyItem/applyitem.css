@@ -5,12 +5,15 @@
 	margin-bottom: 0.32rem;
 }
 .applyitem .msg_cell{
-	height: 64px;
+	width: 5.8rem;
+	height: 1.706667rem;
 	padding-left: 0.32rem;
 }
-[data-dpr="2"] .applyitem .msg_cell{
-	height: 1.706667rem;
-}
-[data-dpr="3"] .applyitem .msg_cell{
-	height: 192px;
+.applyitem .msg_cell h3,
+.applyitem .msg_cell p{
+	width: 100%;
+	display: block;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
 }

@@ -45,7 +45,6 @@ class Avator extends Component{
 					</form>
 				}
 				<img ref="avator" width="100%" height="100%" src={hostUrl+avatorUrl} alt="用户头像"/>
-				}
 				{this.state.loading && 
 					<Loading text="正在上传头像，请等待" />
 				}

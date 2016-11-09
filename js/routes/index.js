@@ -50,6 +50,17 @@ const rootRoute = {
 	        }
 	      ]
 	    },
+	    { 
+	      childRoutes: [
+	        { path: '/authsearch',
+	          getComponent: (nextState, cb) => {
+	            require.ensure([], (require) => {
+	              cb(null, require('../containers/Search'))
+	            })
+	          }
+	        }
+	      ]
+	    },
 	    { onEnter: redirectToLogin,
 	      childRoutes: [
 	        { path: '/myaddress',
@@ -89,6 +100,17 @@ const rootRoute = {
 	          getComponent: (nextState, cb) => {
 	            require.ensure([], (require) => {
 	              cb(null, require('../containers/Empower'))
+	            })
+	          }
+	        }
+	      ]
+	    },
+	    {
+	      childRoutes: [
+	        { path: '/empower2',
+	          getComponent: (nextState, cb) => {
+	            require.ensure([], (require) => {
+	              cb(null, require('../containers/Empower2'))
 	            })
 	          }
 	        }

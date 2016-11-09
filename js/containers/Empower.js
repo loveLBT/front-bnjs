@@ -12,12 +12,13 @@ class Empower extends Component{
 		const empowerUrl=apiUrl+"/WSGetAuthorization"
 		actions.fetchPosts("empower",empowerUrl)
 	}
-	componentWillUpdate(nextProps,nextState){
+	componentWillReceiveProps(nextProps){
 		if(nextProps.empower){
 			if(nextProps.empower.result.error_code==="101"){
 				Toast.tip(nextProps.empower.result.message)
 			}
 		}
+		
 	}
 	render(){
 		document.title="授权"

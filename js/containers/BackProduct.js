@@ -19,7 +19,6 @@ class BackProduct extends Component{
 	render(){
 		document.title="退货"
 		const {backproduct}=this.props
-		console.log(backproduct)
 		return (
 			<div className="backproduct">
 				{backproduct &&

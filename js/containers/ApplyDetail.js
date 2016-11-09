@@ -20,7 +20,7 @@ class ApplyDetail extends Component{
 		actions.fetchPosts("agreedata",auditingUrl)
 			.then(data=>{
 				Toast.tip(data.posts.result.message)
-				this.props.router.push("apply")
+				this.props.router.push("/apply")
 			})
 
 	}
@@ -30,7 +30,7 @@ class ApplyDetail extends Component{
 		actions.fetchPosts("rejectdata",auditingUrl)
 			.then(data=>{
 				Toast.tip(data.posts.result.message)
-				this.props.router.push("apply")
+				this.props.router.push("/apply")
 			})
 	}
 	render(){
@@ -41,7 +41,7 @@ class ApplyDetail extends Component{
 				{applydetail && 
 					<div>
 						<UserTop 
-							className="writeBg" 
+							className="writeBg borderBottom" 
 							hasStateCell={true}
 							state={0}
 							hasBeAuth={false}
@@ -52,10 +52,10 @@ class ApplyDetail extends Component{
 						/>
 						<div className="data_cell">
 							<div className="contact borderBottom">
-								<Panel title="微信号" text={applydetail.result.weiXingH} hasBorder={true} />
+								<Panel title="微信号" text={applydetail.result.weiXingH} />
 							</div>
 							<div className="car borderBottom">
-								<Panel title="身份证号码" text={applydetail.result.sfzh} />
+								<Panel title="身份证号码" text={applydetail.result.sfzh} hasBorder={true} />
 								<Panel title="身份证照片" carImg={applydetail.result.sfzhZMThumb} carReverseImg={applydetail.result.sfzhFMThumb} hasCarImg={true} />
 							</div>
 						</div>

@@ -8,19 +8,12 @@
 
 .panel .img_cell div{
 	position: relative;
-	width: 120px;
-	height: 80px;
+	width: 3.2rem;
+	height: 2.133333rem;
+	text-align: center;
 	overflow: hidden;
 	background-position: center;
 	background-repeat: no-repeat;
-}
-[data-dpr="2"] .panel .img_cell div{
-	width: 3.2rem;
-	height: 2.133333rem;
-}
-[data-dpr="3"] .panel .img_cell div{
-	width: 360px;
-	height: 240px;
 }
 .panel .img_cell .sfz{
 	margin-bottom: 0.32rem;

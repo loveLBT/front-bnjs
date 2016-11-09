@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -30,7 +31,7 @@ class UpApplyDetail extends Component{
 		actions.fetchPosts("agreedata",auditingUrl)
 			.then(data=>{
 				Toast.tip(data.posts.result.message)
-				this.props.router.push("apply")
+				this.props.router.push("/apply")
 			})
 	}
 	handleTouchReject(){
@@ -39,7 +40,7 @@ class UpApplyDetail extends Component{
 		actions.fetchPosts("rejectdata",auditingUrl)
 			.then(data=>{
 				Toast.tip(data.posts.result.message)
-				this.props.router.push("apply")
+				this.props.router.push("/apply")
 			})
 	}
 	render(){
@@ -50,7 +51,7 @@ class UpApplyDetail extends Component{
 				{!!items && 
 					<div>
 						<UserTop 
-							className="writeBg" 
+							className="writeBg borderBottom" 
 							hasStateCell={true}
 							state={items.auditState}
 							hasBeAuth={false}
@@ -59,17 +60,14 @@ class UpApplyDetail extends Component{
 							handleTouchReject={this.handleTouchReject.bind(this)}
 						/>
 						<div className="data_cell">
-							<div className="contact borderBottom">
-								<Panel title="微信" text={items.weiXingH} />
-							</div>
 							<div className="car borderBottom">
 								<Panel title="身份证号码" text={items.sfzh} />
 							</div>
 							<div className="car borderBottom">
-								<Panel title="申请等级名称" text={items.agentLevelName} />
+								<Panel title="申请等级" text={items.agentLevelName} />
 							</div>
 							<div className="car borderBottom">
-								<Panel title="申请当时累计" text={items.remark} />
+								<Panel title="当前累计" text={items.remark} />
 							</div>
 						</div>
 					</div>
@@ -89,4 +87,4 @@ const mapDispatchToProps=(dispatch)=>({
 	actions:bindActionCreators(actions,dispatch)
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(UpApplyDetail)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(UpApplyDetail))

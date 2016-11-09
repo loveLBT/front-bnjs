@@ -22,7 +22,7 @@ class Panel extends Component{
 		}else{
 			return (
 				<div className="img_cell flex-column">
-					<div className="">
+					<div className="" style={{marginBottom:"0.32rem"}}>
 						<img width="100%" height="100%" src={hostUrl+carImg} alt="身份证正面"/>
 					</div>
 					<div className="">

@@ -19,7 +19,7 @@ class OrderDetail extends Component{
 		document.title="订单详情"
 		const {userorderdetail}=this.props
 		return (
-			<div className="orderdetail">
+			<div className="orderdetail" style={{paddingBottom:"1.4rem"}}>
 				{userorderdetail &&
 					<div>
 						<div className="item borderBottom">

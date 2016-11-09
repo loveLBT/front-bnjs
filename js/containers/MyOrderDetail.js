@@ -18,7 +18,7 @@ class OrderDetail extends Component{
 		let btnCount=[{btnText:"退货"}]
 		const {myorderdetail}=this.props
 		return (
-			<div className="orderdetail">
+			<div className="orderdetail" style={{paddingBottom:"1.4rem"}}>
 				{myorderdetail && 
 					<div>
 						<div className="item borderBottom">

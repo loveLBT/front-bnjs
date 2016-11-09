@@ -13,7 +13,7 @@ class UserTop extends Component{
 			return 
 		}else{
 			return (
-				<div className="state_cell flex-ai">
+				<div className="state_cell flex-ai borderTop">
 					<div className="flex-1">
 						{state==0 && 
 							<p className="state">待审核</p>
