@@ -4,7 +4,10 @@ import {Link} from "react-router"
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ProductItem,Button,Loading,Toast} from "../components"
+import ProductItem from '../components/ProductItem'
+import Button from '../components/Button'
+import Loading from '../components/Loading'
+import Toast from '../components/Toast'
 
 
 

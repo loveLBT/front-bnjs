@@ -1,48 +1,65 @@
 import React,{Component} from 'react'
-import * as actions from '../actions'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {Auth,TabBar,UserTop,Loading} from '../components'
+import {polyfill} from 'es6-promise'
+import fetch from 'isomorphic-fetch'
+import TabBar from "../components/TabBar"
+import UserTop from "../components/UserTop"
 
 class Dashboard extends Component{
 	constructor(props){
 		super(props)
 
 		this.state={
-			userData:Auth.getUserData()
+			userData:JSON.parse(sessionStorage.getItem("userData"))
+		}
+	}
+	componentWillMount(){
+		const newLogin=sessionStorage.newLogin
+		const password=this.GetQueryString(newLogin,"password")
+		const username=this.GetQueryString(newLogin,"username")
+		const newLoginUrl=apiUrl+"/wslogin?username="+username+"&password="+password
+		fetch(newLoginUrl)
+			.then(response=>response.json())
+			.then(json=>{
+				sessionStorage.setItem("userData",JSON.stringify(json.result.result))
+			})
+	}
+	GetQueryString(loginUrl,name){
+		const reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)")
+		const loginUrlQuery=loginUrl.toLowerCase().substr(loginUrl.indexOf("?")+1).match(reg)
+		return  unescape(loginUrlQuery[2]) 
+
+	}
+	componentDidMount(){
+		let oHeight=document.body.clientHeight 
+		window.onresize=()=>{
+			if(document.body.clientHeight<oHeight){
+				document.getElementsByClassName("footer")[0].style.display="none"
+			}else{
+				document.getElementsByClassName("footer")[0].style.display="block"
+			}
 		}
 	}
 	render(){
-		const {isFetching}=this.props
 		const {userData}=this.state
 		return (
-			<div className="dashboard" >
+			<div className="dashboard flex-column" >
 				{!this.props.params.id && 
-					<UserTop isUpload={true} userData={userData} />
+					<div className="header flex-0">
+						<UserTop isUpload={true} userData={userData} />
+					</div>
 				}
 				
-				{this.props.children}
-				<TabBar />
-				{this.props.isFetching && 
-					<Loading text="数据正在加载请稍等。。。" />
-				}
+				<div className="content flex-1">
+					<div className="children">
+						{this.props.children}
+					</div>
+				</div>
+				<div className="footer flex-0">
+					<TabBar />
+				</div>
 			</div>
 		)
 	}
 }
 
-const mapStateToProps=state=>{
-	const {posts}=state
-	const {
-		isFetching,
-	}=posts
-	return {
-		isFetching,
-	}
-}
-
-const mapDispatchToProps=(dispatch)=>({
-	actions:bindActionCreators(actions,dispatch)
-})
-
-export default connect(mapStateToProps,mapDispatchToProps)(Dashboard) 
+export default Dashboard

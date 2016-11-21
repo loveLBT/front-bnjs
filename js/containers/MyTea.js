@@ -3,7 +3,8 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Avator,Scroll} from "../components"
+import Avator from '../components/Avator'
+import Scroll from '../components/Scroll'
 
 class MyTeaItem extends Component{
 	render(){
@@ -47,23 +48,25 @@ class MyTea extends Component{
 		document.title="我的团队"
 		const {mytea}=this.props
 		return (
-			<div className="mytea">
-				{mytea &&
-					<div className="count_cell flex-ai">
+			<div className="mytea flex-column">
+				<div className="count_cell flex-ai flex-0">
+					{mytea &&
 						<p>直接邀请成员：<span className="red">{mytea.result.totalCount}人</span></p>
-					</div>
-				}
-				<Scroll>
-					<div className="scroll_cell">
-						{mytea && 
-							mytea.result.customerList.map((item,i)=>{
-								return (
-									<MyTeaItem key={i} item={item} />
-								)
-							})
-						}
-					</div>
-				</Scroll>
+					}
+				</div>
+				<div className="scroll_container flex-1">
+					{mytea && 
+						<Scroll>
+							<div className="scroll_cell">
+								{mytea.result.customerList.map((item,i)=>{
+									return (
+										<MyTeaItem key={i} item={item} />
+									)
+								})}
+							</div>
+						</Scroll>
+					}
+				</div>
 			</div>
 		)
 	}

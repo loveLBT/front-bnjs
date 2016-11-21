@@ -3,7 +3,8 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ApplyItem,SliderTab} from "../components"
+import ApplyItem from "../components/ApplyItem"
+import SliderTab from "../components/SliderTab"
 
 class Apply extends Component{
 	constructor(props){
@@ -76,15 +77,13 @@ class Apply extends Component{
 		document.title="申请列表"
 		return (
 			<div className="apply">
-				{ 
-					<SliderTab
-						handleChangeTab={this.handleChangeTab.bind(this)}
-						navArry={[
-									{text:"注册审核申请",item:this.renderItem1()},
-									{text:"升级申请",item:this.renderItem2()}
-								]}
-					/>
-				}
+				<SliderTab
+					handleChangeTab={this.handleChangeTab.bind(this)}
+					navArry={[
+								{text:"注册审核申请",item:this.renderItem1()},
+								{text:"升级申请",item:this.renderItem2()}
+							]}
+				/>
 			</div>
 		)
 	}

@@ -14,7 +14,7 @@ class Button extends Component{
 		const s=objectAssign({},style)
 		return (
 			<button 
-				onTouchEnd={this.handleTouchEnd.bind(this)}
+				onClick={this.handleTouchEnd.bind(this)}
 				type="button"
 				className={classnames("btn flex-1",btnCn)}
 				style={s}

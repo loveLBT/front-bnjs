@@ -1,11 +1,11 @@
 .tabbar{
-	position: fixed;
-	left: 0;
+	position: relative;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	height: 49px;
 	background: #fff;
-	z-index: 1000;
+	z-index: 1002;
 }
 [data-dpr="2"] .tabbar{
 	height: 98px;

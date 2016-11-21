@@ -4,8 +4,9 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from '../actions'
 import classnames from "classnames"
-import {UserTop,MenuLink,Badge} from '../components'
 import Auth from '../components/Auth.js'
+import UserTop from '../components/UserTop'
+import Badge from '../components/Badge'
 
 class Menu extends Component {
 	constructor(props){

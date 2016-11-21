@@ -2,8 +2,11 @@ import React,{Component} from 'react'
 import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
+import objectAssign from 'object-assign'
 import {bindActionCreators} from 'redux'
-import {UserTop,Panel,Toast} from "../components"
+import UserTop from '../components/UserTop'
+import Panel from '../components/Panel'
+import Toast from '../components/Toast'
 
 class UpApplyDetail extends Component{
 	constructor(props){
@@ -19,9 +22,11 @@ class UpApplyDetail extends Component{
 		actions.fetchPosts("upapplydetail",upapplydetailUrl)
 	}
 	componentWillReceiveProps(nextProps){
+		let userData={}
 		if(this.props.posts!==nextProps.posts && !!nextProps.posts.upapplydetail){
+			userData=objectAssign({},nextProps.posts.upapplydetail.result,{agentLevelName:nextProps.posts.upapplydetail.result.currentAgentName,agentLevelName2:nextProps.posts.upapplydetail.result.agentLevelName})
 			this.setState({
-				items:nextProps.posts.upapplydetail.result
+				items:userData
 			})
 		}
 	}
@@ -64,7 +69,7 @@ class UpApplyDetail extends Component{
 								<Panel title="身份证号码" text={items.sfzh} />
 							</div>
 							<div className="car borderBottom">
-								<Panel title="申请等级" text={items.agentLevelName} />
+								<Panel title="申请等级" text={items.agentLevelName2} />
 							</div>
 							<div className="car borderBottom">
 								<Panel title="当前累计" text={items.remark} />

@@ -13,6 +13,7 @@ module.exports = {
       if (res.authenticated) {
         sessionStorage.token = res.token
         sessionStorage.setItem("userData",JSON.stringify(res.userData))
+        sessionStorage.newLogin=res.newLogin
         if (cb) cb({loggedIn:true})
         this.onChange(true)
       } else {
@@ -33,6 +34,7 @@ module.exports = {
   logout: function (cb) {
     delete sessionStorage.token
     delete sessionStorage.userData
+    delete sessionStorage.newLogin
     if (cb) cb()
     this.onChange(false)
   },
@@ -53,7 +55,8 @@ function pretendRequest(loginUrl, cb) {
           cb({
               authenticated: true,
               token: Math.random().toString(36).substring(7),
-              userData:json.result.result
+              userData:json.result.result,
+              newLogin:loginUrl
             })
         }else{
           cb({ authenticated: false,errormsg:json.result.result.message })

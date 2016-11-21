@@ -4,7 +4,10 @@ import {Link} from "react-router"
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ProductItem,Button,Loading,Toast} from "../components"
+import ProductItem from "../components/ProductItem"
+import Button from "../components/Button"
+import Loading from "../components/Loading"
+import Toast from "../components/Toast"
 
 
 
@@ -17,7 +20,7 @@ class BuyProduct extends Component{
 			index:0,
 			count:0,
 			price:0,
-			loading:false
+			loading:false,
 		}
 	}
 	componentWillMount(){
@@ -69,8 +72,13 @@ class BuyProduct extends Component{
 		this.changePrice(num)
 	}
 	handleChangeCount(event){
+		let count=0
+		if(event.target.value==""){
+			count=0
+		}
+		count=event.target.value
 		this.setState({
-			count:event.target.value
+			count
 		})
 		this.changePrice(event.target.value)
 	}
@@ -130,17 +138,17 @@ class BuyProduct extends Component{
 	}
 	handleFocus(){
 		document.getElementsByClassName("dashboard")[0].style.overflow="visible"
-		document.getElementsByClassName("buyproduct")[0].style.height="auto"
+		document.getElementsByClassName("children")[0].style.overflow="visible"
 	}
 	handleBlur(){
 		document.getElementsByClassName("dashboard")[0].style.overflow="hidden"
-		document.getElementsByClassName("buyproduct")[0].style.height="100%"
+		document.getElementsByClassName("children")[0].style.overflow="hidden"
 	}
 	render(){
 		document.title="商品列表"
 		const {items,index,price,count}=this.state
 		return (
-			<div className="buyproduct">
+			<div id="buyproduct" className="buyproduct">
 				{items[index] &&
 					<div className="buyproduct_cell">
 						<ProductItem 

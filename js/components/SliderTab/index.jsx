@@ -2,7 +2,8 @@ import React,{Component} from 'react'
 import ReactDom from 'react-dom'
 import objectAssign from 'object-assign'
 import classnames from 'classnames'
-import {OrderItem,Scroll} from '../../components'
+import OrderItem from '../../components/OrderItem'
+import Scroll from '../../components/Scroll'
 import './slidertab.css'
 
 class SliderTab extends Component{
@@ -158,17 +159,17 @@ class SliderTab extends Component{
 	}
 	render(){
 		const {sliderWidth,isTransition,x,touchObject,count}=this.state
-		const {navArry}=this.props
+		const {navArry,sliderBarCN}=this.props
 		let offset=touchObject?parseInt((touchObject.x-touchObject.startX)/3)+x:x
 		return (
 			<div 
-				className="slider-tab flex-column"
+				className={classnames("slider-tab flex-column",sliderBarCN)}
 				ref="sliderTab"
 				onTouchStart={this.swipeStart.bind(this)}
 				onTouchMove={this.swipeMove.bind(this)}
 				onTouchEnd={this.swipeEnd.bind(this)}
 			>
-				<div className="nav flex-ai">
+				<div className="nav flex-0 flex-ai">
 					{this.renderNav()}
 					<div 
 						className={classnames('progress',{transition:isTransition})} 

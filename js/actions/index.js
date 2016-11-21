@@ -27,4 +27,3 @@ export const fetchPosts = (postsTitle,url) => dispatch => {
       }
     })
 }
-

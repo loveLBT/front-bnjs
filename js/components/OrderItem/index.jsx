@@ -39,7 +39,7 @@ class OrderItem extends Component{
 					</div>
 				</Link>
 				{hasFooter && 
-					<div className='footer flex-ai'>
+					<div className='footer_cell flex-ai'>
 						<div className="state flex-1">
 							<span>{item.stateName}</span>
 						</div>

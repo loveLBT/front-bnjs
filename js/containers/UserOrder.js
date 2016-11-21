@@ -3,14 +3,26 @@ import * as actions from '../actions'
 import { withRouter } from 'react-router'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { UserTop,OrderItem,Scroll,Loading,Toast,Button } from '../components'
+import UserTop from '../components/UserTop'
+import OrderItem from '../components/OrderItem'
+import Scroll from '../components/Scroll'
+import Loading from '../components/Loading'
+import Toast from '../components/Toast'
+import Button from '../components/Button'
 
 class  Popup extends Component{
+	handleChange(event){
+		const reg=/^[A-Za-z0-9]+$/
+		if(!reg.test(event.target.value)){
+			event.target.value=""
+		}
+	}
 	handlePopupSend(){
 		const  {orderId,actions}=this.props
 		const ordernumber=this.refs.ordernumber.value
+		
 		if(ordernumber==""){
-			Toast.tip("订单号不能为空")
+			Toast.tip("物流单号不能为空")
 			return false
 		}
 		const sendOederUrl=apiUrl+"/WSCustomerOrderShip?orderId="+orderId+"&shipOrderNumber="+ordernumber
@@ -40,9 +52,9 @@ class  Popup extends Component{
 				<div className="popup_cell">
 					<p className="title">请输入物流单号</p>
 					<div className="content">
-						<input ref="ordernumber" type="text"/>
+						<input onChange={this.handleChange.bind(this)} ref="ordernumber" type="text"/>
 					</div>
-					<div className="footer flex">
+					<div className="footer_btn flex">
 						<Button 
 							handleTouchEnd={this.handlePopupSend.bind(this)}
 							btnCn="btn_center btn_radius btn_danger flex-1"
@@ -129,32 +141,34 @@ class UserOrder extends Component{
 		 this.props.router.push('/userorder/'+id)
 	}
 	render(){
-		document.title="用户订单"
+		document.title="客户订单"
 		const {userorder}=this.props
 		let btnCount=[]
 		return (
-			<div className="userorder">
-				{userorder &&
-					<div className="count_cell flex-ai">
+			<div className="userorder flex-column">
+				<div className="count_cell flex-ai flex-0">
+					{userorder &&
 						<p>共计：<span className="red">￥{userorder.result.totalPrice}</span></p>
-					</div>
-				}
-				<Scroll>
-					<div className="scroll_cell">
-						{userorder && 
-							userorder.result.orderList.map((item,i)=>{
-								if(item.state==0){
-									btnCount=[{btnText:"发货",btnFn:this.openPopup.bind(this,item.orderId)},{btnText:"取消",btnFn:this.handleCancel.bind(this,item.orderId)},{btnText:"详情",btnFn:this.handleDetail.bind(this,item.orderId)}]
-								}else{
-									btnCount=[{btnText:"详情",btnFn:this.handleDetail.bind(this,item.orderId)}]
-								}
-								return (
-									<OrderItem linkTo={/userorder/+item.orderId} item={item} key={i} btnText="详情" btnCount={btnCount} />
-								)
-							})
-						}
-					</div>
-				</Scroll>
+					}
+				</div>
+				<div className="scroll_container flex-1">
+					{userorder &&
+						<Scroll>
+							<div className="scroll_cell">
+								{userorder.result.orderList.map((item,i)=>{
+									if(item.state==0){
+										btnCount=[{btnText:"发货",btnFn:this.openPopup.bind(this,item.orderId)},{btnText:"取消",btnFn:this.handleCancel.bind(this,item.orderId)},{btnText:"详情",btnFn:this.handleDetail.bind(this,item.orderId)}]
+									}else{
+										btnCount=[{btnText:"详情",btnFn:this.handleDetail.bind(this,item.orderId)}]
+									}
+									return (
+										<OrderItem linkTo={/userorder/+item.orderId} item={item} key={i} btnText="详情" btnCount={btnCount} />
+									)
+								})}
+							</div>
+						</Scroll>
+					}
+				</div>
 				{this.state.loadingObj.loading &&
 					<Loading text={this.state.loadingObj.text} />
 				}

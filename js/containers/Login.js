@@ -2,33 +2,11 @@ import React,{Component} from 'react'
 import {Link} from 'react-router'
 import { withRouter } from 'react-router'
 import Auth from '../components/Auth.js'
-import {Input,Radio,Button,Toast,Loading} from '../components'
-
-class Popup extends Component{
-	handlePopupCancel(){
-		this.props.closePopup()
-	}
-	render(){
-		return (
-			<div className="popup">
-				<div className="mask"></div>
-				<div className="popup_cell" style={{height:"4rem"}}>
-					<p className="title">拨打电话</p>
-					<div className="content">
-						<a className="fontStyle_163" href="tel:110"><strong>百年济世堂：</strong>110</a>
-					</div>
-					<div className="footer flex">
-						 <Button 
-						 	handleTouchEnd={this.handlePopupCancel.bind(this)}
-							btnCn="btn_center btn_radius btn_danger flex-1"
-							text="取消"
-						 />
-					</div>
-				</div>
-			</div>
-		)
-	}
-}
+import Input from '../components/Input'
+import Radio from '../components/Radio'
+import Button from '../components/Button'
+import Toast from '../components/Toast'
+import Loading from '../components/Loading'
 
 class Login extends Component{
 	constructor(props){
@@ -44,11 +22,6 @@ class Login extends Component{
 	componentWillMount(){
 		this.setRememberPwd()
 		Auth.logout()
-	}
-	closePopup(){
-		this.setState({
-			popup:false
-		})
 	}
 	handleChange(name,val){
 		let newState={}
@@ -144,7 +117,7 @@ class Login extends Component{
 							handleChange={this.handleChangeState.bind(this)}
 						/>
 						<a 
-							href="tel:13575407573"
+							href="tel:4007111177"
 							className="remember" 
 						>
 							忘记密码？

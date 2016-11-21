@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { OrderItem } from '../components'
+import OrderItem from '../components/OrderItem'
 
 class OrderDetail extends Component{
 	componentWillMount(){
@@ -18,7 +18,7 @@ class OrderDetail extends Component{
 		let btnCount=[{btnText:"退货"}]
 		const {myorderdetail}=this.props
 		return (
-			<div className="orderdetail" style={{paddingBottom:"1.4rem"}}>
+			<div className="orderdetail">
 				{myorderdetail && 
 					<div>
 						<div className="item borderBottom">

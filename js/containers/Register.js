@@ -4,8 +4,13 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { withRouter } from 'react-router'
-import Auth from '../components/Auth.js'
-import { Input,Radio,Button,Toast,Loading,Scroll } from "../components"
+import Auth from '../components/Auth'
+import Input from '../components/Input'
+import Radio from '../components/Radio'
+import Button from '../components/Button'
+import Toast from '../components/Toast'
+import Loading from '../components/Loading'
+import Scroll from '../components/Scroll'
 
 class Register extends Component{
 	constructor(props){

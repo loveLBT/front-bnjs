@@ -2,13 +2,11 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { OrderItem } from '../components'
+import OrderItem from '../components/OrderItem'
 
 class OrderDetail extends Component{
 	componentWillMount(){
-		if(!this.props.userorderdetail){
-			this.getUserOrderDetail()
-		}
+		this.getUserOrderDetail()
 	}
 	getUserOrderDetail(){
 		const {actions}=this.props
@@ -19,7 +17,7 @@ class OrderDetail extends Component{
 		document.title="订单详情"
 		const {userorderdetail}=this.props
 		return (
-			<div className="orderdetail" style={{paddingBottom:"1.4rem"}}>
+			<div className="orderdetail">
 				{userorderdetail &&
 					<div>
 						<div className="item borderBottom">

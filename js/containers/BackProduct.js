@@ -2,7 +2,11 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ProductItem,Button,Loading,Toast,Auth} from '../components'
+import ProductItem from "../components/ProductItem"
+import Button from "../components/Button"
+import Loading from "../components/Loading"
+import Toast from "../components/Toast"
+import Auth from "../components/Auth"
 
 class BackProduct extends Component{
 	componentWillMount(){

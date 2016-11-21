@@ -45,7 +45,7 @@ class Panel extends Component{
 						 	{!!imgUrl1 &&
 						 		<img width="100%" height="100%" src={hostUrl+imgUrl1} alt="身份证正面"/>
 						 	}
-							<input id="zfzZM" onChange={this.handleUploadFom1.bind(this)} type="file" name="file" />
+							<input id="zfzZM" onChange={this.handleUploadFom1.bind(this)} type="file" name="file" accept="image/*" />
 						 </form>
 					</div>
 					<div className="dashed sfz_reverse">
@@ -53,7 +53,7 @@ class Panel extends Component{
 							{!!imgUrl2 &&
 						 		<img width="100%" height="100%" src={hostUrl+imgUrl2} alt="身份证正面"/>
 						 	}
-							<input id="zfzFM" onChange={this.handleUploadFom2.bind(this)} type="file" name="file" />
+							<input id="zfzFM" onChange={this.handleUploadFom2.bind(this)} type="file" name="file" accept="image/*" />
 						</form>
 					</div>
 				</div>
@@ -89,18 +89,19 @@ class Panel extends Component{
 		})
 	}
 	handleChange(event){
-		this.props.handleChange(event.target.value)
+		if(!!this.props.handleChange)
+			this.props.handleChange(event.target.value)
 	}
 	render(){
-		const {title,text,hasBorder,contentHtml,input,type,maxlength,defaultValue}=this.props
+		const {title,text,hasBorder,contentHtml,input,type,maxlength,defaultValue,id}=this.props
 		return (
-			<div className={classnames("panel flex",{borderBottom:hasBorder})}>
+			<div className={classnames("panel flex-ai",{borderBottom:hasBorder})}>
 				<h3 className="fontStyle_163">{title}</h3>
 				{text && 
 					<p className="fontStyle_143">{text}</p>
 				}
 				{input && 
-					<input maxLength={maxlength} onChange={this.handleChange.bind(this)} className="fontStyle_143" type={type} placeholder={input} defaultValue={defaultValue} />
+					<input id={id} maxLength={maxlength} onChange={this.handleChange.bind(this)} className="fontStyle_143" type={type} placeholder={input} defaultValue={defaultValue} />
 				}
 				{this.renderCarImg()}
 				{this.renderUploadImg()}

@@ -63,28 +63,6 @@ const rootRoute = {
 	    },
 	    { onEnter: redirectToLogin,
 	      childRoutes: [
-	        { path: '/myaddress',
-	          getComponent: (nextState, cb) => {
-	            require.ensure([], (require) => {
-	              cb(null, require('../containers/MyAddress'))
-	            })
-	          }
-	        }
-	      ]
-	    },
-	    { onEnter: redirectToLogin,
-	      childRoutes: [
-	        { path: '/realname',
-	          getComponent: (nextState, cb) => {
-	            require.ensure([], (require) => {
-	              cb(null, require('../containers/RealName'))
-	            })
-	          }
-	        }
-	      ]
-	    },
-	    { onEnter: redirectToLogin,
-	      childRoutes: [
 	        { path: '/editpwd',
 	          getComponent: (nextState, cb) => {
 	            require.ensure([], (require) => {
@@ -179,6 +157,13 @@ const rootRoute = {
 	              getComponent: (nextState, cb) => {
 	                require.ensure([], (require) => {
 	                  cb(null, require('../containers/Apply'))
+	                })
+	              }
+	            },
+	            { path: '/realname',
+	              getComponent: (nextState, cb) => {
+	                require.ensure([], (require) => {
+	                  cb(null, require('../containers/RealName'))
 	                })
 	              }
 	            },

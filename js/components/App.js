@@ -1,20 +1,36 @@
 import React,{Component} from 'react'
+import * as actions from '../actions'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import './config.js'
 
 class App extends Component{
-  handleTouchStart(event){
-    var target = event.target
-    while (target.nodeType != 1) target = target.parentNode
-    if (target.tagName != 'BUTTON' && target.tagName != 'INPUT' && target.tagName != 'A' &&target.tagName != 'I' &&target.tagName != 'TEXTAREA') 
-    event.preventDefault()
-  }
   render(){
     return (
       <div className="app">
         {this.props.children}
+        {this.props.isFetching && 
+         <div className="spinner"></div>
+        }
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps=state=>{
+  const {posts}=state
+  const {
+    isFetching,
+  }=posts
+  return {
+    isFetching,
+  }
+}
+
+const mapDispatchToProps=(dispatch)=>({
+  actions:bindActionCreators(actions,dispatch)
+})
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)  

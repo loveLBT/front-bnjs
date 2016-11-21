@@ -62,6 +62,9 @@ button:focus {
   font: inherit;
   text-decoration: none;
 }
+a{
+  color: #333;
+}
 img {
     border: none;
     max-width: 100%;
@@ -187,15 +190,14 @@ img {
   display: -ms-flexbox; 
   display: -webkit-flex;
   display: flex; 
-  -webkit-box-pack: space-around;
-  -moz-justify-content: space-around;
-  -webkit-justify-content: space-around;
-  justify-content: space-around;
-  webkit-box-direction: normal;
   -webkit-box-orient: vertical;
   -moz-flex-direction: column;
   -webkit-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: space-around;
+  -moz-justify-content: space-around;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
 }
 .flex-column-between{
  display: -webkit-box; 

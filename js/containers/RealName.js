@@ -3,15 +3,19 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { UserTop,Panel,Button,Toast,Loading,Auth,TabBar } from '../components'
+import UserTop from '../components/UserTop'
+import Panel from '../components/Panel'
+import Button from '../components/Button'
+import Toast from '../components/Toast'
+import Loading from '../components/Loading'
+import Auth from '../components/Auth'
+import TabBar from '../components/TabBar'
 
 class RealName extends Component{
 	constructor(props){
 		super(props)
 
 		this.state={
-			weiXingH:"",
-			trueName:"",
 			sfzh:"",
 			loading:false,
 			userData:Auth.getUserData(),
@@ -30,7 +34,9 @@ class RealName extends Component{
 		const nameReg = /^[\u4E00-\u9FA5]{2,5}$/
 		const weixinReg=/^[A-Za-z0-9]+$/
 		const carReg=/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
-		const {weiXingH,trueName,sfzh}=this.state
+		const {sfzh}=this.state
+		const weiXingH=document.getElementById("weiXingH").value
+		const trueName=document.getElementById("trueName").value
 		const {actions}=this.props
 		const realnameUrl=apiUrl+"/WSRealNameAuthentication?weiXingH="+weiXingH+"&trueName="+trueName+"&sfzh="+sfzh
 		if(weiXingH==""){
@@ -38,7 +44,7 @@ class RealName extends Component{
 			return false
 		}
 		if(!weixinReg.test(weiXingH)){
-			Toast.tip("微信号由字母跟数字组成")
+			Toast.tip("微信号是字母或者数字")
 			return false
 		}
 		if(trueName==""){
@@ -118,10 +124,10 @@ class RealName extends Component{
 				 	return (
 						<div className="data_cell flex-auto" style={{paddingBottom:"0.32rem"}}>
 							<div className="contact borderBottom">
-								<Panel title="微信号"  input={"你的微信号"} maxlength="20" handleChange={this.handleChange.bind(this,"weiXingH")} />
+								<Panel title="微信号" input={"你的微信号"}  defaultValue={realname.result.weiXingH} maxlength="20" id="weiXingH" />
 							</div>
 							<div className="car borderBottom">
-								<Panel title="真实姓名"   hasBorder={true} input={"你的真实姓名"} handleChange={this.handleChange.bind(this,"trueName")} />
+								<Panel title="真实姓名" input={"你的真实姓名"}   hasBorder={true} defaultValue={realname.result.trueName} maxlength="20" id="trueName" />
 								<Panel maxlength="18" title="身份证号" input={"你的身份证号码"} handleChange={this.handleChange.bind(this,"sfzh")}  />
 							</div>
 							<div className="car borderBottom">
@@ -149,16 +155,10 @@ class RealName extends Component{
 		const {realname}=this.props
 		const CheckState=!realname?null:realname.result.CheckState
 		return (
-			<div className="realname flex-column" style={{width:"100%",height:"100%"}}>
-				<div className="flex-0">
-					<UserTop isUpload={true} userData={this.state.userData} />
-				</div>
+			<div className="realname" >
 				{this.renderRealName()}
-				<div className="flex-0">
-					<TabBar style={{position:"static"}} />
-				</div>
 				{this.state.loading && 
-					<Loading text="正在提交请等待" />
+					<Loading text="正在提交，请等待" />
 				}
 			</div>
 		)

@@ -1,7 +1,6 @@
 var path =require('path')
 var webpack=require('webpack')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 var config={
 	entry:{
 		main:path.resolve(__dirname,'js/main.js'),
@@ -21,7 +20,7 @@ var config={
 	       },{
 	       	  test:/\.css$/,
 	       	  exclude: /node_modules/,
-        	  loader:ExtractTextPlugin.extract('style-loader', 'css-loader')
+        	  loader:ExtractTextPlugin.extract('style-loader', 'css-loader','sass-loader')
 	       },{
 	       	  test: /\.(png|jpg|jpeg|gif)$/,
 	       	  loader:'url?limit=8192&name=img/[name].[ext]'
@@ -29,7 +28,7 @@ var config={
 		]
 	},
 	resolve:{
-	  extensions:['','.js','.jsx','.css']
+	  extensions:['','.js','.jsx','.css','.sass'],
 	},
 	plugins:[
 	    new ExtractTextPlugin('app.css'),

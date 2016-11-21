@@ -2,7 +2,8 @@ import React,{Component} from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {UserTop,Panel} from '../components'
+import UserTop from '../components/UserTop'
+import Panel from '../components/Panel'
 
 class Personal extends Component{
 	componentWillMount(){

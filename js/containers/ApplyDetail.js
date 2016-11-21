@@ -3,7 +3,11 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {UserTop,Panel,Toast,Scroll} from "../components"
+import UserTop from "../components/UserTop"
+import Panel from "../components/Panel"
+import Toast from "../components/Toast"
+import Scroll from "../components/Scroll"
+
 
 class ApplyDetail extends Component{
 	componentWillMount(){
@@ -37,7 +41,7 @@ class ApplyDetail extends Component{
 		document.title="申请详情"
 		const {applydetail}=this.props
 		return (
-			<div className="applydetail" style={{position:"relative",height:"100%",width:"100%"}}>
+			<div className="applydetail">
 				{applydetail && 
 					<div>
 						<UserTop 

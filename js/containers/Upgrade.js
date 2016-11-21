@@ -5,7 +5,10 @@ import classnames from 'classnames'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ProductItem,Button,Loading,Toast} from '../components'
+import ProductItem from '../components/ProductItem'
+import Button from '../components/Button'
+import Loading from '../components/Loading'
+import Toast from '../components/Toast'
 
 class Upgrade extends Component{
 	constructor(props){
@@ -56,7 +59,6 @@ class Upgrade extends Component{
 		document.title="产品升级"
 		const {index}=this.state
 		const {upgrade}=this.props
-		console.log(upgrade)
 		let items=!upgrade?null:upgrade.result.upgradeProducts
 		return (
 			<div className="upgrade">

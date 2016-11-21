@@ -55,17 +55,17 @@
 [data-dpr="3"] .orderitem .content .wares_present .price{
 	font-size: 42px;
 }
-.orderitem .footer{
+.orderitem .footer_cell{
 	height: 1.386667rem;
 	padding-right: 0.32rem;
 }
-.orderitem .footer .state{
+.orderitem .footer_cell .state{
 	color: #ff9900;
 	font-size: 15px;
 }
-[data-dpr="2"] .orderitem .footer .state{
+[data-dpr="2"] .orderitem .footer_cell .state{
 	font-size: 30px;
 }
-[data-dpr="3"] .orderitem .footer .state{
+[data-dpr="3"] .orderitem .footer_cell .state{
 	font-size: 45px;
 }

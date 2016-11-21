@@ -3,7 +3,10 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {UserTop,Button,OrderItem,Scroll} from "../components"
+import UserTop from '../components/UserTop'
+import Button from '../components/Button'
+import OrderItem from '../components/OrderItem'
+import Scroll from '../components/Scroll'
 
 class MyRetail extends Component{
 	componentWillMount(){
@@ -19,25 +22,25 @@ class MyRetail extends Component{
 		const {myretail}=this.props
 		const items=!myretail?null:myretail.result.orderList
 		return (
-			<div className="myretail">
-				<div className="btn_center_cell">
+			<div className="myretail flex-column">
+				<div className="btn_center_cell flex-0">
 					<Button
 						handleTouchEnd={this.handleTouchEnd.bind(this)}
 						btnCn="btn_center btn_radius btn_danger"
 					  	text="零售"
 					 />
 				</div>
-				<Scroll>
-					<div className="scroll_cell" style={{paddingBottom:"5.8rem"}}>
-						{items &&
-							items.map((item,i)=>{
+				<div className="scroll_container flex-1">
+					{items && 
+						<Scroll>
+							{items.map((item,i)=>{
 								return (
 									<OrderItem hasFooter={false} key={i} item={item} />
 								)
-							})
-						}
-					</div>
-				</Scroll>
+							})}
+						</Scroll>
+					}
+				</div>
 			</div>
 		)
 	}

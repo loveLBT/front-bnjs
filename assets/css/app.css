@@ -12,7 +12,57 @@
 	height: 100%;
 	overflow: hidden;
 }
+.content{
+	position: relative;
+	width: 100%;
+	margin-top: -0.013333rem;
+}
+.children{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+.spinner {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  margin:auto auto;
+  background-color: #e34949;
+  border-radius: 100%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
 
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+.scroll_container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
 
 /*            授权查询          */
 .search{
@@ -206,18 +256,10 @@ a{
 .link_to a{
 	color: #03a9f5;
 }
-.scroll_cell{
-	padding-bottom: 5rem;
-}  
-
 /*            首面样式          */
 
 .home{
-	width: 100%;
-	height: 100%;
-	overflow-y: auto;
-	padding-bottom: 4rem;
-	margin-top: -0.013333rem;
+	
 }
 .home .order_cell{
 	position: relative;
@@ -429,7 +471,11 @@ a{
 	padding-top: 0.266667rem;
 	padding-bottom: 0.266667rem;
 }
-
+.register form{
+	display: block;
+	background: #f2f2f2;
+	padding-bottom: 0.32rem;
+}
 
 /*            我的订单页样式          */ 
 .myorder
@@ -525,7 +571,7 @@ a{
 [data-dpr="3"] .popup_cell .content input{
 	border-width: 3px;
 }
-.popup_cell .footer{
+.popup_cell .footer_btn{
 	padding-top: 0.56rem;
 }
 
@@ -535,13 +581,6 @@ a{
 	position: relative;
 	width: 100%;
 	height: 100%;
-	padding-bottom: 175px;
-}
-[data-dpr="2"] .myaccount{
-	padding-bottom: 4.666667rem;
-}
-[data-dpr="3"] .myaccount{
-	padding-bottom: 565px;
 }
 .myaccount .count_cell{
 	position: relative;
@@ -746,10 +785,7 @@ a{
 /*            产品列列表页         */
 .buyproduct{
 	width: 100%;
-	height: 100%;
 	padding: 0.32rem;
-	padding-bottom: 4rem;
-	overflow-y: auto;
 }
 .buyproduct_cell{
 	background: #fff;
@@ -816,8 +852,6 @@ a{
 	width: 100%;
 	height: 100%;
 	padding: 0.32rem;
-	padding-bottom: 4.2rem;
-	overflow-y: auto;
 }
 .upgrade_cell{
 	background: #fff;
@@ -839,16 +873,9 @@ a{
 /*            申请列表页         */
 
 .apply{
+	position: relative;
 	width: 100%;
 	height: 100%;
-	padding-bottom: 76px;
-	overflow: hidden;
-}
-[data-dpr="2"] .apply{
-	padding-bottom: 2.026667rem;
-}
-[data-dpr="3"] .apply{
-	padding-bottom: 228px;
 }
 .apply .item{
 	padding-top: 0.32rem;

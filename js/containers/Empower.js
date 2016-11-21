@@ -4,7 +4,9 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Loading,Toast} from "../components"
+import Loading from "../components/Loading"
+import Toast from "../components/Toast"
+
 
 class Empower extends Component{
 	componentWillMount(){
@@ -38,9 +40,6 @@ class Empower extends Component{
 							<p className="number code">{data.authorizationCode}</p>
 						</div>
 					</div>
-				}
-				{this.props.isFetching && 
-					<Loading text="正在获取授权信息请等待" />
 				}
 			</div>
 		)

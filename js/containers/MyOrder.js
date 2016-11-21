@@ -1,9 +1,13 @@
+
 import React,{Component} from 'react'
 import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { UserTop,OrderItem,Scroll,Loading } from '../components'
+import UserTop from '../components/UserTop'
+import OrderItem from '../components/OrderItem'
+import Loading from '../components/Loading'
+import Scroll from '../components/Scroll'
 
 class MyOrder extends Component{
 	constructor(props){
@@ -17,6 +21,7 @@ class MyOrder extends Component{
 	componentWillMount(){
 		this.getMyOrder()
 	}
+	
 	getMyOrder(){
 		const {page,pageNum}=this.state
 		const {actions}=this.props
@@ -31,24 +36,24 @@ class MyOrder extends Component{
 		const {myorder}=this.props
 		let btnCount=[]
 		return (
-			<div className="myorder">
-				{myorder && 
-					<div className="count_cell flex-ai">
+			<div className="myorder flex-column">
+				<div className="count_cell flex-ai flex-0">
+					{myorder && 
 						<p>共计：<span className="red">￥{myorder.result.totalPrice}</span></p>
-					</div>
-				}
-				<Scroll>
-					<div className="scroll_cell">
-						{myorder &&
-							myorder.result.orderList.map((item,i)=>{
+					}
+				</div>
+				<div className="scroll_container flex-1">
+					{myorder && 
+						<Scroll>
+							{myorder.result.orderList.map((item,i)=>{
 								btnCount=[{btnText:"详情",btnFn:this.handleDetail.bind(this,item.orderId)}]
 								return (
 									<OrderItem linkTo={/myorder/+item.orderId} item={item} key={i} btnCount={btnCount} />
 								)
-							})
-						}
-					</div>
-				</Scroll>
+							})}
+						</Scroll>
+					}
+				</div>
 			</div>
 		)
 	}
@@ -70,4 +75,4 @@ const mapDispatchToProps=(dispatch)=>({
 	actions:bindActionCreators(actions,dispatch)
 })
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(MyOrder))  
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(MyOrder)) 

@@ -3,7 +3,10 @@ import { withRouter } from 'react-router'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Input,Button,Toast,Loading} from '../components'
+import Input from '../components/Input'
+import Button from '../components/Button'
+import Toast from '../components/Toast'
+import Loading from '../components/Loading'
 
 class Search extends Component{
 	constructor(props){
@@ -25,11 +28,11 @@ class Search extends Component{
 		
 		const reg=/^1[34578]\d{9}$/
 		if(phone==""){
-			Toast.tip("请输入账号")
+			Toast.tip("请输入手机号码")
 			return false
 		}
 		if(!reg.test(phone)){
-			Toast.tip("账号格式不正确")
+			Toast.tip("手机号格式不正确")
 			return false
 		}
 		const searchUrl=apiUrl+"/WSQueryAuthorization?phone="+phone
@@ -59,7 +62,7 @@ class Search extends Component{
 						hasInputBorder={true}
 						iconName="icon_phone"
 						id="phone"
-						placeholder="请输入账号"
+						placeholder="请输入手机号"
 						type="text"
 					 />
 				</form>

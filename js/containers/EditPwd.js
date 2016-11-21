@@ -5,7 +5,12 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import Auth from '../components/Auth.js'
-import {Input,Radio,Button,Toast,Loading} from '../components'
+import Input from "../components/Input"
+import Radio from "../components/Radio"
+import Button from "../components/Button"
+import Toast from "../components/Toast"
+import Loading from "../components/Loading"
+
 
 class EditPwd extends Component{
 	constructor(props){

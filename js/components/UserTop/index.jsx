@@ -86,7 +86,7 @@ class UserTop extends Component{
 					</div>
 					{hasBeAuth && 
 						<div className="be_auth">
-							<button onTouchEnd={this.handleTouchEnd.bind(this)}>授权</button>
+							<button onClick={this.handleTouchEnd.bind(this)}>授权</button>
 						</div>
 					}
 				</div>
