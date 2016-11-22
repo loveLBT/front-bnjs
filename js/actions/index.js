@@ -16,7 +16,9 @@ export const receivePosts = (postsTitle, json) => ({
 
 export const fetchPosts = (postsTitle,url) => dispatch => {
   dispatch(requestPosts(postsTitle))
-  return fetch(url)
+  return fetch(url,{
+    credentials: 'include'
+  })
     .then(response => response.json())
     .then(json => {
     	if(!json.result.result.error_code=="110"){

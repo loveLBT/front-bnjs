@@ -48,7 +48,9 @@ module.exports = {
 
 function pretendRequest(loginUrl, cb) {
   setTimeout(() => {
-    fetch(loginUrl)
+    fetch(loginUrl,{
+      credentials: 'include'
+    })
       .then(response=>response.json())
       .then(json=>{
         if(json.result.status==="success"){

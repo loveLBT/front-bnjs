@@ -7,7 +7,7 @@ var config={
 		vendor:['react','react-dom','redux','react-redux','react-router','object-assign','whatwg-fetch']
 	},
 	output:{
-		filename:'[name].bundle.js',
+		filename:'[name].[chunkhash:8].js',
 		path:path.resolve(__dirname,"dist"),
 		publicPath:'/dist/'
 	},
@@ -31,7 +31,16 @@ var config={
 	  extensions:['','.js','.jsx','.css','.sass'],
 	},
 	plugins:[
-	    new ExtractTextPlugin('app.css'),
+	    new webpack.optimize.UglifyJsPlugin({
+			output: {comments: false},
+			compress:{warnings: false}
+		}),
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: JSON.stringify('production'),
+			}
+		}),
+	    new ExtractTextPlugin('app.[chunkhash].css'),
 	    new webpack.optimize.CommonsChunkPlugin('vendor','vendor.js')
 	]
 }
